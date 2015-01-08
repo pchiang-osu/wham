@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		38EFCF0519BADC210054D955 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCF0419BADC210054D955 /* Foundation.framework */; };
+		38EFCF0719BADC220054D955 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCF0619BADC220054D955 /* CoreGraphics.framework */; };
+		38EFCF0919BADC220054D955 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCF0819BADC220054D955 /* UIKit.framework */; };
+		38EFCF0F19BADC220054D955 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38EFCF0D19BADC220054D955 /* InfoPlist.strings */; };
+		38EFCF1119BADC220054D955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFCF1019BADC220054D955 /* main.m */; };
+		38EFCF1519BADC220054D955 /* WWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFCF1419BADC220054D955 /* WWAppDelegate.m */; };
+		38EFCF1819BADC220054D955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38EFCF1619BADC220054D955 /* Main.storyboard */; };
+		38EFCF1B19BADC220054D955 /* WWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFCF1A19BADC220054D955 /* WWViewController.m */; };
+		38EFCF1D19BADC220054D955 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38EFCF1C19BADC220054D955 /* Images.xcassets */; };
+		38EFCF2419BADC220054D955 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCF2319BADC220054D955 /* XCTest.framework */; };
+		38EFCF2519BADC220054D955 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCF0419BADC210054D955 /* Foundation.framework */; };
+		38EFCF2619BADC220054D955 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCF0819BADC220054D955 /* UIKit.framework */; };
+		38EFCF2E19BADC220054D955 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38EFCF2C19BADC220054D955 /* InfoPlist.strings */; };
+		38EFCF3019BADC220054D955 /* WearWareiOSTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFCF2F19BADC220054D955 /* WearWareiOSTestTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		38EFCF2719BADC220054D955 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38EFCEF919BADC210054D955 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38EFCF0019BADC210054D955;
+			remoteInfo = WearWareiOSTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		38EFCF0119BADC210054D955 /* WearWareiOSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearWareiOSTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38EFCF0419BADC210054D955 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		38EFCF0619BADC220054D955 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		38EFCF0819BADC220054D955 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		38EFCF0C19BADC220054D955 /* WearWareiOSTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WearWareiOSTest-Info.plist"; sourceTree = "<group>"; };
+		38EFCF0E19BADC220054D955 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		38EFCF1019BADC220054D955 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		38EFCF1219BADC220054D955 /* WearWareiOSTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WearWareiOSTest-Prefix.pch"; sourceTree = "<group>"; };
+		38EFCF1319BADC220054D955 /* WWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWAppDelegate.h; sourceTree = "<group>"; };
+		38EFCF1419BADC220054D955 /* WWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWAppDelegate.m; sourceTree = "<group>"; };
+		38EFCF1719BADC220054D955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		38EFCF1919BADC220054D955 /* WWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWViewController.h; sourceTree = "<group>"; };
+		38EFCF1A19BADC220054D955 /* WWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWViewController.m; sourceTree = "<group>"; };
+		38EFCF1C19BADC220054D955 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		38EFCF2219BADC220054D955 /* WearWareiOSTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WearWareiOSTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		38EFCF2319BADC220054D955 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		38EFCF2B19BADC220054D955 /* WearWareiOSTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WearWareiOSTestTests-Info.plist"; sourceTree = "<group>"; };
+		38EFCF2D19BADC220054D955 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		38EFCF2F19BADC220054D955 /* WearWareiOSTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WearWareiOSTestTests.m; sourceTree = "<group>"; };
+		5C19718A1A4B80B800753551 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../WearWareFramework/build/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38EFCEFE19BADC210054D955 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38EFCF0719BADC220054D955 /* CoreGraphics.framework in Frameworks */,
+				38EFCF0919BADC220054D955 /* UIKit.framework in Frameworks */,
+				38EFCF0519BADC210054D955 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38EFCF1F19BADC220054D955 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38EFCF2419BADC220054D955 /* XCTest.framework in Frameworks */,
+				38EFCF2619BADC220054D955 /* UIKit.framework in Frameworks */,
+				38EFCF2519BADC220054D955 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		38EFCEF819BADC210054D955 = {
+			isa = PBXGroup;
+			children = (
+				38EFCF0A19BADC220054D955 /* WearWareiOSTest */,
+				38EFCF2919BADC220054D955 /* WearWareiOSTestTests */,
+				38EFCF0319BADC210054D955 /* Frameworks */,
+				38EFCF0219BADC210054D955 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		38EFCF0219BADC210054D955 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38EFCF0119BADC210054D955 /* WearWareiOSTest.app */,
+				38EFCF2219BADC220054D955 /* WearWareiOSTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		38EFCF0319BADC210054D955 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C19718A1A4B80B800753551 /* WearWareFrameworkiOS.framework */,
+				38EFCF0419BADC210054D955 /* Foundation.framework */,
+				38EFCF0619BADC220054D955 /* CoreGraphics.framework */,
+				38EFCF0819BADC220054D955 /* UIKit.framework */,
+				38EFCF2319BADC220054D955 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		38EFCF0A19BADC220054D955 /* WearWareiOSTest */ = {
+			isa = PBXGroup;
+			children = (
+				38EFCF1319BADC220054D955 /* WWAppDelegate.h */,
+				38EFCF1419BADC220054D955 /* WWAppDelegate.m */,
+				38EFCF1619BADC220054D955 /* Main.storyboard */,
+				38EFCF1919BADC220054D955 /* WWViewController.h */,
+				38EFCF1A19BADC220054D955 /* WWViewController.m */,
+				38EFCF1C19BADC220054D955 /* Images.xcassets */,
+				38EFCF0B19BADC220054D955 /* Supporting Files */,
+			);
+			path = WearWareiOSTest;
+			sourceTree = "<group>";
+		};
+		38EFCF0B19BADC220054D955 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38EFCF0C19BADC220054D955 /* WearWareiOSTest-Info.plist */,
+				38EFCF0D19BADC220054D955 /* InfoPlist.strings */,
+				38EFCF1019BADC220054D955 /* main.m */,
+				38EFCF1219BADC220054D955 /* WearWareiOSTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38EFCF2919BADC220054D955 /* WearWareiOSTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				38EFCF2F19BADC220054D955 /* WearWareiOSTestTests.m */,
+				38EFCF2A19BADC220054D955 /* Supporting Files */,
+			);
+			path = WearWareiOSTestTests;
+			sourceTree = "<group>";
+		};
+		38EFCF2A19BADC220054D955 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38EFCF2B19BADC220054D955 /* WearWareiOSTestTests-Info.plist */,
+				38EFCF2C19BADC220054D955 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		38EFCF0019BADC210054D955 /* WearWareiOSTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38EFCF3319BADC220054D955 /* Build configuration list for PBXNativeTarget "WearWareiOSTest" */;
+			buildPhases = (
+				38EFCEFD19BADC210054D955 /* Sources */,
+				38EFCEFE19BADC210054D955 /* Frameworks */,
+				38EFCEFF19BADC210054D955 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WearWareiOSTest;
+			productName = WearWareiOSTest;
+			productReference = 38EFCF0119BADC210054D955 /* WearWareiOSTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		38EFCF2119BADC220054D955 /* WearWareiOSTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38EFCF3619BADC220054D955 /* Build configuration list for PBXNativeTarget "WearWareiOSTestTests" */;
+			buildPhases = (
+				38EFCF1E19BADC220054D955 /* Sources */,
+				38EFCF1F19BADC220054D955 /* Frameworks */,
+				38EFCF2019BADC220054D955 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				38EFCF2819BADC220054D955 /* PBXTargetDependency */,
+			);
+			name = WearWareiOSTestTests;
+			productName = WearWareiOSTestTests;
+			productReference = 38EFCF2219BADC220054D955 /* WearWareiOSTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		38EFCEF919BADC210054D955 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WW;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = WearWare;
+				TargetAttributes = {
+					38EFCF2119BADC220054D955 = {
+						TestTargetID = 38EFCF0019BADC210054D955;
+					};
+				};
+			};
+			buildConfigurationList = 38EFCEFC19BADC210054D955 /* Build configuration list for PBXProject "WearWareiOSTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 38EFCEF819BADC210054D955;
+			productRefGroup = 38EFCF0219BADC210054D955 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				38EFCF0019BADC210054D955 /* WearWareiOSTest */,
+				38EFCF2119BADC220054D955 /* WearWareiOSTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		38EFCEFF19BADC210054D955 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38EFCF1D19BADC220054D955 /* Images.xcassets in Resources */,
+				38EFCF0F19BADC220054D955 /* InfoPlist.strings in Resources */,
+				38EFCF1819BADC220054D955 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38EFCF2019BADC220054D955 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38EFCF2E19BADC220054D955 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38EFCEFD19BADC210054D955 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38EFCF1519BADC220054D955 /* WWAppDelegate.m in Sources */,
+				38EFCF1119BADC220054D955 /* main.m in Sources */,
+				38EFCF1B19BADC220054D955 /* WWViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38EFCF1E19BADC220054D955 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38EFCF3019BADC220054D955 /* WearWareiOSTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		38EFCF2819BADC220054D955 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38EFCF0019BADC210054D955 /* WearWareiOSTest */;
+			targetProxy = 38EFCF2719BADC220054D955 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		38EFCF0D19BADC220054D955 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38EFCF0E19BADC220054D955 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		38EFCF1619BADC220054D955 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38EFCF1719BADC220054D955 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		38EFCF2C19BADC220054D955 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38EFCF2D19BADC220054D955 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		38EFCF3119BADC220054D955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		38EFCF3219BADC220054D955 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		38EFCF3419BADC220054D955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/rikkigibson/Xcode/WearWare/WearWareFramework/build/Debug-iphoneos",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WearWareiOSTest/WearWareiOSTest-Prefix.pch";
+				INFOPLIST_FILE = "WearWareiOSTest/WearWareiOSTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		38EFCF3519BADC220054D955 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/rikkigibson/Xcode/WearWare/WearWareFramework/build/Debug-iphoneos",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WearWareiOSTest/WearWareiOSTest-Prefix.pch";
+				INFOPLIST_FILE = "WearWareiOSTest/WearWareiOSTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		38EFCF3719BADC220054D955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WearWareiOSTest.app/WearWareiOSTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WearWareiOSTest/WearWareiOSTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WearWareiOSTestTests/WearWareiOSTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		38EFCF3819BADC220054D955 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WearWareiOSTest.app/WearWareiOSTest";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WearWareiOSTest/WearWareiOSTest-Prefix.pch";
+				INFOPLIST_FILE = "WearWareiOSTestTests/WearWareiOSTestTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38EFCEFC19BADC210054D955 /* Build configuration list for PBXProject "WearWareiOSTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38EFCF3119BADC220054D955 /* Debug */,
+				38EFCF3219BADC220054D955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38EFCF3319BADC220054D955 /* Build configuration list for PBXNativeTarget "WearWareiOSTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38EFCF3419BADC220054D955 /* Debug */,
+				38EFCF3519BADC220054D955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38EFCF3619BADC220054D955 /* Build configuration list for PBXNativeTarget "WearWareiOSTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38EFCF3719BADC220054D955 /* Debug */,
+				38EFCF3819BADC220054D955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 38EFCEF919BADC210054D955 /* Project object */;
+}

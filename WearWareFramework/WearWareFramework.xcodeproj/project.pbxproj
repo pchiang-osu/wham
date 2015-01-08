@@ -1,0 +1,721 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C1970B41A4B722F00753551 /* WearWareFrameworkiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970B31A4B722F00753551 /* WearWareFrameworkiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970CA1A4B72CE00753551 /* WWCentralDeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970251A4B677200753551 /* WWCentralDeviceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970CB1A4B72CE00753551 /* WWCentralDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970261A4B677200753551 /* WWCentralDeviceManager.m */; };
+		5C1970CC1A4B72CE00753551 /* WWDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970271A4B677200753551 /* WWDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970CD1A4B72CE00753551 /* WWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970281A4B677200753551 /* WWDevice.m */; };
+		5C1970CE1A4B72CE00753551 /* WWDeviceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970291A4B677200753551 /* WWDeviceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970CF1A4B72CE00753551 /* WWDeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702A1A4B677300753551 /* WWDeviceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970D01A4B72CE00753551 /* WWDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C19702B1A4B677300753551 /* WWDeviceManager.m */; };
+		5C1970D11A4B72CE00753551 /* WWDeviceManagerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702C1A4B677300753551 /* WWDeviceManagerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970D21A4B72CE00753551 /* WWDeviceManagerSim.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702D1A4B677300753551 /* WWDeviceManagerSim.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970D31A4B72CE00753551 /* WWDeviceManagerSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C19702E1A4B677300753551 /* WWDeviceManagerSim.m */; };
+		5C1970D41A4B72CE00753551 /* WWDeviceSim.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702F1A4B677300753551 /* WWDeviceSim.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970D51A4B72CE00753551 /* WWDeviceSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970301A4B677300753551 /* WWDeviceSim.m */; };
+		5C1970D61A4B72CE00753551 /* WWKnownDeviceScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970311A4B677300753551 /* WWKnownDeviceScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970D71A4B72CE00753551 /* WWKnownDeviceScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970321A4B677300753551 /* WWKnownDeviceScanner.m */; };
+		5C1970D81A4B72CE00753551 /* WWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970331A4B677300753551 /* WWProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970D91A4B72CE00753551 /* WWProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970341A4B677300753551 /* WWProtocol.m */; };
+		5C1970E91A4B749800753551 /* WearWareFrameworkOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970E81A4B749800753551 /* WearWareFrameworkOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970FD1A4B74BF00753551 /* WWCentralDeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970251A4B677200753551 /* WWCentralDeviceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970FE1A4B74BF00753551 /* WWDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970271A4B677200753551 /* WWDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1970FF1A4B74BF00753551 /* WWDeviceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970291A4B677200753551 /* WWDeviceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1971001A4B74BF00753551 /* WWDeviceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702A1A4B677300753551 /* WWDeviceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1971011A4B74BF00753551 /* WWDeviceManagerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702C1A4B677300753551 /* WWDeviceManagerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1971021A4B74BF00753551 /* WWDeviceManagerSim.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702D1A4B677300753551 /* WWDeviceManagerSim.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1971031A4B74BF00753551 /* WWDeviceSim.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702F1A4B677300753551 /* WWDeviceSim.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1971041A4B74BF00753551 /* WWKnownDeviceScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970311A4B677300753551 /* WWKnownDeviceScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C1971051A4B74BF00753551 /* WWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970331A4B677300753551 /* WWProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C19714E1A4B7AE200753551 /* WWCentralDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970261A4B677200753551 /* WWCentralDeviceManager.m */; };
+		5C19714F1A4B7AE200753551 /* WWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970281A4B677200753551 /* WWDevice.m */; };
+		5C1971501A4B7AE200753551 /* WWDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C19702B1A4B677300753551 /* WWDeviceManager.m */; };
+		5C1971511A4B7AE200753551 /* WWDeviceManagerSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C19702E1A4B677300753551 /* WWDeviceManagerSim.m */; };
+		5C1971521A4B7AE200753551 /* WWDeviceSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970301A4B677300753551 /* WWDeviceSim.m */; };
+		5C1971531A4B7AE200753551 /* WWKnownDeviceScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970321A4B677300753551 /* WWKnownDeviceScanner.m */; };
+		5C1971541A4B7AE200753551 /* WWProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970341A4B677300753551 /* WWProtocol.m */; };
+		5C19719C1A4B83CF00753551 /* WearWareFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C19719B1A4B83CF00753551 /* WearWareFrameworkTests.swift */; };
+		5C1971AA1A4B89B000753551 /* HeartRateAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A41A4B89B000753551 /* HeartRateAnalysis.swift */; };
+		5C1971AB1A4B89B000753551 /* HeartRateAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A41A4B89B000753551 /* HeartRateAnalysis.swift */; };
+		5C1971AD1A4B89B000753551 /* HeartRateDeviceTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A51A4B89B000753551 /* HeartRateDeviceTester.swift */; };
+		5C1971AE1A4B89B000753551 /* HeartRateDeviceTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A51A4B89B000753551 /* HeartRateDeviceTester.swift */; };
+		5C1971B01A4B89B000753551 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A61A4B89B000753551 /* main.swift */; };
+		5C1971B11A4B89B000753551 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A61A4B89B000753551 /* main.swift */; };
+		5C1971B31A4B89B000753551 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A71A4B89B000753551 /* Utils.swift */; };
+		5C1971B41A4B89B000753551 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A71A4B89B000753551 /* Utils.swift */; };
+		5C1971B61A4B89B000753551 /* WWECGDeviceSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A81A4B89B000753551 /* WWECGDeviceSim.swift */; };
+		5C1971B71A4B89B000753551 /* WWECGDeviceSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A81A4B89B000753551 /* WWECGDeviceSim.swift */; };
+		5C1971B91A4B89B000753551 /* WWHeartRateDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A91A4B89B000753551 /* WWHeartRateDetector.swift */; };
+		5C1971BA1A4B89B000753551 /* WWHeartRateDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A91A4B89B000753551 /* WWHeartRateDetector.swift */; };
+		5C1971C01A4B89CE00753551 /* Heart_Rate.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5C1971BD1A4B89CE00753551 /* Heart_Rate.csv */; };
+		5C1971C11A4B89CE00753551 /* noise_19_beats.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5C1971BE1A4B89CE00753551 /* noise_19_beats.csv */; };
+		5C1971C21A4B89CE00753551 /* noise_30_beats.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5C1971BF1A4B89CE00753551 /* noise_30_beats.csv */; };
+		5C678E791A4BC4440026D238 /* HeartRateDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C678E781A4BC4440026D238 /* HeartRateDetectionTests.swift */; };
+		5CD000921A4B8C9900B09161 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A71A4B89B000753551 /* Utils.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C19719E1A4B83CF00753551 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C196FFD1A4B65C300753551 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C1970E31A4B749800753551;
+			remoteInfo = WearWareFrameworkOSX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5C1970251A4B677200753551 /* WWCentralDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWCentralDeviceManager.h; path = WearWareFramework/WWCentralDeviceManager.h; sourceTree = "<group>"; };
+		5C1970261A4B677200753551 /* WWCentralDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWCentralDeviceManager.m; path = WearWareFramework/WWCentralDeviceManager.m; sourceTree = "<group>"; };
+		5C1970271A4B677200753551 /* WWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWDevice.h; path = WearWareFramework/WWDevice.h; sourceTree = "<group>"; };
+		5C1970281A4B677200753551 /* WWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWDevice.m; path = WearWareFramework/WWDevice.m; sourceTree = "<group>"; };
+		5C1970291A4B677200753551 /* WWDeviceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWDeviceDelegate.h; path = WearWareFramework/WWDeviceDelegate.h; sourceTree = "<group>"; };
+		5C19702A1A4B677300753551 /* WWDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWDeviceManager.h; path = WearWareFramework/WWDeviceManager.h; sourceTree = "<group>"; };
+		5C19702B1A4B677300753551 /* WWDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWDeviceManager.m; path = WearWareFramework/WWDeviceManager.m; sourceTree = "<group>"; };
+		5C19702C1A4B677300753551 /* WWDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWDeviceManagerDelegate.h; path = WearWareFramework/WWDeviceManagerDelegate.h; sourceTree = "<group>"; };
+		5C19702D1A4B677300753551 /* WWDeviceManagerSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWDeviceManagerSim.h; path = WearWareFramework/WWDeviceManagerSim.h; sourceTree = "<group>"; };
+		5C19702E1A4B677300753551 /* WWDeviceManagerSim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWDeviceManagerSim.m; path = WearWareFramework/WWDeviceManagerSim.m; sourceTree = "<group>"; };
+		5C19702F1A4B677300753551 /* WWDeviceSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWDeviceSim.h; path = WearWareFramework/WWDeviceSim.h; sourceTree = "<group>"; };
+		5C1970301A4B677300753551 /* WWDeviceSim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWDeviceSim.m; path = WearWareFramework/WWDeviceSim.m; sourceTree = "<group>"; };
+		5C1970311A4B677300753551 /* WWKnownDeviceScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWKnownDeviceScanner.h; path = WearWareFramework/WWKnownDeviceScanner.h; sourceTree = "<group>"; };
+		5C1970321A4B677300753551 /* WWKnownDeviceScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWKnownDeviceScanner.m; path = WearWareFramework/WWKnownDeviceScanner.m; sourceTree = "<group>"; };
+		5C1970331A4B677300753551 /* WWProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWProtocol.h; path = WearWareFramework/WWProtocol.h; sourceTree = "<group>"; };
+		5C1970341A4B677300753551 /* WWProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WWProtocol.m; path = WearWareFramework/WWProtocol.m; sourceTree = "<group>"; };
+		5C1970AF1A4B722F00753551 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WearWareFrameworkiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1970B21A4B722F00753551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C1970B31A4B722F00753551 /* WearWareFrameworkiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WearWareFrameworkiOS.h; sourceTree = "<group>"; };
+		5C1970E41A4B749800753551 /* WearWareFrameworkOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WearWareFrameworkOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1970E71A4B749800753551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C1970E81A4B749800753551 /* WearWareFrameworkOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WearWareFrameworkOSX.h; sourceTree = "<group>"; };
+		5C1971971A4B83CF00753551 /* WearWareFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WearWareFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C19719A1A4B83CF00753551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C19719B1A4B83CF00753551 /* WearWareFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WearWareFrameworkTests.swift; sourceTree = "<group>"; };
+		5C1971A41A4B89B000753551 /* HeartRateAnalysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateAnalysis.swift; sourceTree = "<group>"; };
+		5C1971A51A4B89B000753551 /* HeartRateDeviceTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateDeviceTester.swift; sourceTree = "<group>"; };
+		5C1971A61A4B89B000753551 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5C1971A71A4B89B000753551 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		5C1971A81A4B89B000753551 /* WWECGDeviceSim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWECGDeviceSim.swift; sourceTree = "<group>"; };
+		5C1971A91A4B89B000753551 /* WWHeartRateDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWHeartRateDetector.swift; sourceTree = "<group>"; };
+		5C1971BD1A4B89CE00753551 /* Heart_Rate.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Heart_Rate.csv; sourceTree = "<group>"; };
+		5C1971BE1A4B89CE00753551 /* noise_19_beats.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noise_19_beats.csv; sourceTree = "<group>"; };
+		5C1971BF1A4B89CE00753551 /* noise_30_beats.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = noise_30_beats.csv; sourceTree = "<group>"; };
+		5C678E781A4BC4440026D238 /* HeartRateDetectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateDetectionTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C1970AB1A4B722F00753551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1970E01A4B749800753551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1971941A4B83CF00753551 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C196FFC1A4B65C300753551 = {
+			isa = PBXGroup;
+			children = (
+				5C19706D1A4B69F200753551 /* WearWareFramework */,
+				5C1970B01A4B722F00753551 /* WearWareFrameworkiOS */,
+				5C1970E51A4B749800753551 /* WearWareFrameworkOSX */,
+				5C1971981A4B83CF00753551 /* WearWareFrameworkTests */,
+				5C1970071A4B65C300753551 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C1970071A4B65C300753551 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C1970AF1A4B722F00753551 /* WearWareFrameworkiOS.framework */,
+				5C1970E41A4B749800753551 /* WearWareFrameworkOSX.framework */,
+				5C1971971A4B83CF00753551 /* WearWareFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C19706D1A4B69F200753551 /* WearWareFramework */ = {
+			isa = PBXGroup;
+			children = (
+				5C1971A31A4B89B000753551 /* HeartRate */,
+				5C1970251A4B677200753551 /* WWCentralDeviceManager.h */,
+				5C1970261A4B677200753551 /* WWCentralDeviceManager.m */,
+				5C1970271A4B677200753551 /* WWDevice.h */,
+				5C1970281A4B677200753551 /* WWDevice.m */,
+				5C1970291A4B677200753551 /* WWDeviceDelegate.h */,
+				5C19702A1A4B677300753551 /* WWDeviceManager.h */,
+				5C19702B1A4B677300753551 /* WWDeviceManager.m */,
+				5C19702C1A4B677300753551 /* WWDeviceManagerDelegate.h */,
+				5C19702D1A4B677300753551 /* WWDeviceManagerSim.h */,
+				5C19702E1A4B677300753551 /* WWDeviceManagerSim.m */,
+				5C19702F1A4B677300753551 /* WWDeviceSim.h */,
+				5C1970301A4B677300753551 /* WWDeviceSim.m */,
+				5C1970311A4B677300753551 /* WWKnownDeviceScanner.h */,
+				5C1970321A4B677300753551 /* WWKnownDeviceScanner.m */,
+				5C1970331A4B677300753551 /* WWProtocol.h */,
+				5C1970341A4B677300753551 /* WWProtocol.m */,
+			);
+			name = WearWareFramework;
+			sourceTree = "<group>";
+		};
+		5C1970B01A4B722F00753551 /* WearWareFrameworkiOS */ = {
+			isa = PBXGroup;
+			children = (
+				5C1970B31A4B722F00753551 /* WearWareFrameworkiOS.h */,
+				5C1970B11A4B722F00753551 /* Supporting Files */,
+			);
+			path = WearWareFrameworkiOS;
+			sourceTree = "<group>";
+		};
+		5C1970B11A4B722F00753551 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5C1970B21A4B722F00753551 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C1970E51A4B749800753551 /* WearWareFrameworkOSX */ = {
+			isa = PBXGroup;
+			children = (
+				5C1970E81A4B749800753551 /* WearWareFrameworkOSX.h */,
+				5C1970E61A4B749800753551 /* Supporting Files */,
+			);
+			path = WearWareFrameworkOSX;
+			sourceTree = "<group>";
+		};
+		5C1970E61A4B749800753551 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5C1970E71A4B749800753551 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C1971981A4B83CF00753551 /* WearWareFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				5C1971BC1A4B89CE00753551 /* Sample Data */,
+				5C19719B1A4B83CF00753551 /* WearWareFrameworkTests.swift */,
+				5C1971991A4B83CF00753551 /* Supporting Files */,
+				5C678E781A4BC4440026D238 /* HeartRateDetectionTests.swift */,
+			);
+			path = WearWareFrameworkTests;
+			sourceTree = "<group>";
+		};
+		5C1971991A4B83CF00753551 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5C19719A1A4B83CF00753551 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C1971A31A4B89B000753551 /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				5C1971A41A4B89B000753551 /* HeartRateAnalysis.swift */,
+				5C1971A51A4B89B000753551 /* HeartRateDeviceTester.swift */,
+				5C1971A61A4B89B000753551 /* main.swift */,
+				5C1971A71A4B89B000753551 /* Utils.swift */,
+				5C1971A81A4B89B000753551 /* WWECGDeviceSim.swift */,
+				5C1971A91A4B89B000753551 /* WWHeartRateDetector.swift */,
+			);
+			name = HeartRate;
+			path = WearWareFramework/HeartRate;
+			sourceTree = "<group>";
+		};
+		5C1971BC1A4B89CE00753551 /* Sample Data */ = {
+			isa = PBXGroup;
+			children = (
+				5C1971BD1A4B89CE00753551 /* Heart_Rate.csv */,
+				5C1971BE1A4B89CE00753551 /* noise_19_beats.csv */,
+				5C1971BF1A4B89CE00753551 /* noise_30_beats.csv */,
+			);
+			path = "Sample Data";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5C1970AC1A4B722F00753551 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C1970CC1A4B72CE00753551 /* WWDevice.h in Headers */,
+				5C1970CE1A4B72CE00753551 /* WWDeviceDelegate.h in Headers */,
+				5C1970D61A4B72CE00753551 /* WWKnownDeviceScanner.h in Headers */,
+				5C1970D41A4B72CE00753551 /* WWDeviceSim.h in Headers */,
+				5C1970CF1A4B72CE00753551 /* WWDeviceManager.h in Headers */,
+				5C1970CA1A4B72CE00753551 /* WWCentralDeviceManager.h in Headers */,
+				5C1970B41A4B722F00753551 /* WearWareFrameworkiOS.h in Headers */,
+				5C1970D21A4B72CE00753551 /* WWDeviceManagerSim.h in Headers */,
+				5C1970D81A4B72CE00753551 /* WWProtocol.h in Headers */,
+				5C1970D11A4B72CE00753551 /* WWDeviceManagerDelegate.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1970E11A4B749800753551 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C1970E91A4B749800753551 /* WearWareFrameworkOSX.h in Headers */,
+				5C1970FD1A4B74BF00753551 /* WWCentralDeviceManager.h in Headers */,
+				5C1970FE1A4B74BF00753551 /* WWDevice.h in Headers */,
+				5C1970FF1A4B74BF00753551 /* WWDeviceDelegate.h in Headers */,
+				5C1971001A4B74BF00753551 /* WWDeviceManager.h in Headers */,
+				5C1971011A4B74BF00753551 /* WWDeviceManagerDelegate.h in Headers */,
+				5C1971021A4B74BF00753551 /* WWDeviceManagerSim.h in Headers */,
+				5C1971031A4B74BF00753551 /* WWDeviceSim.h in Headers */,
+				5C1971041A4B74BF00753551 /* WWKnownDeviceScanner.h in Headers */,
+				5C1971051A4B74BF00753551 /* WWProtocol.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5C1970AE1A4B722F00753551 /* WearWareFrameworkiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1970C21A4B722F00753551 /* Build configuration list for PBXNativeTarget "WearWareFrameworkiOS" */;
+			buildPhases = (
+				5C1970AA1A4B722F00753551 /* Sources */,
+				5C1970AB1A4B722F00753551 /* Frameworks */,
+				5C1970AC1A4B722F00753551 /* Headers */,
+				5C1970AD1A4B722F00753551 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WearWareFrameworkiOS;
+			productName = WearWareFrameworkiOS;
+			productReference = 5C1970AF1A4B722F00753551 /* WearWareFrameworkiOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5C1970E31A4B749800753551 /* WearWareFrameworkOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1970F71A4B749800753551 /* Build configuration list for PBXNativeTarget "WearWareFrameworkOSX" */;
+			buildPhases = (
+				5C1970DF1A4B749800753551 /* Sources */,
+				5C1970E01A4B749800753551 /* Frameworks */,
+				5C1970E11A4B749800753551 /* Headers */,
+				5C1970E21A4B749800753551 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WearWareFrameworkOSX;
+			productName = WearWareFrameworkOSX;
+			productReference = 5C1970E41A4B749800753551 /* WearWareFrameworkOSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5C1971961A4B83CF00753551 /* WearWareFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C1971A01A4B83CF00753551 /* Build configuration list for PBXNativeTarget "WearWareFrameworkTests" */;
+			buildPhases = (
+				5C1971931A4B83CF00753551 /* Sources */,
+				5C1971941A4B83CF00753551 /* Frameworks */,
+				5C1971951A4B83CF00753551 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C19719F1A4B83CF00753551 /* PBXTargetDependency */,
+			);
+			name = WearWareFrameworkTests;
+			productName = WearWareFrameworkTests;
+			productReference = 5C1971971A4B83CF00753551 /* WearWareFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C196FFD1A4B65C300753551 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = WearWare;
+				TargetAttributes = {
+					5C1970AE1A4B722F00753551 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					5C1970E31A4B749800753551 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					5C1971961A4B83CF00753551 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 5C1970001A4B65C300753551 /* Build configuration list for PBXProject "WearWareFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5C196FFC1A4B65C300753551;
+			productRefGroup = 5C1970071A4B65C300753551 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C1970AE1A4B722F00753551 /* WearWareFrameworkiOS */,
+				5C1970E31A4B749800753551 /* WearWareFrameworkOSX */,
+				5C1971961A4B83CF00753551 /* WearWareFrameworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C1970AD1A4B722F00753551 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1970E21A4B749800753551 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1971951A4B83CF00753551 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C1971C01A4B89CE00753551 /* Heart_Rate.csv in Resources */,
+				5C1971C11A4B89CE00753551 /* noise_19_beats.csv in Resources */,
+				5C1971C21A4B89CE00753551 /* noise_30_beats.csv in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C1970AA1A4B722F00753551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C1970D71A4B72CE00753551 /* WWKnownDeviceScanner.m in Sources */,
+				5C1971B91A4B89B000753551 /* WWHeartRateDetector.swift in Sources */,
+				5C1970D91A4B72CE00753551 /* WWProtocol.m in Sources */,
+				5C1970D51A4B72CE00753551 /* WWDeviceSim.m in Sources */,
+				5C1970CB1A4B72CE00753551 /* WWCentralDeviceManager.m in Sources */,
+				5C1970D31A4B72CE00753551 /* WWDeviceManagerSim.m in Sources */,
+				5C1971B61A4B89B000753551 /* WWECGDeviceSim.swift in Sources */,
+				5C1971AD1A4B89B000753551 /* HeartRateDeviceTester.swift in Sources */,
+				5C1971B01A4B89B000753551 /* main.swift in Sources */,
+				5C1971B31A4B89B000753551 /* Utils.swift in Sources */,
+				5C1970D01A4B72CE00753551 /* WWDeviceManager.m in Sources */,
+				5C1971AA1A4B89B000753551 /* HeartRateAnalysis.swift in Sources */,
+				5C1970CD1A4B72CE00753551 /* WWDevice.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1970DF1A4B749800753551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C1971531A4B7AE200753551 /* WWKnownDeviceScanner.m in Sources */,
+				5C1971BA1A4B89B000753551 /* WWHeartRateDetector.swift in Sources */,
+				5C1971541A4B7AE200753551 /* WWProtocol.m in Sources */,
+				5C1971521A4B7AE200753551 /* WWDeviceSim.m in Sources */,
+				5C19714E1A4B7AE200753551 /* WWCentralDeviceManager.m in Sources */,
+				5C1971511A4B7AE200753551 /* WWDeviceManagerSim.m in Sources */,
+				5C1971B71A4B89B000753551 /* WWECGDeviceSim.swift in Sources */,
+				5C1971AE1A4B89B000753551 /* HeartRateDeviceTester.swift in Sources */,
+				5C1971B11A4B89B000753551 /* main.swift in Sources */,
+				5C1971B41A4B89B000753551 /* Utils.swift in Sources */,
+				5C1971501A4B7AE200753551 /* WWDeviceManager.m in Sources */,
+				5C1971AB1A4B89B000753551 /* HeartRateAnalysis.swift in Sources */,
+				5C19714F1A4B7AE200753551 /* WWDevice.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C1971931A4B83CF00753551 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CD000921A4B8C9900B09161 /* Utils.swift in Sources */,
+				5C678E791A4BC4440026D238 /* HeartRateDetectionTests.swift in Sources */,
+				5C19719C1A4B83CF00753551 /* WearWareFrameworkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C19719F1A4B83CF00753551 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C1970E31A4B749800753551 /* WearWareFrameworkOSX */;
+			targetProxy = 5C19719E1A4B83CF00753551 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5C19701A1A4B65C300753551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5C19701B1A4B65C300753551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5C1970C31A4B722F00753551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WearWareFrameworkiOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C1970C41A4B722F00753551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WearWareFrameworkiOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C1970F81A4B749800753551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WearWareFrameworkOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Debug;
+		};
+		5C1970F91A4B749800753551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = WearWareFrameworkOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Release;
+		};
+		5C1971A11A4B83CF00753551 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WearWareFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5C1971A21A4B83CF00753551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WearWareFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C1970001A4B65C300753551 /* Build configuration list for PBXProject "WearWareFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C19701A1A4B65C300753551 /* Debug */,
+				5C19701B1A4B65C300753551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1970C21A4B722F00753551 /* Build configuration list for PBXNativeTarget "WearWareFrameworkiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1970C31A4B722F00753551 /* Debug */,
+				5C1970C41A4B722F00753551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1970F71A4B749800753551 /* Build configuration list for PBXNativeTarget "WearWareFrameworkOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1970F81A4B749800753551 /* Debug */,
+				5C1970F91A4B749800753551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C1971A01A4B83CF00753551 /* Build configuration list for PBXNativeTarget "WearWareFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C1971A11A4B83CF00753551 /* Debug */,
+				5C1971A21A4B83CF00753551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C196FFD1A4B65C300753551 /* Project object */;
+}

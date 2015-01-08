@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65D2625DBED9FD1C10D5820B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CB72E6A0D9DD0478A2D441 /* libPods.a */; };
+		BEC7B7C31A409183005CB1DC /* WWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7B51A409183005CB1DC /* WWDevice.m */; };
+		BEC7B7C41A409183005CB1DC /* WWDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7B81A409183005CB1DC /* WWDeviceManager.m */; };
+		BEC7B7C51A409183005CB1DC /* WWDeviceManagerSim.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7BB1A409183005CB1DC /* WWDeviceManagerSim.m */; };
+		BEC7B7C61A409183005CB1DC /* WWDeviceSim.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7BD1A409183005CB1DC /* WWDeviceSim.m */; };
+		BEC7B7C71A409183005CB1DC /* WWGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC7B7BE1A409183005CB1DC /* WWGraphView.xib */; };
+		BEC7B7C81A409183005CB1DC /* WWKnownDeviceScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7C01A409183005CB1DC /* WWKnownDeviceScanner.m */; };
+		BEC7B7C91A409183005CB1DC /* WWProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7C21A409183005CB1DC /* WWProtocol.m */; };
+		BEC7B7CC1A40A7BC005CB1DC /* RVFCircularProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7B7CB1A40A7BC005CB1DC /* RVFCircularProgressIndicator.m */; };
+		BECBA7191A3FA1A10085D04B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BECBA7181A3FA1A10085D04B /* Podfile */; };
+		BEEDBB071A3E306E001A4150 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDBB061A3E306E001A4150 /* main.m */; };
+		BEEDBB0A1A3E306E001A4150 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDBB091A3E306E001A4150 /* AppDelegate.m */; };
+		BEEDBB0D1A3E306E001A4150 /* WWMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDBB0C1A3E306E001A4150 /* WWMainViewController.m */; };
+		BEEDBB121A3E306E001A4150 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEDBB111A3E306E001A4150 /* Images.xcassets */; };
+		BEEDBB151A3E306E001A4150 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEDBB131A3E306E001A4150 /* LaunchScreen.xib */; };
+		BEEDBB211A3E306E001A4150 /* WearWareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDBB201A3E306E001A4150 /* WearWareTests.m */; };
+		BEEDBB2B1A3E30DD001A4150 /* WWMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEDBB2A1A3E30DD001A4150 /* WWMainView.xib */; };
+		BEEDBB2E1A3E370E001A4150 /* RVFGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDBB2D1A3E370E001A4150 /* RVFGradientView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BEEDBB1B1A3E306E001A4150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEEDBAF91A3E306E001A4150 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEEDBB001A3E306E001A4150;
+			remoteInfo = WearWare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30280E75837D7A33847D6524 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		68CB72E6A0D9DD0478A2D441 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEC7B7B41A409183005CB1DC /* WWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDevice.h; sourceTree = "<group>"; };
+		BEC7B7B51A409183005CB1DC /* WWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDevice.m; sourceTree = "<group>"; };
+		BEC7B7B61A409183005CB1DC /* WWDeviceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceDelegate.h; sourceTree = "<group>"; };
+		BEC7B7B71A409183005CB1DC /* WWDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceManager.h; sourceTree = "<group>"; };
+		BEC7B7B81A409183005CB1DC /* WWDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDeviceManager.m; sourceTree = "<group>"; };
+		BEC7B7B91A409183005CB1DC /* WWDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceManagerDelegate.h; sourceTree = "<group>"; };
+		BEC7B7BA1A409183005CB1DC /* WWDeviceManagerSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceManagerSim.h; sourceTree = "<group>"; };
+		BEC7B7BB1A409183005CB1DC /* WWDeviceManagerSim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDeviceManagerSim.m; sourceTree = "<group>"; };
+		BEC7B7BC1A409183005CB1DC /* WWDeviceSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceSim.h; sourceTree = "<group>"; };
+		BEC7B7BD1A409183005CB1DC /* WWDeviceSim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDeviceSim.m; sourceTree = "<group>"; };
+		BEC7B7BE1A409183005CB1DC /* WWGraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWGraphView.xib; sourceTree = "<group>"; };
+		BEC7B7BF1A409183005CB1DC /* WWKnownDeviceScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKnownDeviceScanner.h; sourceTree = "<group>"; };
+		BEC7B7C01A409183005CB1DC /* WWKnownDeviceScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWKnownDeviceScanner.m; sourceTree = "<group>"; };
+		BEC7B7C11A409183005CB1DC /* WWProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWProtocol.h; sourceTree = "<group>"; };
+		BEC7B7C21A409183005CB1DC /* WWProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWProtocol.m; sourceTree = "<group>"; };
+		BEC7B7CA1A40A7BC005CB1DC /* RVFCircularProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVFCircularProgressIndicator.h; sourceTree = "<group>"; };
+		BEC7B7CB1A40A7BC005CB1DC /* RVFCircularProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVFCircularProgressIndicator.m; sourceTree = "<group>"; };
+		BECBA7181A3FA1A10085D04B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		BEEDBB011A3E306E001A4150 /* WearWare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearWare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEEDBB051A3E306E001A4150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEEDBB061A3E306E001A4150 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEEDBB081A3E306E001A4150 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BEEDBB091A3E306E001A4150 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BEEDBB0B1A3E306E001A4150 /* WWMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWMainViewController.h; sourceTree = "<group>"; };
+		BEEDBB0C1A3E306E001A4150 /* WWMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWMainViewController.m; sourceTree = "<group>"; };
+		BEEDBB111A3E306E001A4150 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BEEDBB141A3E306E001A4150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BEEDBB1A1A3E306E001A4150 /* WearWareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WearWareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEEDBB1F1A3E306E001A4150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEEDBB201A3E306E001A4150 /* WearWareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WearWareTests.m; sourceTree = "<group>"; };
+		BEEDBB2A1A3E30DD001A4150 /* WWMainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWMainView.xib; sourceTree = "<group>"; };
+		BEEDBB2C1A3E370E001A4150 /* RVFGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVFGradientView.h; sourceTree = "<group>"; };
+		BEEDBB2D1A3E370E001A4150 /* RVFGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVFGradientView.m; sourceTree = "<group>"; };
+		FB724B250531F72CCC5A3FAA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEEDBAFE1A3E306E001A4150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65D2625DBED9FD1C10D5820B /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEEDBB171A3E306E001A4150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2928C5CE471701FBC6ED1179 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68CB72E6A0D9DD0478A2D441 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEC7B7B31A409183005CB1DC /* WearWearLib */ = {
+			isa = PBXGroup;
+			children = (
+				BEC7B7B41A409183005CB1DC /* WWDevice.h */,
+				BEC7B7B51A409183005CB1DC /* WWDevice.m */,
+				BEC7B7B61A409183005CB1DC /* WWDeviceDelegate.h */,
+				BEC7B7B71A409183005CB1DC /* WWDeviceManager.h */,
+				BEC7B7B81A409183005CB1DC /* WWDeviceManager.m */,
+				BEC7B7B91A409183005CB1DC /* WWDeviceManagerDelegate.h */,
+				BEC7B7BA1A409183005CB1DC /* WWDeviceManagerSim.h */,
+				BEC7B7BB1A409183005CB1DC /* WWDeviceManagerSim.m */,
+				BEC7B7BC1A409183005CB1DC /* WWDeviceSim.h */,
+				BEC7B7BD1A409183005CB1DC /* WWDeviceSim.m */,
+				BEC7B7BE1A409183005CB1DC /* WWGraphView.xib */,
+				BEC7B7BF1A409183005CB1DC /* WWKnownDeviceScanner.h */,
+				BEC7B7C01A409183005CB1DC /* WWKnownDeviceScanner.m */,
+				BEC7B7C11A409183005CB1DC /* WWProtocol.h */,
+				BEC7B7C21A409183005CB1DC /* WWProtocol.m */,
+			);
+			path = WearWearLib;
+			sourceTree = "<group>";
+		};
+		BEEDBAF81A3E306E001A4150 = {
+			isa = PBXGroup;
+			children = (
+				BECBA7181A3FA1A10085D04B /* Podfile */,
+				BEEDBB031A3E306E001A4150 /* WearWare */,
+				BEEDBB1D1A3E306E001A4150 /* WearWareTests */,
+				BEEDBB021A3E306E001A4150 /* Products */,
+				FC274A7B91D837E837EBEA2F /* Pods */,
+				2928C5CE471701FBC6ED1179 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BEEDBB021A3E306E001A4150 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDBB011A3E306E001A4150 /* WearWare.app */,
+				BEEDBB1A1A3E306E001A4150 /* WearWareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEEDBB031A3E306E001A4150 /* WearWare */ = {
+			isa = PBXGroup;
+			children = (
+				BEC7B7B31A409183005CB1DC /* WearWearLib */,
+				BEEDBB081A3E306E001A4150 /* AppDelegate.h */,
+				BEEDBB091A3E306E001A4150 /* AppDelegate.m */,
+				BEEDBB0B1A3E306E001A4150 /* WWMainViewController.h */,
+				BEEDBB0C1A3E306E001A4150 /* WWMainViewController.m */,
+				BEEDBB2A1A3E30DD001A4150 /* WWMainView.xib */,
+				BEEDBB2C1A3E370E001A4150 /* RVFGradientView.h */,
+				BEEDBB2D1A3E370E001A4150 /* RVFGradientView.m */,
+				BEC7B7CA1A40A7BC005CB1DC /* RVFCircularProgressIndicator.h */,
+				BEC7B7CB1A40A7BC005CB1DC /* RVFCircularProgressIndicator.m */,
+				BEEDBB111A3E306E001A4150 /* Images.xcassets */,
+				BEEDBB131A3E306E001A4150 /* LaunchScreen.xib */,
+				BEEDBB041A3E306E001A4150 /* Supporting Files */,
+			);
+			path = WearWare;
+			sourceTree = "<group>";
+		};
+		BEEDBB041A3E306E001A4150 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDBB051A3E306E001A4150 /* Info.plist */,
+				BEEDBB061A3E306E001A4150 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEEDBB1D1A3E306E001A4150 /* WearWareTests */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDBB201A3E306E001A4150 /* WearWareTests.m */,
+				BEEDBB1E1A3E306E001A4150 /* Supporting Files */,
+			);
+			path = WearWareTests;
+			sourceTree = "<group>";
+		};
+		BEEDBB1E1A3E306E001A4150 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDBB1F1A3E306E001A4150 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC274A7B91D837E837EBEA2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB724B250531F72CCC5A3FAA /* Pods.debug.xcconfig */,
+				30280E75837D7A33847D6524 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEEDBB001A3E306E001A4150 /* WearWare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEEDBB241A3E306E001A4150 /* Build configuration list for PBXNativeTarget "WearWare" */;
+			buildPhases = (
+				E6DF8F0089C8E0EF4D4299EE /* Check Pods Manifest.lock */,
+				BEEDBAFD1A3E306E001A4150 /* Sources */,
+				BEEDBAFE1A3E306E001A4150 /* Frameworks */,
+				BEEDBAFF1A3E306E001A4150 /* Resources */,
+				41EAB0C41F4EAB7C510BE99B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WearWare;
+			productName = WearWare;
+			productReference = BEEDBB011A3E306E001A4150 /* WearWare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BEEDBB191A3E306E001A4150 /* WearWareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEEDBB271A3E306E001A4150 /* Build configuration list for PBXNativeTarget "WearWareTests" */;
+			buildPhases = (
+				BEEDBB161A3E306E001A4150 /* Sources */,
+				BEEDBB171A3E306E001A4150 /* Frameworks */,
+				BEEDBB181A3E306E001A4150 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEEDBB1C1A3E306E001A4150 /* PBXTargetDependency */,
+			);
+			name = WearWareTests;
+			productName = WearWareTests;
+			productReference = BEEDBB1A1A3E306E001A4150 /* WearWareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEEDBAF91A3E306E001A4150 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Rutger Farry";
+				TargetAttributes = {
+					BEEDBB001A3E306E001A4150 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					BEEDBB191A3E306E001A4150 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = BEEDBB001A3E306E001A4150;
+					};
+				};
+			};
+			buildConfigurationList = BEEDBAFC1A3E306E001A4150 /* Build configuration list for PBXProject "WearWare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BEEDBAF81A3E306E001A4150;
+			productRefGroup = BEEDBB021A3E306E001A4150 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEEDBB001A3E306E001A4150 /* WearWare */,
+				BEEDBB191A3E306E001A4150 /* WearWareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEEDBAFF1A3E306E001A4150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEEDBB2B1A3E30DD001A4150 /* WWMainView.xib in Resources */,
+				BEEDBB151A3E306E001A4150 /* LaunchScreen.xib in Resources */,
+				BEC7B7C71A409183005CB1DC /* WWGraphView.xib in Resources */,
+				BECBA7191A3FA1A10085D04B /* Podfile in Resources */,
+				BEEDBB121A3E306E001A4150 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEEDBB181A3E306E001A4150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41EAB0C41F4EAB7C510BE99B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6DF8F0089C8E0EF4D4299EE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEEDBAFD1A3E306E001A4150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEEDBB0D1A3E306E001A4150 /* WWMainViewController.m in Sources */,
+				BEC7B7C41A409183005CB1DC /* WWDeviceManager.m in Sources */,
+				BEC7B7C51A409183005CB1DC /* WWDeviceManagerSim.m in Sources */,
+				BEC7B7C91A409183005CB1DC /* WWProtocol.m in Sources */,
+				BEEDBB0A1A3E306E001A4150 /* AppDelegate.m in Sources */,
+				BEEDBB071A3E306E001A4150 /* main.m in Sources */,
+				BEC7B7C31A409183005CB1DC /* WWDevice.m in Sources */,
+				BEC7B7C81A409183005CB1DC /* WWKnownDeviceScanner.m in Sources */,
+				BEEDBB2E1A3E370E001A4150 /* RVFGradientView.m in Sources */,
+				BEC7B7CC1A40A7BC005CB1DC /* RVFCircularProgressIndicator.m in Sources */,
+				BEC7B7C61A409183005CB1DC /* WWDeviceSim.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEEDBB161A3E306E001A4150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEEDBB211A3E306E001A4150 /* WearWareTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BEEDBB1C1A3E306E001A4150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEEDBB001A3E306E001A4150 /* WearWare */;
+			targetProxy = BEEDBB1B1A3E306E001A4150 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BEEDBB131A3E306E001A4150 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEEDBB141A3E306E001A4150 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BEEDBB221A3E306E001A4150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BEEDBB231A3E306E001A4150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEEDBB251A3E306E001A4150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB724B250531F72CCC5A3FAA /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WearWare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BEEDBB261A3E306E001A4150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30280E75837D7A33847D6524 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WearWare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BEEDBB281A3E306E001A4150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WearWareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WearWare.app/WearWare";
+			};
+			name = Debug;
+		};
+		BEEDBB291A3E306E001A4150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WearWareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WearWare.app/WearWare";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEEDBAFC1A3E306E001A4150 /* Build configuration list for PBXProject "WearWare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEEDBB221A3E306E001A4150 /* Debug */,
+				BEEDBB231A3E306E001A4150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEEDBB241A3E306E001A4150 /* Build configuration list for PBXNativeTarget "WearWare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEEDBB251A3E306E001A4150 /* Debug */,
+				BEEDBB261A3E306E001A4150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEEDBB271A3E306E001A4150 /* Build configuration list for PBXNativeTarget "WearWareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEEDBB281A3E306E001A4150 /* Debug */,
+				BEEDBB291A3E306E001A4150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEEDBAF91A3E306E001A4150 /* Project object */;
+}

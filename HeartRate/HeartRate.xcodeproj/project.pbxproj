@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C1971681A4B7BC900753551 /* WearWareFrameworkOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1971671A4B7BC900753551 /* WearWareFrameworkOSX.framework */; };
+		5C19717D1A4B7E4100753551 /* HeartRateAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971741A4B7E4100753551 /* HeartRateAnalysis.swift */; };
+		5C19717E1A4B7E4100753551 /* HeartRateDeviceTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971761A4B7E4100753551 /* HeartRateDeviceTester.swift */; };
+		5C19717F1A4B7E4100753551 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971771A4B7E4100753551 /* main.swift */; };
+		5C1971801A4B7E4100753551 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C19717A1A4B7E4100753551 /* Utils.swift */; };
+		5C1971811A4B7E4100753551 /* WWECGDeviceSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C19717B1A4B7E4100753551 /* WWECGDeviceSim.swift */; };
+		5C1971821A4B7E4100753551 /* WWHeartRateDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C19717C1A4B7E4100753551 /* WWHeartRateDetector.swift */; };
+		5C1971871A4B7EEE00753551 /* Heart_Rate.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C1971841A4B7EBE00753551 /* Heart_Rate.csv */; };
+		5C1971881A4B7EEE00753551 /* noise_19_beats.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C1971851A4B7EBE00753551 /* noise_19_beats.csv */; };
+		5C1971891A4B7EEE00753551 /* noise_30_beats.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C1971861A4B7EBE00753551 /* noise_30_beats.csv */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C3FE7B51A411FD00015CA3C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				5C1971871A4B7EEE00753551 /* Heart_Rate.csv in CopyFiles */,
+				5C1971881A4B7EEE00753551 /* noise_19_beats.csv in CopyFiles */,
+				5C1971891A4B7EEE00753551 /* noise_30_beats.csv in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5C1971671A4B7BC900753551 /* WearWareFrameworkOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkOSX.framework; path = "../../../Library/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug/WearWareFrameworkOSX.framework"; sourceTree = "<group>"; };
+		5C1971741A4B7E4100753551 /* HeartRateAnalysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateAnalysis.swift; sourceTree = "<group>"; };
+		5C1971761A4B7E4100753551 /* HeartRateDeviceTester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateDeviceTester.swift; sourceTree = "<group>"; };
+		5C1971771A4B7E4100753551 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5C19717A1A4B7E4100753551 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		5C19717B1A4B7E4100753551 /* WWECGDeviceSim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWECGDeviceSim.swift; sourceTree = "<group>"; };
+		5C19717C1A4B7E4100753551 /* WWHeartRateDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWHeartRateDetector.swift; sourceTree = "<group>"; };
+		5C1971841A4B7EBE00753551 /* Heart_Rate.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Heart_Rate.csv; path = "HeartRate/Sample Data/Heart_Rate.csv"; sourceTree = "<group>"; };
+		5C1971851A4B7EBE00753551 /* noise_19_beats.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = noise_19_beats.csv; path = "HeartRate/Sample Data/noise_19_beats.csv"; sourceTree = "<group>"; };
+		5C1971861A4B7EBE00753551 /* noise_30_beats.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = noise_30_beats.csv; path = "HeartRate/Sample Data/noise_30_beats.csv"; sourceTree = "<group>"; };
+		5C3FE7B71A411FD00015CA3C /* HeartRate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HeartRate; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C3FE7B41A411FD00015CA3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C1971681A4B7BC900753551 /* WearWareFrameworkOSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C1971831A4B7EA800753551 /* Sample Data */ = {
+			isa = PBXGroup;
+			children = (
+				5C1971841A4B7EBE00753551 /* Heart_Rate.csv */,
+				5C1971851A4B7EBE00753551 /* noise_19_beats.csv */,
+				5C1971861A4B7EBE00753551 /* noise_30_beats.csv */,
+			);
+			name = "Sample Data";
+			sourceTree = "<group>";
+		};
+		5C3FE7AE1A411FD00015CA3C = {
+			isa = PBXGroup;
+			children = (
+				5C1971671A4B7BC900753551 /* WearWareFrameworkOSX.framework */,
+				5C1971831A4B7EA800753551 /* Sample Data */,
+				5C3FE7B91A411FD00015CA3C /* HeartRate */,
+				5C3FE7B81A411FD00015CA3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C3FE7B81A411FD00015CA3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C3FE7B71A411FD00015CA3C /* HeartRate */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C3FE7B91A411FD00015CA3C /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				5C1971741A4B7E4100753551 /* HeartRateAnalysis.swift */,
+				5C1971761A4B7E4100753551 /* HeartRateDeviceTester.swift */,
+				5C1971771A4B7E4100753551 /* main.swift */,
+				5C19717A1A4B7E4100753551 /* Utils.swift */,
+				5C19717B1A4B7E4100753551 /* WWECGDeviceSim.swift */,
+				5C19717C1A4B7E4100753551 /* WWHeartRateDetector.swift */,
+			);
+			path = HeartRate;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C3FE7B61A411FD00015CA3C /* HeartRate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C3FE7BE1A411FD00015CA3C /* Build configuration list for PBXNativeTarget "HeartRate" */;
+			buildPhases = (
+				5C3FE7B31A411FD00015CA3C /* Sources */,
+				5C3FE7B41A411FD00015CA3C /* Frameworks */,
+				5C3FE7B51A411FD00015CA3C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeartRate;
+			productName = HeartRate;
+			productReference = 5C3FE7B71A411FD00015CA3C /* HeartRate */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C3FE7AF1A411FD00015CA3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Rikki Gibson";
+				TargetAttributes = {
+					5C3FE7B61A411FD00015CA3C = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 5C3FE7B21A411FD00015CA3C /* Build configuration list for PBXProject "HeartRate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5C3FE7AE1A411FD00015CA3C;
+			productRefGroup = 5C3FE7B81A411FD00015CA3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C3FE7B61A411FD00015CA3C /* HeartRate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C3FE7B31A411FD00015CA3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C19717E1A4B7E4100753551 /* HeartRateDeviceTester.swift in Sources */,
+				5C19717D1A4B7E4100753551 /* HeartRateAnalysis.swift in Sources */,
+				5C19717F1A4B7E4100753551 /* main.swift in Sources */,
+				5C1971801A4B7E4100753551 /* Utils.swift in Sources */,
+				5C1971821A4B7E4100753551 /* WWHeartRateDetector.swift in Sources */,
+				5C1971811A4B7E4100753551 /* WWECGDeviceSim.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5C3FE7BC1A411FD00015CA3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C3FE7BD1A411FD00015CA3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5C3FE7BF1A411FD00015CA3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HeartRate/HeartRate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C3FE7C01A411FD00015CA3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HeartRate/HeartRate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C3FE7B21A411FD00015CA3C /* Build configuration list for PBXProject "HeartRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C3FE7BC1A411FD00015CA3C /* Debug */,
+				5C3FE7BD1A411FD00015CA3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C3FE7BE1A411FD00015CA3C /* Build configuration list for PBXNativeTarget "HeartRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C3FE7BF1A411FD00015CA3C /* Debug */,
+				5C3FE7C01A411FD00015CA3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C3FE7AF1A411FD00015CA3C /* Project object */;
+}
