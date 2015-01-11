@@ -15,6 +15,8 @@
 @interface FirstViewController ()
 
 @property (strong, nonatomic) IBOutlet WWGrapher *graphView;
+@property (weak, nonatomic) IBOutlet UILabel *bpmLabel;
+@property (strong, nonatomic) WWHeartRateDetector *heartRateDetector;
 
 @end
 
@@ -23,10 +25,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.heartRateDetector = [[WWHeartRateDetector alloc] initWithDelegate:self];
+    self.heartRateDetector.delegate = self;
+    
     [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self
                                                           forKeyPath:ADC_DATA_SELECTOR
                                                              options:0
                                                              context:NULL];
+    
+    [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self.heartRateDetector
+                                                          forKeyPath:ADC_DATA_SELECTOR
+                                                             options:0
+                                                             context:NULL];
+    
     //[[WWCentralDeviceManager sharedCentralDeviceManager] requestData:WWCommandIdADCSample andUpdatePeriod:1];
 }
 
@@ -49,6 +61,7 @@
     if ([keyPath isEqualToString:ADC_DATA_SELECTOR]) {
         NSLog(@"Value: %@", [WWCentralDeviceManager sharedCentralDeviceManager].ADCData);
         NSNumber *number = [WWCentralDeviceManager sharedCentralDeviceManager].ADCData;
+//        [self.heartRateDetector device:nil onDataValueUpdate:WWCommandIdADCSample value:@[number]];
         if (number.floatValue > 10) {
             number = [NSNumber numberWithFloat:number.floatValue / 4.0];
         }
@@ -57,8 +70,23 @@
     }
 }
 
+- (void)didDetectHeartbeat:(WWHeartRateDetector *)detector atTime:(NSDate *)time {
+    self.bpmLabel.text = [NSString stringWithFormat:@"BPM: %0.0f", self.heartRateDetector.beatsPerMinute];
+}
+
+- (void)detector:(WWHeartRateDetector *)detector didReachEndOfData:(NSArray *)data {
+    
+}
+
 - (IBAction)connectButtonPressed:(UIBarButtonItem *)sender {
-    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
+    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
+    
+    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
+                                delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
+                           callbackDelay:.01];
+    [deviceSim start];
+    
+//    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
 }
 
 @end

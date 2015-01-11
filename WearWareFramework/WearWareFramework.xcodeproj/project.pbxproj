@@ -34,7 +34,6 @@
 		5C1971031A4B74BF00753551 /* WWDeviceSim.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C19702F1A4B677300753551 /* WWDeviceSim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C1971041A4B74BF00753551 /* WWKnownDeviceScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970311A4B677300753551 /* WWKnownDeviceScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C1971051A4B74BF00753551 /* WWProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C1970331A4B677300753551 /* WWProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C19714E1A4B7AE200753551 /* WWCentralDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970261A4B677200753551 /* WWCentralDeviceManager.m */; };
 		5C19714F1A4B7AE200753551 /* WWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970281A4B677200753551 /* WWDevice.m */; };
 		5C1971501A4B7AE200753551 /* WWDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C19702B1A4B677300753551 /* WWDeviceManager.m */; };
 		5C1971511A4B7AE200753551 /* WWDeviceManagerSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C19702E1A4B677300753551 /* WWDeviceManagerSim.m */; };
@@ -57,6 +56,8 @@
 		5C1971C01A4B89CE00753551 /* Heart_Rate.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5C1971BD1A4B89CE00753551 /* Heart_Rate.csv */; };
 		5C1971C11A4B89CE00753551 /* noise_19_beats.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5C1971BE1A4B89CE00753551 /* noise_19_beats.csv */; };
 		5C1971C21A4B89CE00753551 /* noise_30_beats.csv in Resources */ = {isa = PBXBuildFile; fileRef = 5C1971BF1A4B89CE00753551 /* noise_30_beats.csv */; };
+		5C5EB1501A630796004F93E0 /* WWCentralDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1970261A4B677200753551 /* WWCentralDeviceManager.m */; };
+		5C5EB1521A630AC3004F93E0 /* Heart_Rate.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C1971BD1A4B89CE00753551 /* Heart_Rate.csv */; };
 		5C678E791A4BC4440026D238 /* HeartRateDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C678E781A4BC4440026D238 /* HeartRateDetectionTests.swift */; };
 		5CD000921A4B8C9900B09161 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1971A71A4B89B000753551 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,19 @@
 			remoteInfo = WearWareFrameworkOSX;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C5EB1511A630AB4004F93E0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				5C5EB1521A630AC3004F93E0 /* Heart_Rate.csv in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5C1970251A4B677200753551 /* WWCentralDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WWCentralDeviceManager.h; path = WearWareFramework/WWCentralDeviceManager.h; sourceTree = "<group>"; };
@@ -304,6 +318,7 @@
 				5C1970AB1A4B722F00753551 /* Frameworks */,
 				5C1970AC1A4B722F00753551 /* Headers */,
 				5C1970AD1A4B722F00753551 /* Resources */,
+				5C5EB1511A630AB4004F93E0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -441,11 +456,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C5EB1501A630796004F93E0 /* WWCentralDeviceManager.m in Sources */,
 				5C1971531A4B7AE200753551 /* WWKnownDeviceScanner.m in Sources */,
 				5C1971BA1A4B89B000753551 /* WWHeartRateDetector.swift in Sources */,
 				5C1971541A4B7AE200753551 /* WWProtocol.m in Sources */,
 				5C1971521A4B7AE200753551 /* WWDeviceSim.m in Sources */,
-				5C19714E1A4B7AE200753551 /* WWCentralDeviceManager.m in Sources */,
 				5C1971511A4B7AE200753551 /* WWDeviceManagerSim.m in Sources */,
 				5C1971B71A4B89B000753551 /* WWECGDeviceSim.swift in Sources */,
 				5C1971AE1A4B89B000753551 /* HeartRateDeviceTester.swift in Sources */,

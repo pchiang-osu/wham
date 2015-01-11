@@ -11,6 +11,12 @@
 
 import Foundation
 
+public class HeartRateSampleGetter : NSObject {
+    @objc class public func getSample(name: String) -> [Int] {
+        return getHeartRateData(named: name, forClass: self.classForCoder());
+    }
+}
+
 /// Reads in a heart rate CSV and spits out an array of integers
 /// representing the magnitude of each ECG sample.
 public func getHeartRateData(named name: String, #forClass: AnyClass) -> [Int] {
