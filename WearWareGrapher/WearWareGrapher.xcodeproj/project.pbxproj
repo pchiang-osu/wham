@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C196FD51A4B60E600753551 /* WWGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C196FD41A4B60E600753551 /* WWGraphView.xib */; };
-		5C5EB14A1A62FD66004F93E0 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5EB1491A62FD66004F93E0 /* WearWareFrameworkiOS.framework */; };
-		5C5EB14B1A62FD66004F93E0 /* WearWareFrameworkiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5EB1491A62FD66004F93E0 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5C5EB14E1A62FD91004F93E0 /* WearWareFrameworkiOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C5EB1491A62FD66004F93E0 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CC89F741A63582E00648A59 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC89F731A63582E00648A59 /* WearWareFrameworkiOS.framework */; };
+		5CC89F751A63582E00648A59 /* WearWareFrameworkiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC89F731A63582E00648A59 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE5657D61A424C5D00577BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D51A424C5D00577BA7 /* main.m */; };
 		BE5657D91A424C5D00577BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D81A424C5D00577BA7 /* AppDelegate.m */; };
 		BE5657DC1A424C5D00577BA7 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657DB1A424C5D00577BA7 /* FirstViewController.m */; };
@@ -40,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5C5EB14B1A62FD66004F93E0 /* WearWareFrameworkiOS.framework in Embed Frameworks */,
+				5CC89F751A63582E00648A59 /* WearWareFrameworkiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +50,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				5C5EB14E1A62FD91004F93E0 /* WearWareFrameworkiOS.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +57,7 @@
 
 /* Begin PBXFileReference section */
 		5C196FD41A4B60E600753551 /* WWGraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWGraphView.xib; sourceTree = "<group>"; };
-		5C5EB1471A62FC6C004F93E0 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../WearWareFramework/build/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
-		5C5EB1491A62FD66004F93E0 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../../../Library/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
+		5CC89F731A63582E00648A59 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "/Users/rikkigibson/Library/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<absolute>"; };
 		BE5657D01A424C5D00577BA7 /* WearWareGrapher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearWareGrapher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5657D41A424C5D00577BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE5657D51A424C5D00577BA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C5EB14A1A62FD66004F93E0 /* WearWareFrameworkiOS.framework in Frameworks */,
+				5CC89F741A63582E00648A59 /* WearWareFrameworkiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,8 +101,7 @@
 		BE5657C71A424C5D00577BA7 = {
 			isa = PBXGroup;
 			children = (
-				5C5EB1491A62FD66004F93E0 /* WearWareFrameworkiOS.framework */,
-				5C5EB1471A62FC6C004F93E0 /* WearWareFrameworkiOS.framework */,
+				5CC89F731A63582E00648A59 /* WearWareFrameworkiOS.framework */,
 				BE5657D21A424C5D00577BA7 /* WearWareGrapher */,
 				BE5657EF1A424C5D00577BA7 /* WearWareGrapherTests */,
 				BE5657D11A424C5D00577BA7 /* Products */,
@@ -398,6 +394,7 @@
 		BE5657F71A424C5D00577BA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -416,6 +413,7 @@
 		BE5657F81A424C5D00577BA7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
