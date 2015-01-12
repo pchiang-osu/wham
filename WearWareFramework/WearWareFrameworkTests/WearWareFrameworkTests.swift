@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 WearWare. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 import XCTest
-import WearWareFrameworkOSX
+import WearWareFrameworkiOS
 
 class WearWareFrameworkTests: XCTestCase {
     
