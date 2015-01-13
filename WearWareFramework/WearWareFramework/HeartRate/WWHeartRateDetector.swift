@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Rikki Gibson. All rights reserved.
 //
 
+let DATA_RATE = 0.01
+
 import Foundation
 
 public protocol WWHeartRateDetectorDelegate {
@@ -38,9 +40,7 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
     private let delegate: WWHeartRateDetectorDelegate
     private var data = [Int]()
     private var valuesObserved = 0
-    
-<<<<<<< Updated upstream
-=======
+
     public var detectionTimes = [NSDate]()
     
     public var beatsPerMinute: Double {
@@ -52,7 +52,6 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
         }
     }
     
->>>>>>> Stashed changes
     /// Minimum value of a valid heartbeat peak.
     public var lowerThreshold = 250
     

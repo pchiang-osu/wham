@@ -79,7 +79,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="EKG" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="bpmLabel" destination="BPJ-LM-l5z" id="CBS-eD-ZcE"/>
                         <outlet property="calibrationSlider" destination="IB8-cT-kGw" id="yhU-eb-4wG"/>
                         <outlet property="graphView" destination="BSe-s2-1nF" id="mYb-eV-9w5"/>
                     </connections>

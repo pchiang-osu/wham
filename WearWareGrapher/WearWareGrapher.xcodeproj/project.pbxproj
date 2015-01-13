@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C196FD51A4B60E600753551 /* WWGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C196FD41A4B60E600753551 /* WWGraphView.xib */; };
-		5CC89F7D1A63619C00648A59 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */; };
-		5CC89F7F1A6361B600648A59 /* WearWareFrameworkiOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE5657D61A424C5D00577BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D51A424C5D00577BA7 /* main.m */; };
 		BE5657D91A424C5D00577BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D81A424C5D00577BA7 /* AppDelegate.m */; };
 		BE5657DC1A424C5D00577BA7 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657DB1A424C5D00577BA7 /* FirstViewController.m */; };
@@ -20,6 +17,8 @@
 		BE5657F31A424C5D00577BA7 /* WearWareGrapherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657F21A424C5D00577BA7 /* WearWareGrapherTests.m */; };
 		BE5658151A424F6300577BA7 /* WWGrapher.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5658141A424F6300577BA7 /* WWGrapher.m */; };
 		BE5658181A428B4000577BA7 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5658171A428B4000577BA7 /* NSMutableArray+QueueAdditions.m */; };
+		BED43F721A6496B700795E92 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */; };
+		BED43F731A6496B700795E92 /* WearWareFrameworkiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,21 +32,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5C5EB14D1A62FD89004F93E0 /* CopyFiles */ = {
+		BED43F741A6496B700795E92 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5CC89F7F1A6361B600648A59 /* WearWareFrameworkiOS.framework in CopyFiles */,
+				BED43F731A6496B700795E92 /* WearWareFrameworkiOS.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5C196FD41A4B60E600753551 /* WWGraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWGraphView.xib; sourceTree = "<group>"; };
-		5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../../../Library/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
 		BE5657D01A424C5D00577BA7 /* WearWareGrapher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearWareGrapher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5657D41A424C5D00577BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE5657D51A424C5D00577BA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -67,6 +65,7 @@
 		BE5658141A424F6300577BA7 /* WWGrapher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGrapher.m; sourceTree = "<group>"; };
 		BE5658161A428B4000577BA7 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
 		BE5658171A428B4000577BA7 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
+		BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CC89F7D1A63619C00648A59 /* WearWareFrameworkiOS.framework in Frameworks */,
+				BED43F721A6496B700795E92 /* WearWareFrameworkiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +90,7 @@
 		BE5657C71A424C5D00577BA7 = {
 			isa = PBXGroup;
 			children = (
-				5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */,
+				BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */,
 				BE5657D21A424C5D00577BA7 /* WearWareGrapher */,
 				BE5657EF1A424C5D00577BA7 /* WearWareGrapherTests */,
 				BE5657D11A424C5D00577BA7 /* Products */,
@@ -111,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				BE5657D71A424C5D00577BA7 /* AppDelegate.h */,
-				5C196FD41A4B60E600753551 /* WWGraphView.xib */,
 				BE5657D81A424C5D00577BA7 /* AppDelegate.m */,
 				BE5657DA1A424C5D00577BA7 /* FirstViewController.h */,
 				BE5657DB1A424C5D00577BA7 /* FirstViewController.m */,
@@ -165,7 +163,7 @@
 				BE5657CC1A424C5D00577BA7 /* Sources */,
 				BE5657CD1A424C5D00577BA7 /* Frameworks */,
 				BE5657CE1A424C5D00577BA7 /* Resources */,
-				5C5EB14D1A62FD89004F93E0 /* CopyFiles */,
+				BED43F741A6496B700795E92 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,6 +203,7 @@
 				TargetAttributes = {
 					BE5657CF1A424C5D00577BA7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 6QBR52NJ4V;
 					};
 					BE5657EB1A424C5D00577BA7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -238,7 +237,6 @@
 			files = (
 				BE5657E21A424C5D00577BA7 /* Main.storyboard in Resources */,
 				BE5657E71A424C5D00577BA7 /* LaunchScreen.xib in Resources */,
-				5C196FD51A4B60E600753551 /* WWGraphView.xib in Resources */,
 				BE5657E41A424C5D00577BA7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,10 +386,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug",
-					"/Users/rikkigibson/Xcode/WearWare/WearWareFramework/build/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug-iphoneos",
+					"/Users/Rutger/Library/Developer/Xcode/DerivedData/WearWare-decraqabmfpttudinqkpoypgzmvd/Build/Products/Debug/WearWareFrameworkOSX.framework",
+					"<Multiple",
+					"values>",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = WearWareGrapher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -407,10 +405,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug",
-					"/Users/rikkigibson/Xcode/WearWare/WearWareFramework/build/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug-iphoneos",
+					"/Users/Rutger/Library/Developer/Xcode/DerivedData/WearWare-decraqabmfpttudinqkpoypgzmvd/Build/Products/Debug/WearWareFrameworkOSX.framework",
+					"<Multiple",
+					"values>",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = WearWareGrapher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

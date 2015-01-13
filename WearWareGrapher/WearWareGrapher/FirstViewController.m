@@ -58,8 +58,6 @@
 }
 
 - (IBAction)connectButtonPressed:(UIBarButtonItem *)sender {
-<<<<<<< Updated upstream
-=======
 //    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
 //    
 //    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
@@ -67,7 +65,6 @@
 //                           callbackDelay:.01];
 //    [deviceSim start];
     
->>>>>>> Stashed changes
     [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
 }
 

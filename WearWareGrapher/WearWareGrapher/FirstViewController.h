@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface FirstViewController : UIViewController <WWHeartRateDetectorDelegate>
+@interface FirstViewController : UIViewController 
 
 @property (strong, nonatomic) IBOutlet UISlider *calibrationSlider;
 
