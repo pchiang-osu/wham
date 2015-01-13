@@ -13,8 +13,6 @@ public protocol WWHeartRateDetectorDelegate {
     func detector(detector: WWHeartRateDetector, didReachEndOfData data: [Int]);
 }
 
-let DATA_RATE: NSTimeInterval = 0.01
-
 public typealias HeartRateCompletionHandler = (detectionTimes: [NSDate]) -> Void
 public class WWHeartRateDetectorExampleDelegate : NSObject, WWHeartRateDetectorDelegate {
     private let completionHandler: HeartRateCompletionHandler
@@ -40,8 +38,21 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
     private let delegate: WWHeartRateDetectorDelegate
     private var data = [Int]()
     private var valuesObserved = 0
-    private var timer: NSTimer?
     
+<<<<<<< Updated upstream
+=======
+    public var detectionTimes = [NSDate]()
+    
+    public var beatsPerMinute: Double {
+        get {
+            let pertinentTimes = detectionTimes.filter({ abs($0.timeIntervalSinceNow) < 40 })
+            let differences = pertinentTimes.mapAdjacentElements({ $1.timeIntervalSinceDate($0) }).filter({ $0 < 2 })
+            let averageBPM = 1 / (differences.reduce(0, +) / Double(differences.count)) * 60
+            return averageBPM
+        }
+    }
+    
+>>>>>>> Stashed changes
     /// Minimum value of a valid heartbeat peak.
     public var lowerThreshold = 250
     
