@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C196FD51A4B60E600753551 /* WWGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C196FD41A4B60E600753551 /* WWGraphView.xib */; };
+		5CC89F7D1A63619C00648A59 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */; };
+		5CC89F7F1A6361B600648A59 /* WearWareFrameworkiOS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE5657D61A424C5D00577BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D51A424C5D00577BA7 /* main.m */; };
 		BE5657D91A424C5D00577BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D81A424C5D00577BA7 /* AppDelegate.m */; };
 		BE5657DC1A424C5D00577BA7 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657DB1A424C5D00577BA7 /* FirstViewController.m */; };
@@ -30,8 +32,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5C5EB14D1A62FD89004F93E0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5CC89F7F1A6361B600648A59 /* WearWareFrameworkiOS.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5C196FD41A4B60E600753551 /* WWGraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WWGraphView.xib; sourceTree = "<group>"; };
+		5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../../../Library/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
 		BE5657D01A424C5D00577BA7 /* WearWareGrapher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearWareGrapher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5657D41A424C5D00577BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE5657D51A424C5D00577BA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -58,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC89F7D1A63619C00648A59 /* WearWareFrameworkiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +91,7 @@
 		BE5657C71A424C5D00577BA7 = {
 			isa = PBXGroup;
 			children = (
+				5CC89F7C1A63619C00648A59 /* WearWareFrameworkiOS.framework */,
 				BE5657D21A424C5D00577BA7 /* WearWareGrapher */,
 				BE5657EF1A424C5D00577BA7 /* WearWareGrapherTests */,
 				BE5657D11A424C5D00577BA7 /* Products */,
@@ -147,6 +165,7 @@
 				BE5657CC1A424C5D00577BA7 /* Sources */,
 				BE5657CD1A424C5D00577BA7 /* Frameworks */,
 				BE5657CE1A424C5D00577BA7 /* Resources */,
+				5C5EB14D1A62FD89004F93E0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -364,8 +383,10 @@
 		BE5657F71A424C5D00577BA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug",
@@ -381,8 +402,10 @@
 		BE5657F81A424C5D00577BA7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-erdgpwgwabwkhcewfavleyqgbqrc/Build/Products/Debug",

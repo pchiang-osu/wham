@@ -14,9 +14,9 @@
 //
 <<<<<<< Updated upstream
 
-import Cocoa
+import UIKit
 import XCTest
-import WearWareFrameworkOSX
+import WearWareFrameworkiOS
 
 class HeartRateDetectionTests: XCTestCase {
 

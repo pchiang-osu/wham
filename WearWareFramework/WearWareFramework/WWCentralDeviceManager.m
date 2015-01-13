@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Wear Ware. All rights reserved.
 //
 
-
 #import "WWDeviceManagerDelegate.h"
 #import "WWDevice.h"
 #import "WWCentralDeviceManager.h"
@@ -62,6 +61,8 @@
 {
     NSLog(@"Scanning...");
     [self.deviceManager scanForDevices:nil];
+    
+    
 }
 
 - (void)requestData:(WWCommandId)commandId andUpdatePeriod:(uint16_t)period

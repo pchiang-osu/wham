@@ -42,10 +42,18 @@
                                             <action selector="calibrationSliderValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="RK3-pj-hTa"/>
                                         </connections>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPJ-LM-l5z">
+                                        <rect key="frame" x="37" y="431" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BPJ-LM-l5z" secondAttribute="bottom" constant="35" id="56y-wO-Kno"/>
                                     <constraint firstAttribute="centerX" secondItem="IB8-cT-kGw" secondAttribute="centerX" id="Tir-W1-O4l"/>
+                                    <constraint firstItem="BPJ-LM-l5z" firstAttribute="leading" secondItem="BSe-s2-1nF" secondAttribute="leading" constant="37" id="rUA-eY-0qT"/>
                                     <constraint firstAttribute="bottom" secondItem="IB8-cT-kGw" secondAttribute="bottom" constant="30" id="zBY-VM-3wg"/>
                                 </constraints>
                             </view>
@@ -71,6 +79,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="EKG" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="bpmLabel" destination="BPJ-LM-l5z" id="CBS-eD-ZcE"/>
                         <outlet property="calibrationSlider" destination="IB8-cT-kGw" id="yhU-eb-4wG"/>
                         <outlet property="graphView" destination="BSe-s2-1nF" id="mYb-eV-9w5"/>
                     </connections>
