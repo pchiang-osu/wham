@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Rikki Gibson. All rights reserved.
 //
 
-let DATA_RATE = 0.01
-
 import Foundation
 
-public protocol WWHeartRateDetectorDelegate {
+@objc public protocol WWHeartRateDetectorDelegate {
     func didDetectHeartbeat(detector: WWHeartRateDetector, atTime time: NSDate);
     func detector(detector: WWHeartRateDetector, didReachEndOfData data: [Int]);
 }
+
+let DATA_RATE: NSTimeInterval = 0.01
 
 public typealias HeartRateCompletionHandler = (detectionTimes: [NSDate]) -> Void
 public class WWHeartRateDetectorExampleDelegate : NSObject, WWHeartRateDetectorDelegate {
@@ -30,6 +30,7 @@ public class WWHeartRateDetectorExampleDelegate : NSObject, WWHeartRateDetectorD
     
     public func detector(detector: WWHeartRateDetector, didReachEndOfData data: [Int]) {
         completionHandler(detectionTimes: detectionTimes)
+        
     }
 }
 
@@ -37,16 +38,16 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
     let MINIMUM_IN_THRESHOLD = 20
     let REFERENCE_TIME = NSDate()
     
-    private let delegate: WWHeartRateDetectorDelegate
+    public var delegate: WWHeartRateDetectorDelegate!
     private var data = [Int]()
     private var valuesObserved = 0
-
+    private var timer: NSTimer?
+    
     public var detectionTimes = [NSDate]()
     
     public var beatsPerMinute: Double {
         get {
-            let pertinentTimes = detectionTimes.filter({ abs($0.timeIntervalSinceNow) < 40 })
-            let differences = pertinentTimes.mapAdjacentElements({ $1.timeIntervalSinceDate($0) }).filter({ $0 < 2 })
+            let differences = detectionTimes.mapAdjacentElements({ $1.timeIntervalSinceDate($0) })
             let averageBPM = 1 / (differences.reduce(0, +) / Double(differences.count)) * 60
             return averageBPM
         }
@@ -67,10 +68,21 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
     /// The range of valid slopes.
     public var slopeRange = -160.0...(-60.0)
     
-    public init(delegate: WWHeartRateDetectorDelegate) {
+    @objc public init(delegate: WWHeartRateDetectorDelegate) {
         self.delegate = delegate
     }
-
+    
+    public override func observeValueForKeyPath(keyPath: String,
+        ofObject object: AnyObject, change: [NSObject : AnyObject],
+        context: UnsafeMutablePointer<Void>) {
+            if keyPath == "ADCData" {
+                let adcData = WWCentralDeviceManager.sharedCentralDeviceManager().ADCData
+                device(nil, onDataValueUpdate: .ADCSample, value: [adcData])
+            } else {
+                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+            }
+    }
+    
     public func device(device: WWDevice!, onDataValueUpdate dataId: WWCommandId, value: NSObject!) {
         if dataId == WWCommandId.ADCSample {
             if let value = (value as? NSArray)?.firstObject as? NSNumber {
@@ -80,7 +92,10 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
                 }
                 data.append(value.integerValue)
                 if currentSliceContainsHeartbeat() {
-                    let time = NSDate(timeIntervalSinceNow: Double(valuesObserved) * DATA_RATE)
+                    // for non-real time testing
+                    //                    let time = NSDate(timeIntervalSinceNow: Double(valuesObserved) * DATA_RATE)
+                    let time = NSDate()
+                    self.detectionTimes.append(time)
                     delegate.didDetectHeartbeat(self, atTime: time)
                 }
             }
