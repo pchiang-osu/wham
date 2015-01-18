@@ -38,6 +38,10 @@
                                                              options:0
                                                              context:NULL];
     
+    const float DEFAULT_SLIDER_VALUE = 1;
+    [[self calibrationSlider] setValue:DEFAULT_SLIDER_VALUE];
+    [self.graphView calibrateGraphToNumber:DEFAULT_SLIDER_VALUE];
+    
     //[[WWCentralDeviceManager sharedCentralDeviceManager] requestData:WWCommandIdADCSample andUpdatePeriod:1];
 }
 

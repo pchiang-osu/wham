@@ -47,7 +47,9 @@ public class WWHeartRateDetector : NSObject, WWDeviceDelegate {
     
     public var beatsPerMinute: Double {
         get {
-            let differences = detectionTimes.mapAdjacentElements({ $1.timeIntervalSinceDate($0) })
+            let relevantTimes = detectionTimes.filter({ $0.timeIntervalSinceNow < 10 })
+            let differences = relevantTimes.mapAdjacentElements({ $1.timeIntervalSinceDate($0) })
+                .filter({ $0 < 2 && $0 > 0.3 })
             let averageBPM = 1 / (differences.reduce(0, +) / Double(differences.count)) * 60
             return averageBPM
         }
