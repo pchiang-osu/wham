@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CF423181A70452C00C89AAE /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF423111A7044BC00C89AAE /* WearWareFrameworkiOS.framework */; };
+		5CF423191A70452C00C89AAE /* WearWareFrameworkiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF423111A7044BC00C89AAE /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE5657D61A424C5D00577BA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D51A424C5D00577BA7 /* main.m */; };
 		BE5657D91A424C5D00577BA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657D81A424C5D00577BA7 /* AppDelegate.m */; };
 		BE5657DC1A424C5D00577BA7 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657DB1A424C5D00577BA7 /* FirstViewController.m */; };
@@ -16,11 +18,45 @@
 		BE5657F31A424C5D00577BA7 /* WearWareGrapherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5657F21A424C5D00577BA7 /* WearWareGrapherTests.m */; };
 		BE5658151A424F6300577BA7 /* WWGrapher.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5658141A424F6300577BA7 /* WWGrapher.m */; };
 		BE5658181A428B4000577BA7 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5658171A428B4000577BA7 /* NSMutableArray+QueueAdditions.m */; };
-		BED43F721A6496B700795E92 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */; };
-		BED43F731A6496B700795E92 /* WearWareFrameworkiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BED43F731A6496B700795E92 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5CF423101A7044BC00C89AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C1970AF1A4B722F00753551;
+			remoteInfo = WearWareFrameworkiOS;
+		};
+		5CF423121A7044BC00C89AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C1970E41A4B749800753551;
+			remoteInfo = WearWareFrameworkOSX;
+		};
+		5CF423141A7044BC00C89AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C1971971A4B83CF00753551;
+			remoteInfo = WearWareFrameworkTests;
+		};
+		5CF423161A7044DE00C89AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C1970AE1A4B722F00753551;
+			remoteInfo = WearWareFrameworkiOS;
+		};
+		5CF4231A1A70452C00C89AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C1970AE1A4B722F00753551;
+			remoteInfo = WearWareFrameworkiOS;
+		};
 		BE5657ED1A424C5D00577BA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE5657C81A424C5D00577BA7 /* Project object */;
@@ -37,7 +73,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BED43F731A6496B700795E92 /* WearWareFrameworkiOS.framework in Embed Frameworks */,
+				BED43F731A6496B700795E92 /* (null) in Embed Frameworks */,
+				5CF423191A70452C00C89AAE /* WearWareFrameworkiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WearWareFramework.xcodeproj; path = ../WearWareFramework/WearWareFramework.xcodeproj; sourceTree = "<group>"; };
 		BE5657D01A424C5D00577BA7 /* WearWareGrapher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearWareGrapher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5657D41A424C5D00577BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE5657D51A424C5D00577BA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,7 +100,6 @@
 		BE5658141A424F6300577BA7 /* WWGrapher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGrapher.m; sourceTree = "<group>"; };
 		BE5658161A428B4000577BA7 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
 		BE5658171A428B4000577BA7 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
-		BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BED43F721A6496B700795E92 /* WearWareFrameworkiOS.framework in Frameworks */,
+				5CF423181A70452C00C89AAE /* WearWareFrameworkiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,10 +121,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CF4230B1A7044BC00C89AAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CF423111A7044BC00C89AAE /* WearWareFrameworkiOS.framework */,
+				5CF423131A7044BC00C89AAE /* WearWareFrameworkOSX.framework */,
+				5CF423151A7044BC00C89AAE /* WearWareFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BE5657C71A424C5D00577BA7 = {
 			isa = PBXGroup;
 			children = (
-				BED43F711A6496B700795E92 /* WearWareFrameworkiOS.framework */,
+				5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */,
 				BE5657D21A424C5D00577BA7 /* WearWareGrapher */,
 				BE5657EF1A424C5D00577BA7 /* WearWareGrapherTests */,
 				BE5657D11A424C5D00577BA7 /* Products */,
@@ -163,6 +210,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				5CF423171A7044DE00C89AAE /* PBXTargetDependency */,
+				5CF4231B1A70452C00C89AAE /* PBXTargetDependency */,
 			);
 			name = WearWareGrapher;
 			productName = WearWareGrapher;
@@ -217,6 +266,12 @@
 			mainGroup = BE5657C71A424C5D00577BA7;
 			productRefGroup = BE5657D11A424C5D00577BA7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5CF4230B1A7044BC00C89AAE /* Products */;
+					ProjectRef = 5CF4230A1A7044BC00C89AAE /* WearWareFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BE5657CF1A424C5D00577BA7 /* WearWareGrapher */,
@@ -224,6 +279,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5CF423111A7044BC00C89AAE /* WearWareFrameworkiOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WearWareFrameworkiOS.framework;
+			remoteRef = 5CF423101A7044BC00C89AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5CF423131A7044BC00C89AAE /* WearWareFrameworkOSX.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WearWareFrameworkOSX.framework;
+			remoteRef = 5CF423121A7044BC00C89AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5CF423151A7044BC00C89AAE /* WearWareFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WearWareFrameworkTests.xctest;
+			remoteRef = 5CF423141A7044BC00C89AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BE5657CE1A424C5D00577BA7 /* Resources */ = {
@@ -269,6 +348,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5CF423171A7044DE00C89AAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WearWareFrameworkiOS;
+			targetProxy = 5CF423161A7044DE00C89AAE /* PBXContainerItemProxy */;
+		};
+		5CF4231B1A70452C00C89AAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WearWareFrameworkiOS;
+			targetProxy = 5CF4231A1A70452C00C89AAE /* PBXContainerItemProxy */;
+		};
 		BE5657EE1A424C5D00577BA7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE5657CF1A424C5D00577BA7 /* WearWareGrapher */;
@@ -375,17 +464,13 @@
 		BE5657F71A424C5D00577BA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/Rutger/Library/Developer/Xcode/DerivedData/WearWare-decraqabmfpttudinqkpoypgzmvd/Build/Products/Debug/WearWareFrameworkOSX.framework",
-					"<Multiple",
-					"values>",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = WearWareGrapher/Info.plist;
+				INFOPLIST_PREFIX_HEADER = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -394,17 +479,13 @@
 		BE5657F81A424C5D00577BA7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/Rutger/Library/Developer/Xcode/DerivedData/WearWare-decraqabmfpttudinqkpoypgzmvd/Build/Products/Debug/WearWareFrameworkOSX.framework",
-					"<Multiple",
-					"values>",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = WearWareGrapher/Info.plist;
+				INFOPLIST_PREFIX_HEADER = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
