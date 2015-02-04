@@ -22,19 +22,25 @@
 @property (nonatomic) NSArray *accelerometerData;
 
 @property (nonatomic) WWCommandId enabledData;
-
+@property (nonatomic) BOOL isConnectedToDevice;
 
 // Returns the shared central device manager or initializes a new one if it doesn't exist
 + (instancetype)sharedCentralDeviceManager;
 
+// Connects the central manager to the nearest WWDevice
 - (void)connect;
-- (BOOL)isConnectedToDevice;
+
+// Requests that the device stop sending all data
 - (void)disableAllData;
 
 
-// Abstracted method that disables all data output from device except for one
-// @param commandId The WWCommandId you wish for the device to transmit
-// @param period The frequency (in 10s of milliseconds) at which you wish the device to transmit
+/** Request data and update period
+ Abstracted method that disables all data output from device except for one and
+ changes update period
+ 
+ @param commandId WWCommandId you wish for the device to transmit
+ @param period Frequency (in 10s of milliseconds) at which you wish the device to transmit
+ */
 
 - (void)requestData:(WWCommandId)commandId andUpdatePeriod:(uint16_t)period;
 

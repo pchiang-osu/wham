@@ -15,11 +15,12 @@
 
 @property (strong, nonatomic) WWDeviceManager *deviceManager;
 @property (strong, nonatomic) WWDevice *device;
-@property (nonatomic) BOOL isConnectedToDevice;
 
 @end
 
 @implementation WWCentralDeviceManager
+
+#pragma mark - Class methods
 
 + (instancetype)sharedCentralDeviceManager
 {
@@ -30,6 +31,8 @@
     
     return sharedCentralDeviceManager;
 }
+
+
 
 #pragma mark - Initializers
 
@@ -61,8 +64,6 @@
 {
     NSLog(@"Scanning...");
     [self.deviceManager scanForDevices:nil];
-    
-    
 }
 
 - (void)requestData:(WWCommandId)commandId andUpdatePeriod:(uint16_t)period
@@ -97,9 +98,14 @@
     }
     [self.device changeUpdatePeriod:period];
     NSLog(@"Changing update period to: %d", period);
-
 }
 
+
+/*
+ * This method is used internally to request that the device stop sending all data.
+ * As a public method, this could be used externally as well, possibly before
+ * disconnecting from a device.
+ */
 - (void)disableAllData
 {
     if (self.enabledData != WWCommandIdReserved) {
@@ -139,29 +145,20 @@
  * WearWare device has been completed. After this function is called, the delegate will automatically
  * begin receiving updates from the WearWare device as it sends out new updates.
  *
- * As it stands, this function sets the WWDevice's delegate to the ViewController and
- * requests that the WearWare device include battery voltage, temperature, and pedometer (total steps)
- * in its periodic updates. When an update is received, the onDataValueUpdate() function (below) is called.
+ * After connection is established, the developer should request a data type and update period
+ * using the requestData:andUpdatePeriod: method. Otherwise the device will be connected but send
+ * no data. Note that only one data type should be enabled at a time when using a high update rate.
  */
 - (void)manager:(WWDeviceManager *)manager onDeviceConnected:(WWDevice *)device {
     NSLog(@"WWAppDelegate: connected!");
-    
     self.device = device;
-    
-    // Request updates from the WearWare device every 10 milliseconds
-    [device changeUpdatePeriod:1];
-    NSLog(@"Changing update period to: 1");
-    
-    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
-    [device enableData:[NSArray arrayWithObjects:
-                        [NSValue valueWithWWCommandId:WWCommandIdADCSample],
-                        nil]];
+    self.isConnectedToDevice = YES;
 }
 
 /**
- * This delegate function is called when a connected WWDevice sends an update
- * to a data field.
- * This function simply displays the newly received data into labels in the view.
+ * This delegate method is called when a connected WWDevice sends an update
+ * to a data field. The update is stored in its corresponding property until
+ * the next update is recieved.
  */
 - (void) device:(WWDevice *)device onDataValueUpdate:(WWCommandId)dataId value:(NSObject *)value {
     if      (dataId == WWCommandIdADCSample) {
@@ -183,7 +180,7 @@
 
 - (void)manager:(WWDeviceManager *)manager onBluetoothStateChange:(CBCentralManagerState)state
 {
-    
+    NSLog(@"Bluetooth state changed to %ld", state);
 }
 
 - (void)onDeviceDisconnected:(WWDevice *)device error:(NSError *)error
