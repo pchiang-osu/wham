@@ -1,25 +1,148 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YYd-jb-N2c">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polygon-background" translatesAutoresizingMaskIntoConstraints="NO" id="Vqt-ok-04f">
+                                <rect key="frame" x="-1" y="0.0" width="377" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aE-hH-g4B">
+                                <rect key="frame" x="76" y="424" width="224" height="56"/>
+                                <color key="backgroundColor" red="1" green="0.078431372549019607" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="224" id="IoH-N9-2Vg"/>
+                                    <constraint firstAttribute="height" constant="56" id="nnK-wh-ReM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                <state key="normal" title="Start Activity">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6kv-KP-I6c" kind="show" id="sBW-Lx-M0I"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wham" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CD-3A-xL5">
+                                <rect key="frame" x="88" y="175" width="199" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5CD-3A-xL5" secondAttribute="height" multiplier="199:73" id="8qm-NG-Rmk"/>
+                                    <constraint firstAttribute="height" constant="73" id="is9-Lt-zx7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="72"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="2aE-hH-g4B" secondAttribute="centerY" constant="-118" id="2Wn-Bl-5ha"/>
+                            <constraint firstAttribute="centerY" secondItem="Vqt-ok-04f" secondAttribute="centerY" id="61L-yg-rWz"/>
+                            <constraint firstAttribute="width" secondItem="Vqt-ok-04f" secondAttribute="width" constant="-2" id="BcQ-MI-f71"/>
+                            <constraint firstItem="5CD-3A-xL5" firstAttribute="centerY" secondItem="Vqt-ok-04f" secondAttribute="centerY" constant="-122" id="MIy-uL-gPL"/>
+                            <constraint firstAttribute="centerX" secondItem="2aE-hH-g4B" secondAttribute="centerX" id="UO9-sF-UF0"/>
+                            <constraint firstItem="5CD-3A-xL5" firstAttribute="centerX" secondItem="Vqt-ok-04f" secondAttribute="centerX" id="dOV-ul-atG"/>
+                            <constraint firstItem="2aE-hH-g4B" firstAttribute="top" secondItem="5CD-3A-xL5" secondAttribute="bottom" constant="176" id="ffx-Ac-HiI"/>
+                            <constraint firstAttribute="height" secondItem="Vqt-ok-04f" secondAttribute="height" id="tBR-rA-QE4"/>
+                            <constraint firstAttribute="centerX" secondItem="Vqt-ok-04f" secondAttribute="centerX" id="y3c-Yg-Sft"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MIy-uL-gPL"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="zfI-7S-PP2">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="QZd-x0-6VM">
+                            <color key="tintColor" red="1" green="0.078431372550000003" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="6kv-KP-I6c" kind="show" id="a7T-vz-PTF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1249.5" y="275.5"/>
+        </scene>
+        <!--Activity View Controller-->
+        <scene sceneID="vcU-51-ha0">
+            <objects>
+                <viewController id="6kv-KP-I6c" customClass="ActivityViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TNN-BZ-j5f"/>
+                        <viewControllerLayoutGuide type="bottom" id="WKT-Ri-1KG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KYf-dR-vuu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="4lW-a3-cpU">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Pause" image="pause" id="7Oh-Qo-PAi"/>
+                                    <tabBarItem title="Location" image="location" id="4gA-a3-z0R"/>
+                                    <tabBarItem title="Heart" image="heart" id="vZh-Ja-nso"/>
+                                    <tabBarItem systemItem="more" id="hqY-wi-txy"/>
+                                </items>
+                                <color key="tintColor" red="1" green="0.078431372550000003" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="selectedImageTintColor" red="1" green="0.078431372550000003" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4lW-a3-cpU" firstAttribute="width" secondItem="KYf-dR-vuu" secondAttribute="width" id="NnI-Ip-Q4n"/>
+                            <constraint firstAttribute="centerX" secondItem="4lW-a3-cpU" secondAttribute="centerX" id="Tlj-oU-FUr"/>
+                            <constraint firstItem="WKT-Ri-1KG" firstAttribute="top" secondItem="4lW-a3-cpU" secondAttribute="bottom" id="aXS-Jr-szQ"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7sQ-fM-Hsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1977.5" y="275.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e5t-JJ-Pti">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YYd-jb-N2c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="KOS-Mg-Nqp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Lk0-rE-Sld"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xpl-zk-E19" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="275"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart" width="26" height="25"/>
+        <image name="location" width="14" height="24"/>
+        <image name="pause" width="22" height="22"/>
+        <image name="polygon-background" width="641" height="1137"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sBW-Lx-M0I"/>
+    </inferredMetricsTieBreakers>
 </document>
