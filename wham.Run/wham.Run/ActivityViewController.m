@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
     self.title = @"wham";
     [self setupMap];
 }
@@ -38,6 +39,11 @@
     self.mapView.tileSource = [[RMMapboxSource alloc] initWithMapID:wMapID];
     self.mapView.userTrackingMode = RMUserTrackingModeFollow;
     self.mapView.zoom = 15.0;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end
