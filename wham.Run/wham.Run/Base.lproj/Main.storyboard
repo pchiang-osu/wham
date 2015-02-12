@@ -281,6 +281,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="mainLabel" destination="8oV-Yg-okz" id="02T-BL-NvZ"/>
+                        <outlet property="mainLabelTitle" destination="zFr-sc-Uob" id="kAI-Y0-baz"/>
                         <outlet property="mapView" destination="8lP-3G-KCc" id="5Dq-K8-amM"/>
                     </connections>
                 </viewController>
