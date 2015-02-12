@@ -52,26 +52,21 @@
 - (void)mapView:(RMMapView *)mapView
 didUpdateUserLocation:(RMUserLocation *)userLocation
 {
-    NSMutableArray *locations = self.locations;
-    RMAnnotation *path = self.path;
+    [mapView removeAllAnnotations];
     
-    [locations addObject:userLocation.location];
+    [self.locations addObject:userLocation.location];
     
-    // Setup path if one doesn't exist
-    if (!path) {
-        path = [RMAnnotation annotationWithMapView:self.mapView
-                                        coordinate:userLocation.coordinate
-                                          andTitle:@"Running Path"];
-        [mapView addAnnotation:path];
-    }
+    RMAnnotation *path = [RMAnnotation annotationWithMapView:mapView
+                                                  coordinate:userLocation.coordinate
+                                                    andTitle:@"Running Path"];
+        
+    path.userInfo = self.locations;
+    [path setBoundingBoxFromLocations:self.locations];
     
-    if (locations.count > 1) {
-        path.userInfo = locations;
-        [path setBoundingBoxFromLocations:locations];
-        NSLog(@"Annotations: %@", self.mapView.annotations);
-    }
+    [mapView addAnnotation:path];
+        
+    NSLog(@"Annotations: %@", self.mapView.annotations);
 }
-
 
 /**
  * Returns an RMMaplayer containing a RMShape polyline of the user's running path
@@ -88,9 +83,8 @@ didUpdateUserLocation:(RMUserLocation *)userLocation
     polyline.lineColor = [UIColor colorWithHue:344.0 / 360.0 saturation:92.0 / 100.0 brightness:100.0 / 100.0 alpha:1.0];
     polyline.lineWidth = 5.0;
     
-    for (CLLocation *location in self.locations) {
+    for (CLLocation *location in self.locations)
         [polyline addLineToCoordinate:location.coordinate];
-    }
     
     return polyline;
 }
@@ -148,6 +142,7 @@ didUpdateUserLocation:(RMUserLocation *)userLocation
  - (NSString *)formattedPaceStringFrom {
      return nil;
  }
+
 
 
 @end
