@@ -162,7 +162,7 @@
                                 <rect key="frame" x="235" y="28" width="131" height="32"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.19741817519999999" green="1" blue="0.028578720240000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="TimeElapsed" destination="ral-ks-sqJ" id="YLD-OX-CKH"/>
