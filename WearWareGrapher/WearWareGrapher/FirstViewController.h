@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import <WearWareFrameworkiOS/WearWareFrameworkiOS.h>
+
 
 @interface FirstViewController : UIViewController <WWHeartRateDetectorDelegate>
 

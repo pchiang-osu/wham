@@ -258,12 +258,15 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="Pause" image="pause" id="7Oh-Qo-PAi"/>
-                                    <tabBarItem title="Location" image="location" id="4gA-a3-z0R"/>
-                                    <tabBarItem title="Heart" image="heart" id="vZh-Ja-nso"/>
-                                    <tabBarItem systemItem="more" id="hqY-wi-txy"/>
+                                    <tabBarItem tag="1" title="Location" image="location" id="4gA-a3-z0R"/>
+                                    <tabBarItem tag="2" title="Heart" image="heart" id="vZh-Ja-nso"/>
+                                    <tabBarItem tag="3" systemItem="more" id="hqY-wi-txy"/>
                                 </items>
                                 <color key="tintColor" red="1" green="0.078431372550000003" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="selectedImageTintColor" red="1" green="0.078431372550000003" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6kv-KP-I6c" id="9I3-zk-913"/>
+                                </connections>
                             </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,6 +319,6 @@
         <image name="polygon-background" width="641" height="1137"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sBW-Lx-M0I"/>
+        <segue reference="a7T-vz-PTF"/>
     </inferredMetricsTieBreakers>
 </document>

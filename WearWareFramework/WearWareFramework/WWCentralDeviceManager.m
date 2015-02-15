@@ -160,7 +160,10 @@
  * to a data field. The update is stored in its corresponding property until
  * the next update is recieved.
  */
-- (void) device:(WWDevice *)device onDataValueUpdate:(WWCommandId)dataId value:(NSObject *)value {
+- (void) device:(WWDevice *)device
+onDataValueUpdate:(WWCommandId)dataId
+          value:(NSObject *)value
+{
     if      (dataId == WWCommandIdADCSample) {
         self.ADCData = [(NSArray *)value objectAtIndex:0];
     }
@@ -178,7 +181,8 @@
     }
 }
 
-- (void)manager:(WWDeviceManager *)manager onBluetoothStateChange:(CBCentralManagerState)state
+- (void)manager:(WWDeviceManager *)manager
+onBluetoothStateChange:(CBCentralManagerState)state
 {
     NSLog(@"Bluetooth state changed to %ld", state);
 }

@@ -27,6 +27,12 @@
 		BE0AA7D01A85662900BFEE2D /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0AA7C61A85662900BFEE2D /* Lato-Light.ttf */; };
 		BE0AA7D11A85662900BFEE2D /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0AA7C71A85662900BFEE2D /* Lato-LightItalic.ttf */; };
 		BE0AA7D21A85662900BFEE2D /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0AA7C81A85662900BFEE2D /* Lato-Regular.ttf */; };
+		BE96F6CC1A8D358300195F33 /* HeartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96F6CA1A8D358300195F33 /* HeartViewController.m */; };
+		BE96F6CD1A8D358300195F33 /* HeartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96F6CB1A8D358300195F33 /* HeartViewController.xib */; };
+		BE96F6D71A8D36DB00195F33 /* WWGrapherView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96F6D41A8D36DB00195F33 /* WWGrapherView.m */; };
+		BE96F6D81A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96F6D61A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m */; };
+		BEC850561A8DC28800FCBAC1 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE96F6CE1A8D35AE00195F33 /* WearWareFrameworkiOS.framework */; };
+		BEC850571A8DC28800FCBAC1 /* WearWareFrameworkiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE96F6CE1A8D35AE00195F33 /* WearWareFrameworkiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BEDBC11B1A81C735004E2A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEDBC11A1A81C735004E2A37 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +45,20 @@
 			remoteInfo = wham.Run;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BEC850581A8DC28800FCBAC1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BEC850571A8DC28800FCBAC1 /* WearWareFrameworkiOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A757BB8668B364832A9C44B2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +89,14 @@
 		BE0AA7C61A85662900BFEE2D /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		BE0AA7C71A85662900BFEE2D /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		BE0AA7C81A85662900BFEE2D /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		BE96F6C91A8D358300195F33 /* HeartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartViewController.h; sourceTree = "<group>"; };
+		BE96F6CA1A8D358300195F33 /* HeartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartViewController.m; sourceTree = "<group>"; };
+		BE96F6CB1A8D358300195F33 /* HeartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartViewController.xib; sourceTree = "<group>"; };
+		BE96F6CE1A8D35AE00195F33 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "/Users/Rutger/Library/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<absolute>"; };
+		BE96F6D31A8D36DB00195F33 /* WWGrapherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWGrapherView.h; sourceTree = "<group>"; };
+		BE96F6D41A8D36DB00195F33 /* WWGrapherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGrapherView.m; sourceTree = "<group>"; };
+		BE96F6D51A8D36DB00195F33 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
+		BE96F6D61A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		BEDBC11A1A81C735004E2A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D433749D3B6BC0A7E14F5747 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +108,7 @@
 			files = (
 				BEDBC11B1A81C735004E2A37 /* CoreLocation.framework in Frameworks */,
 				2AB6436587BD65E54FD86226 /* libPods.a in Frameworks */,
+				BEC850561A8DC28800FCBAC1 /* WearWareFrameworkiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +134,7 @@
 		BE01BFD41A80A48D00510906 = {
 			isa = PBXGroup;
 			children = (
+				BE96F6CE1A8D35AE00195F33 /* WearWareFrameworkiOS.framework */,
 				BE01BFDF1A80A48D00510906 /* wham.Run */,
 				BE01BFFC1A80A48D00510906 /* wham.RunTests */,
 				BE01BFDE1A80A48D00510906 /* Products */,
@@ -133,6 +163,13 @@
 				BE01BFED1A80A48D00510906 /* Main.storyboard */,
 				BE01C00A1A818AED00510906 /* ActivityViewController.h */,
 				BE01C00B1A818AED00510906 /* ActivityViewController.m */,
+				BE96F6C91A8D358300195F33 /* HeartViewController.h */,
+				BE96F6CA1A8D358300195F33 /* HeartViewController.m */,
+				BE96F6CB1A8D358300195F33 /* HeartViewController.xib */,
+				BE96F6D31A8D36DB00195F33 /* WWGrapherView.h */,
+				BE96F6D41A8D36DB00195F33 /* WWGrapherView.m */,
+				BE96F6D51A8D36DB00195F33 /* NSMutableArray+QueueAdditions.h */,
+				BE96F6D61A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m */,
 				BE01BFF01A80A48D00510906 /* Images.xcassets */,
 				BE01BFF21A80A48D00510906 /* LaunchScreen.xib */,
 				BE01BFE71A80A48D00510906 /* wham_Run.xcdatamodeld */,
@@ -213,6 +250,7 @@
 				BE01BFDA1A80A48D00510906 /* Frameworks */,
 				BE01BFDB1A80A48D00510906 /* Resources */,
 				0B982AF17F4863A62D1FFE0D /* Copy Pods Resources */,
+				BEC850581A8DC28800FCBAC1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,6 +324,7 @@
 				BE0AA7CF1A85662900BFEE2D /* Lato-Italic.ttf in Resources */,
 				BE0AA7C91A85662900BFEE2D /* Lato-Black.ttf in Resources */,
 				BE0AA7CB1A85662900BFEE2D /* Lato-Bold.ttf in Resources */,
+				BE96F6CD1A8D358300195F33 /* HeartViewController.xib in Resources */,
 				BE0AA7D01A85662900BFEE2D /* Lato-Light.ttf in Resources */,
 				BE01BFEF1A80A48D00510906 /* Main.storyboard in Resources */,
 				BE0AA7CA1A85662900BFEE2D /* Lato-BlackItalic.ttf in Resources */,
@@ -347,10 +386,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE01BFE61A80A48D00510906 /* AppDelegate.m in Sources */,
+				BE96F6CC1A8D358300195F33 /* HeartViewController.m in Sources */,
 				BE01BFE31A80A48D00510906 /* main.m in Sources */,
+				BE96F6D81A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m in Sources */,
 				BE01BFEC1A80A48D00510906 /* HomeViewController.m in Sources */,
 				BE01BFE91A80A48D00510906 /* wham_Run.xcdatamodeld in Sources */,
 				BE01C00C1A818AED00510906 /* ActivityViewController.m in Sources */,
+				BE96F6D71A8D36DB00195F33 /* WWGrapherView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +515,10 @@
 			baseConfigurationReference = A757BB8668B364832A9C44B2 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = wham.Run/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +530,10 @@
 			baseConfigurationReference = D433749D3B6BC0A7E14F5747 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = wham.Run/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
