@@ -6,8 +6,10 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import <WearWareFrameworkiOS/WearWareFrameworkiOS.h>
 
-@interface HeartViewController : UIViewController
+@import UIKit;
+
+@interface HeartViewController : UIViewController <WWHeartRateDetectorDelegate>
 
 @end

@@ -1,15 +1,15 @@
 //
-//  WWGrapher.m
+//  WWGrapherView.m
 //  WearWare
 //
 //  Created by Rutger Farry on 11/22/14.
 //  Copyright (c) 2014 Rutger Farry. All rights reserved.
 //
 
-#import "WWGrapher.h"
+#import "WWGrapherView.h"
 #import "NSMutableArray+QueueAdditions.h"
 
-@interface WWGrapher ()
+@interface WWGrapherView ()
 
 @property (nonatomic) CGFloat currentXPosition;
 @property (nonatomic) CGFloat maxY;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation WWGrapher
+@implementation WWGrapherView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -28,6 +28,8 @@
         _maxY = 1;
         _pointArray = [[NSMutableArray alloc] init];
         _calibrationValue = 2.0;
+        
+        (self.strokeColor == nil) ? [UIColor grayColor] : self.strokeColor;
     }
     return self;
 }
@@ -51,11 +53,11 @@
 
 - (void)addPointToGraph:(CGFloat)point
 {
-    //NSLog(@"Point: %f", point);
+//    NSLog(@"Point: %f", point);
     NSNumber *number = [NSNumber numberWithFloat:point * self.calibrationValue];
     [self.pointArray enqueue:number];
     
-    //self.maxY = (self.maxY < point) ? point : self.maxY;
+//    self.maxY = (self.maxY < point) ? point : self.maxY;
     [self.pointArray dequeue];
 }
 
@@ -69,14 +71,9 @@
     self.calibrationValue = number;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     int dataArrayIterator = 1;
     for (int i = self.frame.size.width; i >= 0; i--) {
-//        NSLog(@"Width2: %f", self.frame.size.width);
-//        NSLog(@"dataArrayInterator: %d", dataArrayIterator);
-//        NSLog(@"Array: %@", self.pointArray);
         CGFloat previousPointHeight = ((NSNumber *)self.pointArray[self.pointArray.count - dataArrayIterator - 1]).floatValue;
         CGPoint previousPoint = CGPointMake(i, previousPointHeight);
         CGFloat currentPointHeight = ((NSNumber *)self.pointArray[self.pointArray.count - dataArrayIterator]).floatValue;
@@ -84,15 +81,16 @@
         dataArrayIterator++;
         
         // Draws a line between the two points
-        UIBezierPath *bar = [[UIBezierPath alloc] init];
-        [bar moveToPoint:previousPoint];
-        [bar addLineToPoint:currentPoint];
-        bar.lineWidth = 2;
-        [[UIColor blackColor] setStroke];
-        [bar stroke];
+        UIBezierPath *path = [[UIBezierPath alloc] init];
+        [path moveToPoint:previousPoint];
+        [path addLineToPoint:currentPoint];
+        path.lineWidth = 3;
+        path.lineCapStyle = kCGLineCapRound;
+        path.lineJoinStyle = kCGLineJoinRound;
+        [self.strokeColor setStroke];
+        [path stroke];
     }
 }
-
 
 
 

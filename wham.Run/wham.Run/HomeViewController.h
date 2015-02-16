@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 wham. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface HomeViewController : UIViewController
 

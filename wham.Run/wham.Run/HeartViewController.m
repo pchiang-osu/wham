@@ -7,8 +7,14 @@
 //
 
 #import "HeartViewController.h"
+#import "WWGrapherView.h"
+
+#define ADC_DATA_SELECTOR @"ADCData"
 
 @interface HeartViewController ()
+
+@property (strong, nonatomic) IBOutlet WWGrapherView *graphView;
+@property (strong, nonatomic) WWHeartRateDetector *heartRateDetector;
 
 @end
 
@@ -16,22 +22,76 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    // Setup HR detector
+    self.heartRateDetector = [[WWHeartRateDetector alloc] initWithDelegate:self];
+    
+    // Register for KVO
+    [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self
+                                                          forKeyPath:ADC_DATA_SELECTOR
+                                                             options:0
+                                                             context:NULL];
+    
+    [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self.heartRateDetector
+                                                          forKeyPath:ADC_DATA_SELECTOR
+                                                             options:0
+                                                             context:NULL];
+    
+    
+    // Calibrate graph view. Eventually this will be done automatically by WWGrapher
+    [self.graphView calibrateGraphToNumber:2.75];
+    self.graphView.strokeColor = [UIColor whiteColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[WWCentralDeviceManager sharedCentralDeviceManager]
+     requestData:WWCommandIdADCSample andUpdatePeriod:1];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:ADC_DATA_SELECTOR]) {
+        NSLog(@"Value: %@", [WWCentralDeviceManager sharedCentralDeviceManager].ADCData);
+        NSNumber *number = [WWCentralDeviceManager sharedCentralDeviceManager].ADCData;
+        //        [self.heartRateDetector device:nil onDataValueUpdate:WWCommandIdADCSample value:@[number]];
+        if (number.floatValue > 10) {
+            number = [NSNumber numberWithFloat:number.floatValue / 4.0];
+        }
+        [self.graphView addPointToGraph:number.floatValue];
+        [self.graphView graph];
+    }
 }
-*/
+
+- (IBAction)connectButtonPressed:(UIBarButtonItem *)sender
+{
+    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
+    
+    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
+                                                            delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
+                                                       callbackDelay:.01];
+    [deviceSim start];
+    
+//    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
+}
+
+
+
+#pragma mark - WWHeartRateDetectorDelegate
+
+- (void)didDetectHeartbeat:(WWHeartRateDetector *)detector
+                    atTime:(NSDate *)time
+{
+    
+}
+
+- (void)detector:(WWHeartRateDetector *)detector
+didReachEndOfData:(NSArray *)data
+{
+    
+}
 
 @end
