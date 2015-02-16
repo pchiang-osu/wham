@@ -14,6 +14,7 @@
 @interface HeartViewController ()
 
 @property (strong, nonatomic) IBOutlet WWGrapherView *graphView;
+@property (strong, nonatomic) IBOutlet UILabel *bpmLabel;
 @property (strong, nonatomic) WWHeartRateDetector *heartRateDetector;
 
 @end
@@ -66,7 +67,7 @@
     }
 }
 
-- (IBAction)connectButtonPressed:(UIBarButtonItem *)sender
+- (IBAction)connectButtonPressed:(UIButton *)sender
 {
 //    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
 //    
@@ -85,7 +86,7 @@
 - (void)didDetectHeartbeat:(WWHeartRateDetector *)detector
                     atTime:(NSDate *)time
 {
-    
+    self.bpmLabel.text = [NSString stringWithFormat:@"%.f", detector.beatsPerMinute];
 }
 
 - (void)detector:(WWHeartRateDetector *)detector

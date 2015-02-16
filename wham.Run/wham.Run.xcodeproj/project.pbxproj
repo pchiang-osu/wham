@@ -28,7 +28,6 @@
 		BE0AA7D11A85662900BFEE2D /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0AA7C71A85662900BFEE2D /* Lato-LightItalic.ttf */; };
 		BE0AA7D21A85662900BFEE2D /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0AA7C81A85662900BFEE2D /* Lato-Regular.ttf */; };
 		BE96F6CC1A8D358300195F33 /* HeartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96F6CA1A8D358300195F33 /* HeartViewController.m */; };
-		BE96F6CD1A8D358300195F33 /* HeartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96F6CB1A8D358300195F33 /* HeartViewController.xib */; };
 		BE96F6D71A8D36DB00195F33 /* WWGrapherView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96F6D41A8D36DB00195F33 /* WWGrapherView.m */; };
 		BE96F6D81A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96F6D61A8D36DB00195F33 /* NSMutableArray+QueueAdditions.m */; };
 		BEC850561A8DC28800FCBAC1 /* WearWareFrameworkiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE96F6CE1A8D35AE00195F33 /* WearWareFrameworkiOS.framework */; };
@@ -91,7 +90,6 @@
 		BE0AA7C81A85662900BFEE2D /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		BE96F6C91A8D358300195F33 /* HeartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartViewController.h; sourceTree = "<group>"; };
 		BE96F6CA1A8D358300195F33 /* HeartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartViewController.m; sourceTree = "<group>"; };
-		BE96F6CB1A8D358300195F33 /* HeartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartViewController.xib; sourceTree = "<group>"; };
 		BE96F6CE1A8D35AE00195F33 /* WearWareFrameworkiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = WearWareFrameworkiOS.framework; path = "/Users/Rutger/Library/Developer/Xcode/DerivedData/WearWare-eebltuhulusrlvcleaiyclbjdnxz/Build/Products/Debug-iphoneos/WearWareFrameworkiOS.framework"; sourceTree = "<absolute>"; };
 		BE96F6D31A8D36DB00195F33 /* WWGrapherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWGrapherView.h; sourceTree = "<group>"; };
 		BE96F6D41A8D36DB00195F33 /* WWGrapherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGrapherView.m; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				BE01C00B1A818AED00510906 /* ActivityViewController.m */,
 				BE96F6C91A8D358300195F33 /* HeartViewController.h */,
 				BE96F6CA1A8D358300195F33 /* HeartViewController.m */,
-				BE96F6CB1A8D358300195F33 /* HeartViewController.xib */,
 				BE96F6D31A8D36DB00195F33 /* WWGrapherView.h */,
 				BE96F6D41A8D36DB00195F33 /* WWGrapherView.m */,
 				BE96F6D51A8D36DB00195F33 /* NSMutableArray+QueueAdditions.h */,
@@ -324,7 +321,6 @@
 				BE0AA7CF1A85662900BFEE2D /* Lato-Italic.ttf in Resources */,
 				BE0AA7C91A85662900BFEE2D /* Lato-Black.ttf in Resources */,
 				BE0AA7CB1A85662900BFEE2D /* Lato-Bold.ttf in Resources */,
-				BE96F6CD1A8D358300195F33 /* HeartViewController.xib in Resources */,
 				BE0AA7D01A85662900BFEE2D /* Lato-Light.ttf in Resources */,
 				BE01BFEF1A80A48D00510906 /* Main.storyboard in Resources */,
 				BE0AA7CA1A85662900BFEE2D /* Lato-BlackItalic.ttf in Resources */,
