@@ -10,7 +10,6 @@
 #import "WWDevice.h"
 #import "WWCentralDeviceManager.h"
 
-
 @interface WWCentralDeviceManager () <WWDeviceDelegate, WWDeviceManagerDelegate>
 
 @property (strong, nonatomic) WWDeviceManager *deviceManager;

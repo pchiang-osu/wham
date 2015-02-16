@@ -67,18 +67,6 @@
     }
 }
 
-- (IBAction)connectButtonPressed:(UIButton *)sender
-{
-//    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
-//    
-//    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
-//                                                            delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
-//                                                       callbackDelay:.01];
-//    [deviceSim start];
-    
-    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
-}
-
 
 
 #pragma mark - WWHeartRateDetectorDelegate

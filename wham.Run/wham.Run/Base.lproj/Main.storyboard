@@ -52,6 +52,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="startActivityButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EoQ-o0-hQd"/>
                                     <segue destination="mPG-Ym-qbj" kind="show" id="sBW-Lx-M0I"/>
                                 </connections>
                             </button>
@@ -155,14 +156,14 @@
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-wK-U7v">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-wK-U7v">
                                                         <rect key="frame" x="137" y="10" width="100" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="6bF-1D-yBl"/>
                                                             <constraint firstAttribute="width" constant="100" id="wjo-2B-1Ql"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.61568627450000002" green="0.61568627450000002" blue="0.61568627450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bpm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juz-bb-uBd">
@@ -323,30 +324,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcf-bx-lQz">
-                                <rect key="frame" x="158" y="569" width="59" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hfE-IE-ICE"/>
-                                    <constraint firstAttribute="width" constant="59" id="jYT-aP-nol"/>
-                                </constraints>
-                                <state key="normal" title="Connect">
-                                    <color key="titleColor" red="1" green="0.078431372550000003" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="connectButtonPressed:" destination="Pju-X5-Jj9" eventType="touchUpInside" id="BY6-nl-Kog"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OWI-PB-8ZM" firstAttribute="top" secondItem="YMj-57-r4f" secondAttribute="bottom" constant="98" id="6E2-ZR-xRh"/>
                             <constraint firstAttribute="height" secondItem="MSq-1w-nQb" secondAttribute="height" id="76h-pC-1ny"/>
-                            <constraint firstItem="Qcf-bx-lQz" firstAttribute="top" secondItem="MSq-1w-nQb" secondAttribute="bottom" constant="-98" id="KqX-Xs-HaJ"/>
                             <constraint firstItem="a6S-UC-kCA" firstAttribute="top" secondItem="OWI-PB-8ZM" secondAttribute="bottom" constant="-12" id="Lns-fJ-AzZ"/>
                             <constraint firstAttribute="centerX" secondItem="MSq-1w-nQb" secondAttribute="centerX" id="ga3-iL-BgY"/>
                             <constraint firstAttribute="width" secondItem="MSq-1w-nQb" secondAttribute="width" id="jnU-6u-XyD"/>
-                            <constraint firstItem="Qcf-bx-lQz" firstAttribute="centerX" secondItem="MSq-1w-nQb" secondAttribute="centerX" id="mm5-5x-IQm"/>
                             <constraint firstItem="OWI-PB-8ZM" firstAttribute="centerX" secondItem="MSq-1w-nQb" secondAttribute="centerX" id="rVe-Ws-HiL"/>
                             <constraint firstAttribute="centerY" secondItem="MSq-1w-nQb" secondAttribute="centerY" id="y4t-2I-d7L"/>
                         </constraints>
