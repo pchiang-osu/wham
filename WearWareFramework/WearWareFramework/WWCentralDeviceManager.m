@@ -153,6 +153,13 @@
     NSLog(@"WWAppDelegate: connected!");
     self.device = device;
     self.isConnectedToDevice = YES;
+    [device changeUpdatePeriod:1];
+    NSLog(@"Changing update period to: 1");
+    
+    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
+    [device enableData:[NSArray arrayWithObjects:
+                        [NSValue valueWithWWCommandId:WWCommandIdADCSample],
+                        nil]];
 }
 
 /**

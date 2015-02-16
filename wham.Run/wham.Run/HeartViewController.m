@@ -39,7 +39,8 @@
     
     
     // Calibrate graph view. Eventually this will be done automatically by WWGrapher
-    [self.graphView calibrateGraphToNumber:2.75];
+    self.graphView.calibrationScalar = 2.25;
+    self.graphView.calibrationOffset = 0.0;
     self.graphView.strokeColor = [UIColor whiteColor];
 }
 
@@ -55,7 +56,6 @@
                        context:(void *)context
 {
     if ([keyPath isEqualToString:ADC_DATA_SELECTOR]) {
-        NSLog(@"Value: %@", [WWCentralDeviceManager sharedCentralDeviceManager].ADCData);
         NSNumber *number = [WWCentralDeviceManager sharedCentralDeviceManager].ADCData;
         //        [self.heartRateDetector device:nil onDataValueUpdate:WWCommandIdADCSample value:@[number]];
         if (number.floatValue > 10) {
@@ -68,14 +68,14 @@
 
 - (IBAction)connectButtonPressed:(UIBarButtonItem *)sender
 {
-    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
+//    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
+//    
+//    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
+//                                                            delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
+//                                                       callbackDelay:.01];
+//    [deviceSim start];
     
-    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
-                                                            delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
-                                                       callbackDelay:.01];
-    [deviceSim start];
-    
-//    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
+    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
 }
 
 

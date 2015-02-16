@@ -11,6 +11,8 @@
 @interface WWGrapherView : UIView
 
 @property (strong, nonatomic) UIColor *strokeColor;
+@property (nonatomic) float calibrationScalar;
+@property (nonatomic) float calibrationOffset;
 
 - (void)addPointToGraph:(CGFloat)point;
 - (void)graph;

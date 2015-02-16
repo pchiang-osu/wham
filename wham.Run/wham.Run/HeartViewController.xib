@@ -37,29 +37,19 @@
                     </subviews>
                     <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="cE8-62-Xv0" secondAttribute="centerX" id="KQ3-55-Rcf"/>
-                        <constraint firstItem="cE8-62-Xv0" firstAttribute="top" secondItem="vep-cu-V9l" secondAttribute="top" id="aqV-63-ybp"/>
-                        <constraint firstItem="cE8-62-Xv0" firstAttribute="width" secondItem="vep-cu-V9l" secondAttribute="width" id="bve-D6-Bkf"/>
+                        <constraint firstItem="cE8-62-Xv0" firstAttribute="top" secondItem="vep-cu-V9l" secondAttribute="top" id="8ee-XK-bKb"/>
+                        <constraint firstItem="cE8-62-Xv0" firstAttribute="width" secondItem="vep-cu-V9l" secondAttribute="width" id="hJ5-l1-9f2"/>
+                        <constraint firstAttribute="centerX" secondItem="cE8-62-Xv0" secondAttribute="centerX" id="pk6-VB-A8l"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="vep-cu-V9l" secondAttribute="centerX" id="5YT-mD-Onv"/>
                 <constraint firstAttribute="trailing" secondItem="vep-cu-V9l" secondAttribute="trailing" id="9Xj-eh-hZg"/>
-                <constraint firstAttribute="centerX" secondItem="vep-cu-V9l" secondAttribute="centerX" id="Jwe-Ma-kqo"/>
                 <constraint firstAttribute="bottom" secondItem="vep-cu-V9l" secondAttribute="bottom" id="SEo-BD-L81"/>
-                <constraint firstAttribute="centerY" secondItem="vep-cu-V9l" secondAttribute="centerY" id="de8-ve-i6B"/>
                 <constraint firstItem="vep-cu-V9l" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hms-I0-7U4"/>
                 <constraint firstItem="vep-cu-V9l" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nVx-UH-wTx"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="5YT-mD-Onv"/>
-                    <exclude reference="Jwe-Ma-kqo"/>
-                    <exclude reference="de8-ve-i6B"/>
-                </mask>
-            </variation>
         </view>
     </objects>
 </document>

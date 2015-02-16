@@ -14,7 +14,6 @@
 @property (nonatomic) CGFloat currentXPosition;
 @property (nonatomic) CGFloat maxY;
 @property (strong, nonatomic) NSMutableArray *pointArray;
-@property (nonatomic) float calibrationValue;
 
 @end
 
@@ -27,7 +26,8 @@
         _currentXPosition = 0;
         _maxY = 1;
         _pointArray = [[NSMutableArray alloc] init];
-        _calibrationValue = 2.0;
+        _calibrationScalar = 2.0;
+        _calibrationOffset = 0;
         
         (self.strokeColor == nil) ? [UIColor grayColor] : self.strokeColor;
     }
@@ -54,10 +54,13 @@
 - (void)addPointToGraph:(CGFloat)point
 {
 //    NSLog(@"Point: %f", point);
-    NSNumber *number = [NSNumber numberWithFloat:point * self.calibrationValue];
-    [self.pointArray enqueue:number];
     
-//    self.maxY = (self.maxY < point) ? point : self.maxY;
+    point *= self.calibrationScalar;
+    point += self.calibrationOffset;
+    
+    NSNumber *number = [NSNumber numberWithFloat:point];
+    
+    [self.pointArray enqueue:number];
     [self.pointArray dequeue];
 }
 
@@ -68,7 +71,7 @@
 
 - (void)calibrateGraphToNumber:(float)number
 {
-    self.calibrationValue = number;
+    self.calibrationScalar = number;
 }
 
 - (void)drawRect:(CGRect)rect {
