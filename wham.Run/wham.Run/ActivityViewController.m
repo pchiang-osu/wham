@@ -7,12 +7,13 @@
 //
 
 #import "ActivityViewController.h"
+#import "HeartViewController.h"
 #import <Mapbox-iOS-SDK/Mapbox.h>
 #import <CoreMotion/CoreMotion.h>
 
 #define wMapID @"rutgerfarry.kpo3d7oo"
 
-@interface ActivityViewController () <CLLocationManagerDelegate, RMMapViewDelegate>
+@interface ActivityViewController () <CLLocationManagerDelegate, RMMapViewDelegate, UITabBarDelegate>
 
 @property (strong, nonatomic) IBOutlet RMMapView *mapView;
 @property (strong, nonatomic) CMPedometer *pedometer;
@@ -64,8 +65,6 @@ didUpdateUserLocation:(RMUserLocation *)userLocation
     [path setBoundingBoxFromLocations:self.locations];
     
     [mapView addAnnotation:path];
-        
-    NSLog(@"Annotations: %@", self.mapView.annotations);
 }
 
 /**
@@ -91,6 +90,27 @@ didUpdateUserLocation:(RMUserLocation *)userLocation
 
 
 
+#pragma mark - UITabBarDelegate
+
+- (void)tabBar:(UITabBar *)tabBar
+ didSelectItem:(UITabBarItem *)item
+{
+    switch (item.tag) {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            [self presentViewController:[[HeartViewController alloc] initWithNibName:@"HeartViewController" bundle:[NSBundle mainBundle]] animated:YES completion:nil];
+        case 3:
+            break;
+        default:
+            break;
+    }
+}
+
+
+
 #pragma mark - Setup
 
 - (void)setupMap
@@ -109,7 +129,6 @@ didUpdateUserLocation:(RMUserLocation *)userLocation
     [self.pedometer startPedometerUpdatesFromDate:[NSDate date]
                                       withHandler:^(CMPedometerData *pedometerData, NSError *error) {
                                           NSString *distanceString = [self formattedDistanceStringFromMeters:pedometerData.distance];
-                                          //NSString *paceString = [self formattedPaceStringFrom];
                                           
                                           // Update the label on the main thread
                                           dispatch_async(dispatch_get_main_queue(), ^{

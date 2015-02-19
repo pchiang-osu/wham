@@ -10,7 +10,6 @@
 #import "WWDevice.h"
 #import "WWCentralDeviceManager.h"
 
-
 @interface WWCentralDeviceManager () <WWDeviceDelegate, WWDeviceManagerDelegate>
 
 @property (strong, nonatomic) WWDeviceManager *deviceManager;
@@ -153,6 +152,13 @@
     NSLog(@"WWAppDelegate: connected!");
     self.device = device;
     self.isConnectedToDevice = YES;
+    [device changeUpdatePeriod:1];
+    NSLog(@"Changing update period to: 1");
+    
+    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
+    [device enableData:[NSArray arrayWithObjects:
+                        [NSValue valueWithWWCommandId:WWCommandIdADCSample],
+                        nil]];
 }
 
 /**
@@ -160,7 +166,10 @@
  * to a data field. The update is stored in its corresponding property until
  * the next update is recieved.
  */
-- (void) device:(WWDevice *)device onDataValueUpdate:(WWCommandId)dataId value:(NSObject *)value {
+- (void) device:(WWDevice *)device
+onDataValueUpdate:(WWCommandId)dataId
+          value:(NSObject *)value
+{
     if      (dataId == WWCommandIdADCSample) {
         self.ADCData = [(NSArray *)value objectAtIndex:0];
     }
@@ -178,7 +187,8 @@
     }
 }
 
-- (void)manager:(WWDeviceManager *)manager onBluetoothStateChange:(CBCentralManagerState)state
+- (void)manager:(WWDeviceManager *)manager
+onBluetoothStateChange:(CBCentralManagerState)state
 {
     NSLog(@"Bluetooth state changed to %ld", state);
 }

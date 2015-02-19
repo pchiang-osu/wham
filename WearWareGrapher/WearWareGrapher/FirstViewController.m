@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Wear Ware. All rights reserved.
 //
 
-#import <WearWareFrameworkiOS/WearWareFrameworkiOS.h>
 #import "WWGrapher.h"
 #import "FirstViewController.h"
 
@@ -38,7 +37,7 @@
                                                              options:0
                                                              context:NULL];
     
-    const float DEFAULT_SLIDER_VALUE = 1;
+    const float DEFAULT_SLIDER_VALUE = 1.0;
     [[self calibrationSlider] setValue:DEFAULT_SLIDER_VALUE];
     [self.graphView calibrateGraphToNumber:DEFAULT_SLIDER_VALUE];
     
@@ -82,14 +81,14 @@
 }
 
 - (IBAction)connectButtonPressed:(UIBarButtonItem *)sender {
-//    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
-//    
-//    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
-//                                                            delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
-//                                                       callbackDelay:.01];
-//    [deviceSim start];
-//    
-    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
+    NSArray *data = [HeartRateSampleGetter getSample:@"Heart_Rate"];
+    
+    WWECGDeviceSim *deviceSim = [[WWECGDeviceSim alloc] initWithData:data
+                                                            delegate:[WWCentralDeviceManager sharedCentralDeviceManager]
+                                                       callbackDelay:.01];
+    [deviceSim start];
+    
+//    [[WWCentralDeviceManager sharedCentralDeviceManager] connect];
 }
 
 @end
