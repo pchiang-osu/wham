@@ -2,8 +2,8 @@
 //  RightGLKViewController.h
 //  YogaApp
 //
-//  Created by CS Team on 3/19/15.
-//  Copyright (c) 2015 CS Team. All rights reserved.
+//  Created by Gabe Aron on 3/19/15.
+//  Copyright (c) 2015 wham. All rights reserved.
 //
 
 #import <UIkit/UIKit.h>

@@ -2,8 +2,8 @@
 //  RightGLKViewController.m
 //  YogaApp
 //
-//  Created by CS Team on 3/19/15.
-//  Copyright (c) 2015 CS Team. All rights reserved.
+//  Created by Gabe Aron on 3/19/15.
+//  Copyright (c) 2015 wham. All rights reserved.
 //
 
 #import "RightGLKViewController.h"
@@ -86,51 +86,6 @@ GLfloat gCubeVertexData[216] =
     1.0f,  1.0f, -1.0f,         0.0f,  0.0f, -1.0f,
     -1.0f, -1.0f, -1.0f,         0.0f,  0.0f, -1.0f,
     -1.0f,  1.0f, -1.0f,         0.0f,  0.0f, -1.0f
-   
-    /*
-    //x     y      z              nx     ny     nz
-    0.5f, -0.5f, -1.5f,         1.0f,  0.0f,  0.0f,
-    0.5f,  -1.5f, -1.5f,         1.0f,  0.0f,  0.0f,
-    0.5f, -1.5f,  -0.5f,         1.0f,  0.0f,  0.0f,
-    0.5f, -1.5f,  -0.5f,         1.0f,  0.0f,  0.0f,
-    0.5f,  -0.5f,  -0.5f,         1.0f,  0.0f,  0.0f,
-    0.5f,  -0.5f, -1.5f,         1.0f,  0.0f,  0.0f,
-    
-    0.5f,  -0.5f, -1.5f,         0.0f,  1.0f,  0.0f,
-    -0.5f,  -0.5f, -1.5f,         0.0f,  1.0f,  0.0f,
-    0.5f,  -0.5f,  -0.5f,         0.0f,  1.0f,  0.0f,
-    0.5f,  -0.5f,  -0.5f,         0.0f,  1.0f,  0.0f,
-    -0.5f,  -0.5f, -1.5f,         0.0f,  1.0f,  0.0f,
-    -0.5f,  -0.5f,  -0.5f,         0.0f,  1.0f,  0.0f,
-    
-    
-    -0.5f,  -0.5f, -1.5f,        -1.0f,  0.0f,  0.0f,
-    -0.5f, -1.5f, -1.5f,        -1.0f,  0.0f,  0.0f,
-    -0.5f,  -0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,
-    -0.5f,  -0.5f, -0.5f,        -1.0f,  0.0f,  0.0f,
-    -0.5f, -1.5f, -1.5f,        -1.0f,  0.0f,  0.0f,
-    -0.5f, -1.5f,  -0.5f,        -1.0f,  0.0f,  0.0f,
-    
-    0.5f, -1.5f, -0.5f,         0.0f, -1.0f,  0.0f,
-    -0.5f, -1.5f, -0.5f,         0.0f, -1.0f,  0.0f,
-    0.5f, -1.5f,  -1.5f,         0.0f, -1.0f,  0.0f,
-    0.5f, -1.5f,  -1.5f,         0.0f, -1.0f,  0.0f,
-    -0.5f, -1.5f, -0.5f,         0.0f, -1.0f,  0.0f,
-    -0.5f, -1.5f,  -1.5f,         0.0f, -1.0f,  0.0f,
-
-    -0.5f,  -0.5f,  -0.5f,         0.0f,  0.0f,  1.0f,
-    0.5f,  -0.5f,  -0.5f,         0.0f,  0.0f,  1.0f,
-    -0.5f, -1.5f,  -0.5f,         0.0f,  0.0f,  1.0f,
-    -0.5f, -1.5f,  -0.5f,         0.0f,  0.0f,  1.0f,
-    0.5f,  -0.5f,  -0.5f,         0.0f,  0.0f,  1.0f,
-    0.5f, -1.5f,  -0.5f,         0.0f,  0.0f,  1.0f,
-    
-    -0.5f, -0.5f, -1.5f,         0.0f,  0.0f, -1.0f,
-    0.5f, -0.5f, -1.5f,         0.0f,  0.0f, -1.0f,
-    -0.5f,  -1.5f, -1.5f,         0.0f,  0.0f, -1.0f,
-    -0.5f,  -1.5f, -1.5f,         0.0f,  0.0f, -1.0f,
-    0.5f, -0.5f, -1.5f,         0.0f,  0.0f, -1.0f,
-    0.5f,  -1.5f, -1.5f,         0.0f,  0.0f, -1.0f*/
 
 };
 
@@ -309,8 +264,7 @@ GLfloat gCubeVertexData[216] =
     GLKMatrix4 modelMatrix =
     GLKMatrix4MakeTranslation(0.0f,-1.0f,-10.0f);
     modelMatrix =
-    /*GLKMatrix4Rotate(modelMatrix,rotation,1.0f,1.0f,0.7f);*/
-    GLKMatrix4Rotate(modelMatrix,rotation,1.0f,0.0f,0.0f); //use to change the axis of rotation
+    GLKMatrix4Rotate(modelMatrix,rotation,0.0f,1.0f,0.0f); //use to change the axis of rotation
     self.effect.transform.modelviewMatrix = modelMatrix;
     
     rotation += self.timeSinceLastUpdate * 1.0f;
