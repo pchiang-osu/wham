@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161FD0D61ABD5A68008BAC0D /* LeftGLKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 161FD0D41ABD5A68008BAC0D /* LeftGLKViewController.m */; };
+		161FD0D71ABD5A68008BAC0D /* LeftGLKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161FD0D51ABD5A68008BAC0D /* LeftGLKViewController.xib */; };
 		165796CE1A902760004FB46C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 165796CD1A902760004FB46C /* main.m */; };
 		165796D11A902760004FB46C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 165796D01A902760004FB46C /* AppDelegate.m */; };
 		165796D41A902760004FB46C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 165796D31A902760004FB46C /* HomeViewController.m */; };
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161FD0D31ABD5A68008BAC0D /* LeftGLKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftGLKViewController.h; sourceTree = "<group>"; };
+		161FD0D41ABD5A68008BAC0D /* LeftGLKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftGLKViewController.m; sourceTree = "<group>"; };
+		161FD0D51ABD5A68008BAC0D /* LeftGLKViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftGLKViewController.xib; sourceTree = "<group>"; };
 		165796C81A902760004FB46C /* YogaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YogaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		165796CC1A902760004FB46C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		165796CD1A902760004FB46C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,6 +130,9 @@
 				165796F41A902C98004FB46C /* homeViewDelegate.h */,
 				165796F51A902C98004FB46C /* homeViewDelegate.m */,
 				165796D81A902760004FB46C /* Main.storyboard */,
+				161FD0D31ABD5A68008BAC0D /* LeftGLKViewController.h */,
+				161FD0D41ABD5A68008BAC0D /* LeftGLKViewController.m */,
+				161FD0D51ABD5A68008BAC0D /* LeftGLKViewController.xib */,
 				16BA11E11A995292000F5832 /* FrontViewController.h */,
 				16BA11E21A995292000F5832 /* FrontViewController.m */,
 				167571A41A97D7AE003DDB41 /* StoryboardView.h */,
@@ -253,6 +261,7 @@
 				165796DF1A902760004FB46C /* LaunchScreen.xib in Resources */,
 				16BA12421ABB8015000F5832 /* RightGLKViewController.xib in Resources */,
 				165796DC1A902760004FB46C /* Images.xcassets in Resources */,
+				161FD0D71ABD5A68008BAC0D /* LeftGLKViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +289,7 @@
 				165796CE1A902760004FB46C /* main.m in Sources */,
 				16BA12411ABB8015000F5832 /* RightGLKViewController.m in Sources */,
 				167571A61A97D7AE003DDB41 /* StoryboardView.m in Sources */,
+				161FD0D61ABD5A68008BAC0D /* LeftGLKViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
