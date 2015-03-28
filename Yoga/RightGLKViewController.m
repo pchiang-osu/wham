@@ -27,6 +27,11 @@
     NSTimer *timer;
     /*end for timer*/
     
+    NSNumber *n;
+    NSArray *arr;
+    float values[3];
+    int count;
+    
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -124,6 +129,11 @@ GLfloat gCubeVertexData[216] =
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    count = 0;
+    values[0] = 0.0;
+    values[1] = 1.0;
+    values[2] = 0.0;
+    
     /*for timer*/
     timerOn = false;
     numberClicks = 0;
@@ -135,6 +145,12 @@ GLfloat gCubeVertexData[216] =
     minRem = 2;
     /*end for timer*/
     
+    /*WearWare*/
+    [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self
+                                                          forKeyPath:@"ADCData"
+                                                             options:0
+                                                             context:NULL];
+    /*WearWare*/
     
     self.context = [[EAGLContext alloc]
                     initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -151,6 +167,21 @@ GLfloat gCubeVertexData[216] =
 
 }
 
+/*WearWare*/
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:@"ADCData"]) {
+        // Do something with [WWCentralDeviceManager sharedDeviceManager].ADCData
+        arr = [WWCentralDeviceManager sharedCentralDeviceManager].accelerometerData;
+        _glkRTimeRem.text=[NSString stringWithFormat:@"%i" ":" "%.2d",arr[1],1];
+        
+    }
+}
+/*WearWare*/
+
 - (void)viewDidUnload{
     
     [self tearDownGL];
@@ -166,7 +197,8 @@ GLfloat gCubeVertexData[216] =
     // Dispose of any resources that can be recreated.
 }
 
-/*
+/*WearWare*/
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -174,7 +206,7 @@ GLfloat gCubeVertexData[216] =
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 #pragma mark - GLKViewDelegate
 /*may go to delegate*/
@@ -255,6 +287,8 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update {
     
+    count++;
+    
     float aspect = fabsf(self.view.bounds.size.width /
                          self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective
@@ -264,10 +298,15 @@ GLfloat gCubeVertexData[216] =
     GLKMatrix4 modelMatrix =
     GLKMatrix4MakeTranslation(0.0f,-1.0f,-10.0f);
     modelMatrix =
-    GLKMatrix4Rotate(modelMatrix,rotation,0.0f,1.0f,0.0f); //use to change the axis of rotation
+    GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
     self.effect.transform.modelviewMatrix = modelMatrix;
     
-    rotation += self.timeSinceLastUpdate * 1.0f;
+    if (count < 100 && count > 50)
+        rotation += self.timeSinceLastUpdate * 1.0f;
+    else if (count < 220 && count > 130)
+        rotation -= self.timeSinceLastUpdate * 1.0f;
+    else if (count > 300 && count < 350)
+        rotation += self.timeSinceLastUpdate * 1.0f;
 }
 
 

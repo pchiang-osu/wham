@@ -8,6 +8,7 @@
 
 #import <UIkit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import "WWCentralDeviceManager.h"
 
 @interface RightGLKViewController : GLKViewController
 @property (weak, nonatomic) IBOutlet UILabel *glkRTimeRem;
