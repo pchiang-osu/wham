@@ -31,6 +31,10 @@
     NSArray *arr;
     int xHistory1;    //stores immediate possitions to see if device is going up or down
     int xHistory2;
+    int yHistory1;
+    int yHistory2;
+    int zHistory1;
+    int zHistory2;
     float values[3];
     int count;
     
@@ -155,9 +159,9 @@ GLfloat gCubeVertexData[216] =
     [super viewDidLoad];
     
     count = 0;
-    values[0] = 0.0;
+    values[0] = 1.0;
     values[1] = 1.0;
-    values[2] = 0.0;
+    values[2] = 1.0;
     
     /*for timer*/
     timerOn = false;
@@ -234,7 +238,11 @@ GLfloat gCubeVertexData[216] =
         NSString* string = [NSString stringWithFormat:@"X=%@", [arr objectAtIndex:0]];
         NSLog(@"%d,%s", [string intValue],"string");
         NSString* string2 = [arr objectAtIndex:0];
+        NSString* stringb2 = [arr objectAtIndex:1];
+        NSString* stringc2 = [arr objectAtIndex:2];
         xHistory1 = [string2 intValue];
+        yHistory1 = [stringb2 intValue];
+        zHistory1 = [stringc2 intValue];
         
     }
 }
@@ -371,7 +379,25 @@ GLfloat gCubeVertexData[216] =
     {
         rotation -= self.timeSinceLastUpdate * (xHistory2 - xHistory1);
     }
+    if (yHistory1 > yHistory2)
+    {
+        rotation += self.timeSinceLastUpdate * (yHistory1-yHistory2);
+    }
+    else if (yHistory1 < yHistory2)
+    {
+        rotation -= self.timeSinceLastUpdate * (yHistory2 - yHistory1);
+    }
+    if (zHistory1 > zHistory2)
+    {
+        rotation += self.timeSinceLastUpdate * (zHistory1 - zHistory2);
+    }
+    else if (zHistory1 < zHistory2)
+    {
+        rotation -= self.timeSinceLastUpdate * (zHistory2 - zHistory1);
+    }
     xHistory2 = xHistory1;
+    yHistory2 = yHistory1;
+    zHistory2 = zHistory1;
 }
 
 
