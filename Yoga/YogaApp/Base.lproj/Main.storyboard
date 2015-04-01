@@ -282,6 +282,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3c-WV-Ejh">
+                                <rect key="frame" x="50" y="215" width="313" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -291,6 +297,7 @@
                     <connections>
                         <outlet property="glkRTimeEla" destination="FMY-gZ-Kh0" id="CJP-P4-zX1"/>
                         <outlet property="glkRTimeRem" destination="4CH-gn-Cxf" id="u6r-hy-d1J"/>
+                        <outlet property="xyzData" destination="p3c-WV-Ejh" id="72o-0b-GKS"/>
                     </connections>
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsZ-bW-wpu" userLabel="First Responder" sceneMemberID="firstResponder"/>

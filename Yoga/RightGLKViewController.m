@@ -29,8 +29,13 @@
     
     NSNumber *n;
     NSArray *arr;
+    int xHistory1;    //stores immediate possitions to see if device is going up or down
+    int xHistory2;
     float values[3];
     int count;
+    
+    WWDeviceManager *deviceManager; //new
+    WWDevice * connectedDevice; //new
     
 }
 
@@ -94,6 +99,8 @@ GLfloat gCubeVertexData[216] =
 
 };
 
+
+
 -(void)setUpGL{
     [EAGLContext setCurrentContext:self.context];
     
@@ -126,6 +133,24 @@ GLfloat gCubeVertexData[216] =
 }
 
 
+/*- (void) manager:(WWDeviceManager *)manager onDeviceConnected: (WWDevice *)device { //new
+    NSLog(@"WWAppDelegate: connected!");
+    
+    connectedDevice = device;
+    connectedDevice.delegate = self; // Very important: Set WWDevice's delegate to this ViewController.
+    
+    // Request updates from the WearWare device every 1 second:
+    [device changeUpdatePeriod:1];
+    
+    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
+    [device enableData:[NSArray arrayWithObjects:[NSValue valueWithWWCommandId:WWCommandIdTemperature],
+                        [NSValue valueWithWWCommandId:WWCommandIdBattery],
+                        [NSValue valueWithWWCommandId:WWCommandIdPedometer],
+                        [NSValue valueWithWWCommandId:WWCommandIdPedometerDistance],
+                        [NSValue valueWithWWCommandId:WWCommandIdAccelerometer],
+                        nil]];
+}*/
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -146,8 +171,27 @@ GLfloat gCubeVertexData[216] =
     /*end for timer*/
     
     /*WearWare*/
+    NSLog(@"WWAppDelegate: connected!");
+    
+    //new
+    /*connectedDevice = [WWCentralDeviceManager sharedCentralDeviceManager].device;
+    //connectedDevice.delegate = self; // Very important: Set WWDevice's delegate to this ViewController.
+    
+    // Request updates from the WearWare device every 1 second:
+    [[WWCentralDeviceManager sharedCentralDeviceManager].device changeUpdatePeriod:1];
+    
+    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
+    [[WWCentralDeviceManager sharedCentralDeviceManager].device enableData:[NSArray arrayWithObjects:[NSValue valueWithWWCommandId:WWCommandIdTemperature],
+                        [NSValue valueWithWWCommandId:WWCommandIdBattery],
+                        [NSValue valueWithWWCommandId:WWCommandIdPedometer],
+                        [NSValue valueWithWWCommandId:WWCommandIdPedometerDistance],
+                        [NSValue valueWithWWCommandId:WWCommandIdAccelerometer],
+                        nil]];
+    //new*/
+
+    //self.manager;
     [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self
-                                                          forKeyPath:@"ADCData"
+                                                          forKeyPath:@"accelerometerData"
                                                              options:0
                                                              context:NULL];
     /*WearWare*/
@@ -167,16 +211,30 @@ GLfloat gCubeVertexData[216] =
 
 }
 
+//new
+- (NSString*)toString:(NSArray*)accelerometerData {
+    NSString * accelString = [NSString stringWithFormat:@"X=%@, Y=%@, Z=%@",
+                              [accelerometerData objectAtIndex:0],
+                              [accelerometerData objectAtIndex:1],
+                              [accelerometerData objectAtIndex:2]];
+    return accelString;
+}//new
+
 /*WearWare*/
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    if ([keyPath isEqualToString:@"ADCData"]) {
+    if ([keyPath isEqualToString:@"accelerometerData"]) {
         // Do something with [WWCentralDeviceManager sharedDeviceManager].ADCData
         arr = [WWCentralDeviceManager sharedCentralDeviceManager].accelerometerData;
-        _glkRTimeRem.text=[NSString stringWithFormat:@"%i" ":" "%.2d",arr[1],1];
+        _xyzData.text=[NSString stringWithFormat:@"%@", [self toString:(NSArray*)arr]]; //new
+        NSLog(@"%@", arr);
+        NSString* string = [NSString stringWithFormat:@"X=%@", [arr objectAtIndex:0]];
+        NSLog(@"%d,%s", [string intValue],"string");
+        NSString* string2 = [arr objectAtIndex:0];
+        xHistory1 = [string2 intValue];
         
     }
 }
@@ -197,7 +255,6 @@ GLfloat gCubeVertexData[216] =
     // Dispose of any resources that can be recreated.
 }
 
-/*WearWare*/
  
 #pragma mark - Navigation
 
@@ -283,6 +340,8 @@ GLfloat gCubeVertexData[216] =
 }
 /*end for timer*/
 
+
+
 #pragma mark - GLKViewControllerDelegate
 
 - (void)update {
@@ -301,12 +360,18 @@ GLfloat gCubeVertexData[216] =
     GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
     self.effect.transform.modelviewMatrix = modelMatrix;
     
-    if (count < 100 && count > 50)
-        rotation += self.timeSinceLastUpdate * 1.0f;
-    else if (count < 220 && count > 130)
-        rotation -= self.timeSinceLastUpdate * 1.0f;
-    else if (count > 300 && count < 350)
-        rotation += self.timeSinceLastUpdate * 1.0f;
+    NSString* string = [arr objectAtIndex:0];
+   
+   
+    if (xHistory1 > xHistory2)        //going up
+    {
+        rotation += self.timeSinceLastUpdate * (xHistory1-xHistory2);
+    }
+    else if (xHistory1 < xHistory2)   //going down
+    {
+        rotation -= self.timeSinceLastUpdate * (xHistory2 - xHistory1);
+    }
+    xHistory2 = xHistory1;
 }
 
 

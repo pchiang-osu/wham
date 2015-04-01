@@ -9,10 +9,12 @@
 #import <UIkit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "WWCentralDeviceManager.h"
+#import "WWProtocol.h"
 
 @interface RightGLKViewController : GLKViewController
 @property (weak, nonatomic) IBOutlet UILabel *glkRTimeRem;
 @property (weak, nonatomic) IBOutlet UILabel *glkRTimeEla;
+@property (weak, nonatomic) IBOutlet UILabel *xyzData;
 - (IBAction)glkRstartStop:(id)sender;
 
 @end
