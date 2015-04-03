@@ -364,36 +364,73 @@ GLfloat gCubeVertexData[216] =
     
     GLKMatrix4 modelMatrix =
     GLKMatrix4MakeTranslation(0.0f,-1.0f,-10.0f);
-    modelMatrix =
+    /*modelMatrix =
     GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-    self.effect.transform.modelviewMatrix = modelMatrix;
+    self.effect.transform.modelviewMatrix = modelMatrix;*/
     
     NSString* string = [arr objectAtIndex:0];
    
    
     if (xHistory1 > xHistory2)        //going up
     {
+        values[1] = 0.0;
+        values[2] = 0.0;
+        values[0] = 1.0;
         rotation += self.timeSinceLastUpdate * (xHistory1-xHistory2);
+        modelMatrix =
+        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
+        self.effect.transform.modelviewMatrix = modelMatrix;
     }
     else if (xHistory1 < xHistory2)   //going down
     {
+        values[1] = 0.0;
+        values[2] = 0.0;
+        values[0] = 1.0;
         rotation -= self.timeSinceLastUpdate * (xHistory2 - xHistory1);
+        modelMatrix =
+        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
+        self.effect.transform.modelviewMatrix = modelMatrix;
     }
     if (yHistory1 > yHistory2)
     {
+        values[0] = 0.0;
+        values[2] = 0.0;
+        values[1] = 1.0;
         rotation += self.timeSinceLastUpdate * (yHistory1-yHistory2);
+        modelMatrix =
+        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
+        self.effect.transform.modelviewMatrix = modelMatrix;
     }
     else if (yHistory1 < yHistory2)
     {
+        values[0] = 0.0;
+        values[2] = 0.0;
+        values[1] = 1.0;
         rotation -= self.timeSinceLastUpdate * (yHistory2 - yHistory1);
+        modelMatrix =
+        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
+        self.effect.transform.modelviewMatrix = modelMatrix;
     }
     if (zHistory1 > zHistory2)
     {
+        values[0] = 0.0;
+        values[1] = 0.0;
+        values[2] = 1.0;
         rotation += self.timeSinceLastUpdate * (zHistory1 - zHistory2);
+        modelMatrix =
+        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
+        self.effect.transform.modelviewMatrix = modelMatrix;
     }
     else if (zHistory1 < zHistory2)
     {
+        
+        values[0] = 0.0;
+        values[1] = 0.0;
+        values[2] = 1.0;
         rotation -= self.timeSinceLastUpdate * (zHistory2 - zHistory1);
+        modelMatrix =
+        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
+        self.effect.transform.modelviewMatrix = modelMatrix;
     }
     xHistory2 = xHistory1;
     yHistory2 = yHistory1;
