@@ -371,7 +371,7 @@ GLfloat gCubeVertexData[216] =
     NSString* string = [arr objectAtIndex:0];
    
    
-    if (xHistory1 > xHistory2)        //going up
+    if (xHistory1 > (xHistory2 + 20))        //going up
     {
         values[1] = 0.0;
         values[2] = 0.0;
@@ -381,7 +381,7 @@ GLfloat gCubeVertexData[216] =
         GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
         self.effect.transform.modelviewMatrix = modelMatrix;
     }
-    else if (xHistory1 < xHistory2)   //going down
+    else if ((xHistory1 + 20) < xHistory2)   //going down
     {
         values[1] = 0.0;
         values[2] = 0.0;
@@ -391,7 +391,7 @@ GLfloat gCubeVertexData[216] =
         GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
         self.effect.transform.modelviewMatrix = modelMatrix;
     }
-    if (yHistory1 > yHistory2)
+    if (yHistory1 > (yHistory2 + 20))
     {
         values[0] = 0.0;
         values[2] = 0.0;
@@ -401,7 +401,7 @@ GLfloat gCubeVertexData[216] =
         GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
         self.effect.transform.modelviewMatrix = modelMatrix;
     }
-    else if (yHistory1 < yHistory2)
+    else if ((yHistory1 + 20) < yHistory2)
     {
         values[0] = 0.0;
         values[2] = 0.0;
@@ -411,7 +411,7 @@ GLfloat gCubeVertexData[216] =
         GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
         self.effect.transform.modelviewMatrix = modelMatrix;
     }
-    if (zHistory1 > zHistory2)
+    if (zHistory1 > (zHistory2 + 20))
     {
         values[0] = 0.0;
         values[1] = 0.0;
@@ -421,7 +421,7 @@ GLfloat gCubeVertexData[216] =
         GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
         self.effect.transform.modelviewMatrix = modelMatrix;
     }
-    else if (zHistory1 < zHistory2)
+    else if ((zHistory1 + 20) < zHistory2)
     {
         
         values[0] = 0.0;
