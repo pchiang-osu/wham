@@ -323,40 +323,6 @@ GLfloat gCubeVertexData[216] =
         
     }];
 }
-/*- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    if ([keyPath isEqualToString:@"accelerometerData"]) {
-        // Do something with [WWCentralDeviceManager sharedDeviceManager].ADCData
-     
-        arr = [WWCentralDeviceManager sharedCentralDeviceManager].accelerometerData;
-        _xyzData.text=[NSString stringWithFormat:@"%@", [self toString:(NSArray*)arr]]; //new
-        NSLog(@"%@", arr);
-       
-        NSString* string = [NSString stringWithFormat:@"X=%@", [arr objectAtIndex:0]];
-        NSLog(@"%d,%s", [string intValue],"string");
-        NSString* string2 = [arr objectAtIndex:0];
-        NSString* stringb2 = [arr objectAtIndex:1];
-        NSString* stringc2 = [arr objectAtIndex:2];
-        
-        //load acceleration data
-        accxHistory[1] = [string2 intValue];
-        accyHistory[1] = [stringb2 intValue];
-        acczHistory[1] = [stringc2 intValue];
-        
-        if (countCalibrate < 24){                 //gather initial values to compensate for gravity
-            NSLog(@"Calibrating...");
-            [self calibrate];
-        }
-        //else{                                       //program proper
-            [self position];
-        //}
-        countCalibrate++;
-        
-    }
-}*/
 /*WearWare*/
 
 - (void)viewDidUnload{
