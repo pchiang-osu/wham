@@ -8,7 +8,8 @@
 
 #import <UIkit/UIKit.h>
 #import <GLKit/GLKit.h>
-#import "WWCentralDeviceManager.h"
+//#import "WWCentralDeviceManager.h"                      //old devices
+#import <WWFramework/WWCentralDeviceManager.h>          //new devices
 #import "WWProtocol.h"
 
 @interface RightGLKViewController : GLKViewController

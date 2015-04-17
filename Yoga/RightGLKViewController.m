@@ -202,14 +202,9 @@ GLfloat gCubeVertexData[216] =
     
     /*WearWare*/
     NSLog(@"WWAppDelegate: connected!");
-    [[WWCentralDeviceManager sharedCentralDeviceManager] requestData:WWCommandIdAccelerometer andUpdatePeriod:20];  //controls the device update rate
-    
+    WWCentralDeviceManager * manager = [WWCentralDeviceManager sharedCentralDeviceManager];
+    [manager connect];
 
-    //self.manager;
-    [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self
-                                                          forKeyPath:@"accelerometerData"
-                                                             options:0
-                                                             context:NULL];
     /*WearWare*/
     
     self.context = [[EAGLContext alloc]
@@ -229,11 +224,12 @@ GLfloat gCubeVertexData[216] =
 
 //new
 - (NSString*)toString:(NSArray*)accelerometerData {
-    NSString * accelString = [NSString stringWithFormat:@"X=%@, Y=%@, Z=%@",
+    /*NSString * accelString = [NSString stringWithFormat:@"X=%@, Y=%@, Z=%@",
                               [accelerometerData objectAtIndex:0],
                               [accelerometerData objectAtIndex:1],
                               [accelerometerData objectAtIndex:2]];
-    return accelString;
+    return accelString;*/
+    return @"Hello";
 }//new
 
 
@@ -304,7 +300,30 @@ GLfloat gCubeVertexData[216] =
 /*end for acceleration-to-position*/
 
 /*WearWare*/
-- (void)observeValueForKeyPath:(NSString *)keyPath
+-(void)addObserverForWWDeviceUpdates:usingBlock{            //for new devices
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center addObserverForWWDeviceUpdates:nil usingBlock:^(NSNotification *notification){
+        NSString *notificationName = notification.name;
+        if ([notificationName isEqualToString:WWDeviceDidConnect]){
+            WWDevice *device = notification.object;
+            
+            //Enable data and change the update rate
+            [device enableData:WWCommandIdADCSample];
+            [device changeUpdatePeriod:3];
+        }
+        else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
+            //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
+            WWDeviceData *deviceData = notification.object;
+            //do something with deviceData.data
+        }
+        else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
+            //Do any necessary cleanup
+        }
+        
+    }];
+}
+/*- (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context
@@ -337,7 +356,7 @@ GLfloat gCubeVertexData[216] =
         countCalibrate++;
         
     }
-}
+}*/
 /*WearWare*/
 
 - (void)viewDidUnload{

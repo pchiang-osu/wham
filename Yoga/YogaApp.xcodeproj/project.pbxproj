@@ -27,20 +27,6 @@
 		16BA12381ABA9485000F5832 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BA12371ABA9485000F5832 /* GLKit.framework */; };
 		16BA12411ABB8015000F5832 /* RightGLKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BA123F1ABB8015000F5832 /* RightGLKViewController.m */; };
 		16BA12421ABB8015000F5832 /* RightGLKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16BA12401ABB8015000F5832 /* RightGLKViewController.xib */; };
-		28BD4EBC1AC6C5A7005CCF4F /* WWCentralDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EAD1AC6C5A7005CCF4F /* WWCentralDeviceManager.m */; };
-		28BD4EBD1AC6C5A7005CCF4F /* WWCentralDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EAD1AC6C5A7005CCF4F /* WWCentralDeviceManager.m */; };
-		28BD4EBE1AC6C5A7005CCF4F /* WWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EAF1AC6C5A7005CCF4F /* WWDevice.m */; };
-		28BD4EBF1AC6C5A7005CCF4F /* WWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EAF1AC6C5A7005CCF4F /* WWDevice.m */; };
-		28BD4EC01AC6C5A7005CCF4F /* WWDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB21AC6C5A7005CCF4F /* WWDeviceManager.m */; };
-		28BD4EC11AC6C5A7005CCF4F /* WWDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB21AC6C5A7005CCF4F /* WWDeviceManager.m */; };
-		28BD4EC21AC6C5A7005CCF4F /* WWDeviceManagerSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB51AC6C5A7005CCF4F /* WWDeviceManagerSim.m */; };
-		28BD4EC31AC6C5A7005CCF4F /* WWDeviceManagerSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB51AC6C5A7005CCF4F /* WWDeviceManagerSim.m */; };
-		28BD4EC41AC6C5A7005CCF4F /* WWDeviceSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB71AC6C5A7005CCF4F /* WWDeviceSim.m */; };
-		28BD4EC51AC6C5A7005CCF4F /* WWDeviceSim.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB71AC6C5A7005CCF4F /* WWDeviceSim.m */; };
-		28BD4EC61AC6C5A7005CCF4F /* WWKnownDeviceScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB91AC6C5A7005CCF4F /* WWKnownDeviceScanner.m */; };
-		28BD4EC71AC6C5A7005CCF4F /* WWKnownDeviceScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EB91AC6C5A7005CCF4F /* WWKnownDeviceScanner.m */; };
-		28BD4EC81AC6C5A7005CCF4F /* WWProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EBB1AC6C5A7005CCF4F /* WWProtocol.m */; };
-		28BD4EC91AC6C5A7005CCF4F /* WWProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BD4EBB1AC6C5A7005CCF4F /* WWProtocol.m */; };
 		28BD70351ADF326D009B2E86 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 28BD70341ADF326D009B2E86 /* Podfile */; };
 		6ECA2A5E7C9C72FE23E46810 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB31BB64F375AA9ED9349DCB /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -91,22 +77,6 @@
 		16BA123E1ABB8015000F5832 /* RightGLKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightGLKViewController.h; path = ../RightGLKViewController.h; sourceTree = "<group>"; };
 		16BA123F1ABB8015000F5832 /* RightGLKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightGLKViewController.m; path = ../RightGLKViewController.m; sourceTree = "<group>"; };
 		16BA12401ABB8015000F5832 /* RightGLKViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RightGLKViewController.xib; path = ../RightGLKViewController.xib; sourceTree = "<group>"; };
-		28BD4EAC1AC6C5A7005CCF4F /* WWCentralDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWCentralDeviceManager.h; sourceTree = "<group>"; };
-		28BD4EAD1AC6C5A7005CCF4F /* WWCentralDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWCentralDeviceManager.m; sourceTree = "<group>"; };
-		28BD4EAE1AC6C5A7005CCF4F /* WWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDevice.h; sourceTree = "<group>"; };
-		28BD4EAF1AC6C5A7005CCF4F /* WWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDevice.m; sourceTree = "<group>"; };
-		28BD4EB01AC6C5A7005CCF4F /* WWDeviceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceDelegate.h; sourceTree = "<group>"; };
-		28BD4EB11AC6C5A7005CCF4F /* WWDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceManager.h; sourceTree = "<group>"; };
-		28BD4EB21AC6C5A7005CCF4F /* WWDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDeviceManager.m; sourceTree = "<group>"; };
-		28BD4EB31AC6C5A7005CCF4F /* WWDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceManagerDelegate.h; sourceTree = "<group>"; };
-		28BD4EB41AC6C5A7005CCF4F /* WWDeviceManagerSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceManagerSim.h; sourceTree = "<group>"; };
-		28BD4EB51AC6C5A7005CCF4F /* WWDeviceManagerSim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDeviceManagerSim.m; sourceTree = "<group>"; };
-		28BD4EB61AC6C5A7005CCF4F /* WWDeviceSim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWDeviceSim.h; sourceTree = "<group>"; };
-		28BD4EB71AC6C5A7005CCF4F /* WWDeviceSim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWDeviceSim.m; sourceTree = "<group>"; };
-		28BD4EB81AC6C5A7005CCF4F /* WWKnownDeviceScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWKnownDeviceScanner.h; sourceTree = "<group>"; };
-		28BD4EB91AC6C5A7005CCF4F /* WWKnownDeviceScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWKnownDeviceScanner.m; sourceTree = "<group>"; };
-		28BD4EBA1AC6C5A7005CCF4F /* WWProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWProtocol.h; sourceTree = "<group>"; };
-		28BD4EBB1AC6C5A7005CCF4F /* WWProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWProtocol.m; sourceTree = "<group>"; };
 		28BD70341ADF326D009B2E86 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		CB31BB64F375AA9ED9349DCB /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5A3074321ACF26C9804ADD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +131,6 @@
 		165796CA1A902760004FB46C /* YogaApp */ = {
 			isa = PBXGroup;
 			children = (
-				28BD4EAB1AC6C5A7005CCF4F /* WearWareFramework */,
 				165796CF1A902760004FB46C /* AppDelegate.h */,
 				165796D01A902760004FB46C /* AppDelegate.m */,
 				165796D21A902760004FB46C /* HomeViewController.h */,
@@ -216,30 +185,6 @@
 				165796E91A902760004FB46C /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		28BD4EAB1AC6C5A7005CCF4F /* WearWareFramework */ = {
-			isa = PBXGroup;
-			children = (
-				28BD4EAC1AC6C5A7005CCF4F /* WWCentralDeviceManager.h */,
-				28BD4EAD1AC6C5A7005CCF4F /* WWCentralDeviceManager.m */,
-				28BD4EAE1AC6C5A7005CCF4F /* WWDevice.h */,
-				28BD4EAF1AC6C5A7005CCF4F /* WWDevice.m */,
-				28BD4EB01AC6C5A7005CCF4F /* WWDeviceDelegate.h */,
-				28BD4EB11AC6C5A7005CCF4F /* WWDeviceManager.h */,
-				28BD4EB21AC6C5A7005CCF4F /* WWDeviceManager.m */,
-				28BD4EB31AC6C5A7005CCF4F /* WWDeviceManagerDelegate.h */,
-				28BD4EB41AC6C5A7005CCF4F /* WWDeviceManagerSim.h */,
-				28BD4EB51AC6C5A7005CCF4F /* WWDeviceManagerSim.m */,
-				28BD4EB61AC6C5A7005CCF4F /* WWDeviceSim.h */,
-				28BD4EB71AC6C5A7005CCF4F /* WWDeviceSim.m */,
-				28BD4EB81AC6C5A7005CCF4F /* WWKnownDeviceScanner.h */,
-				28BD4EB91AC6C5A7005CCF4F /* WWKnownDeviceScanner.m */,
-				28BD4EBA1AC6C5A7005CCF4F /* WWProtocol.h */,
-				28BD4EBB1AC6C5A7005CCF4F /* WWProtocol.m */,
-			);
-			name = WearWareFramework;
-			path = ../../../WWStarterProject/Pods/WWFramework/WearWareFramework;
 			sourceTree = "<group>";
 		};
 		B0D2FC99C948E9B5937FBABB /* Pods */ = {
@@ -413,24 +358,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28BD4EC21AC6C5A7005CCF4F /* WWDeviceManagerSim.m in Sources */,
 				165796F61A902C98004FB46C /* homeViewDelegate.m in Sources */,
 				165796D71A902760004FB46C /* SecondViewController.m in Sources */,
-				28BD4EC61AC6C5A7005CCF4F /* WWKnownDeviceScanner.m in Sources */,
 				16BA11E91A9A9DC7000F5832 /* BackedViewController.m in Sources */,
-				28BD4EC81AC6C5A7005CCF4F /* WWProtocol.m in Sources */,
 				165796D11A902760004FB46C /* AppDelegate.m in Sources */,
 				16BA11E31A995292000F5832 /* FrontViewController.m in Sources */,
-				28BD4EBC1AC6C5A7005CCF4F /* WWCentralDeviceManager.m in Sources */,
 				165796D41A902760004FB46C /* HomeViewController.m in Sources */,
-				28BD4EC01AC6C5A7005CCF4F /* WWDeviceManager.m in Sources */,
 				167571A31A97D5AA003DDB41 /* LeftViewController.m in Sources */,
 				165796CE1A902760004FB46C /* main.m in Sources */,
-				28BD4EBE1AC6C5A7005CCF4F /* WWDevice.m in Sources */,
 				16BA12411ABB8015000F5832 /* RightGLKViewController.m in Sources */,
 				167571A61A97D7AE003DDB41 /* StoryboardView.m in Sources */,
 				161FD0D61ABD5A68008BAC0D /* LeftGLKViewController.m in Sources */,
-				28BD4EC41AC6C5A7005CCF4F /* WWDeviceSim.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,14 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28BD4EC31AC6C5A7005CCF4F /* WWDeviceManagerSim.m in Sources */,
 				165796EB1A902760004FB46C /* YogaAppTests.m in Sources */,
-				28BD4EC11AC6C5A7005CCF4F /* WWDeviceManager.m in Sources */,
-				28BD4EBF1AC6C5A7005CCF4F /* WWDevice.m in Sources */,
-				28BD4EBD1AC6C5A7005CCF4F /* WWCentralDeviceManager.m in Sources */,
-				28BD4EC51AC6C5A7005CCF4F /* WWDeviceSim.m in Sources */,
-				28BD4EC71AC6C5A7005CCF4F /* WWKnownDeviceScanner.m in Sources */,
-				28BD4EC91AC6C5A7005CCF4F /* WWProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
