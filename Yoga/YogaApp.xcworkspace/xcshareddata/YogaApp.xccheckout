@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4FA90CC1-4DDD-4526-B205-CBDD11974B74</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YogaApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3539ECD36E3ADA1DD9605700E49117F6FDF5B5D7</key>
+		<string>https://github.com/rutgerfarry/WWStarterProject.git</string>
+		<key>456F193397DE5F31B603D403686254B6DBE83D3D</key>
+		<string>https://github.com/pchiang-osu/wham.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Yoga/YogaApp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3539ECD36E3ADA1DD9605700E49117F6FDF5B5D7</key>
+		<string>../../../WWStarterProject</string>
+		<key>456F193397DE5F31B603D403686254B6DBE83D3D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pchiang-osu/wham.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>456F193397DE5F31B603D403686254B6DBE83D3D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>456F193397DE5F31B603D403686254B6DBE83D3D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>wham</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3539ECD36E3ADA1DD9605700E49117F6FDF5B5D7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WWStarterProject</string>
+		</dict>
+	</array>
+</dict>
+</plist>

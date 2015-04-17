@@ -29,12 +29,31 @@
     
     NSNumber *n;
     NSArray *arr;
-    int xHistory1;    //stores immediate possitions to see if device is going up or down
-    int xHistory2;
-    int yHistory1;
-    int yHistory2;
-    int zHistory1;
-    int zHistory2;
+    int accxHistory[2];    //stores acceleration data
+    int accyHistory[2];
+    int acczHistory[2];
+    
+    int velxHistory[2];    //stores volocity data
+    int velyHistory[2];
+    int velzHistory[2];
+    
+    int posxHistory[2];    //stores position data
+    int posyHistory[2];
+    int poszHistory[2];
+    int posxPrev;
+    int posyPrev;
+    int poszPrev;
+    
+    //for gravity compensation
+    unsigned char sample_X;
+    unsigned char sample_Y;
+    unsigned char sample_Z;
+    unsigned char sensor_Data[8];
+    unsigned char countx,county ;
+    unsigned char direction;
+    unsigned long sstatex,sstatey,sstatez;
+    unsigned int countCalibrate;
+
     float values[3];
     int count;
     
@@ -137,31 +156,38 @@ GLfloat gCubeVertexData[216] =
 }
 
 
-/*- (void) manager:(WWDeviceManager *)manager onDeviceConnected: (WWDevice *)device { //new
-    NSLog(@"WWAppDelegate: connected!");
-    
-    connectedDevice = device;
-    connectedDevice.delegate = self; // Very important: Set WWDevice's delegate to this ViewController.
-    
-    // Request updates from the WearWare device every 1 second:
-    [device changeUpdatePeriod:1];
-    
-    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
-    [device enableData:[NSArray arrayWithObjects:[NSValue valueWithWWCommandId:WWCommandIdTemperature],
-                        [NSValue valueWithWWCommandId:WWCommandIdBattery],
-                        [NSValue valueWithWWCommandId:WWCommandIdPedometer],
-                        [NSValue valueWithWWCommandId:WWCommandIdPedometerDistance],
-                        [NSValue valueWithWWCommandId:WWCommandIdAccelerometer],
-                        nil]];
-}*/
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     count = 0;
+    countCalibrate = 0;
     values[0] = 1.0;
     values[1] = 1.0;
     values[2] = 1.0;
+    
+    //load acceleration data
+    accxHistory[1] = 0;
+    accyHistory[1] = 0;
+    acczHistory[1] = 0;
+    accxHistory[0] = 0;
+    accyHistory[0] = 0;
+    acczHistory[0] = 0;
+    
+    //load velocity data
+    velxHistory[0] = 0;
+    velyHistory[0] = 0;
+    velzHistory[0] = 0;
+    velxHistory[1] = 0;
+    velyHistory[1] = 0;
+    velzHistory[1] = 0;
+    
+    //load position data
+    posxHistory[0] = 0;
+    posyHistory[0] = 0;
+    poszHistory[0] = 0;
+    posxHistory[1] = 0;
+    posyHistory[1] = 0;
+    poszHistory[1] = 0;
     
     /*for timer*/
     timerOn = false;
@@ -176,22 +202,8 @@ GLfloat gCubeVertexData[216] =
     
     /*WearWare*/
     NSLog(@"WWAppDelegate: connected!");
+    [[WWCentralDeviceManager sharedCentralDeviceManager] requestData:WWCommandIdAccelerometer andUpdatePeriod:20];  //controls the device update rate
     
-    //new
-    /*connectedDevice = [WWCentralDeviceManager sharedCentralDeviceManager].device;
-    //connectedDevice.delegate = self; // Very important: Set WWDevice's delegate to this ViewController.
-    
-    // Request updates from the WearWare device every 1 second:
-    [[WWCentralDeviceManager sharedCentralDeviceManager].device changeUpdatePeriod:1];
-    
-    // Enable Temperature, Battery Voltage, and Pedometer data on the WearWare device:
-    [[WWCentralDeviceManager sharedCentralDeviceManager].device enableData:[NSArray arrayWithObjects:[NSValue valueWithWWCommandId:WWCommandIdTemperature],
-                        [NSValue valueWithWWCommandId:WWCommandIdBattery],
-                        [NSValue valueWithWWCommandId:WWCommandIdPedometer],
-                        [NSValue valueWithWWCommandId:WWCommandIdPedometerDistance],
-                        [NSValue valueWithWWCommandId:WWCommandIdAccelerometer],
-                        nil]];
-    //new*/
 
     //self.manager;
     [[WWCentralDeviceManager sharedCentralDeviceManager] addObserver:self
@@ -224,6 +236,73 @@ GLfloat gCubeVertexData[216] =
     return accelString;
 }//new
 
+
+/*for acceleration-to-position*/
+
+-(void) calibrate{                      //obtain the value of the refrence threshold. Used for no-movement condition
+    sample_X = accxHistory[1];
+    sample_Y = accyHistory[1];
+    sample_Z = acczHistory[1];
+    
+    sstatex += sample_X;
+    sstatey += sample_Y;
+    sstatez += sample_Z;
+    
+    if (countCalibrate == 24){
+        sstatex = sstatex >> 10;    //division by 1024
+        sstatey = sstatey >> 10;
+    }
+}
+
+-(void)position {
+    
+    unsigned char count2;
+    count2 = 0;
+    
+    do{
+        accxHistory[1] = accxHistory[1] + sample_X;     //filter routine for noise attenuation
+        accyHistory[1] = accyHistory[1] + sample_Y;     //64 samples are averaged. The resulting average represents the acceleration of an instant
+        
+        count2++;
+    }while (count2 != 0x40);    //64 sums of the acceleration sample
+    
+    accxHistory[1] = accxHistory[1] >> 6;       //division by 64
+    accyHistory[1] = accyHistory[1] >> 6;
+    
+    if ((accxHistory[1] <= 3) && (accxHistory[1] >= -3)){       //discrimination window applied to the x axis acceleration
+        accxHistory[1] = 0;
+    }
+    
+    if ((accyHistory[1] <= 3) && (accyHistory[1] >= -3)){       //discrimination window applied to the y axis acceleration
+        accyHistory[1] = 0;
+    }
+    
+    /*integration*/
+    //first x integration
+    velxHistory[1] = velxHistory[0] + accxHistory[0] + ((accxHistory[1] - accxHistory[0]) >> 1);
+    
+    //second x integration
+    posxHistory[1] = posxHistory[0] + velxHistory[0] + ((velxHistory[1] - velxHistory[0]) >> 1);
+    /*end integration*/
+    
+    //set previous x position for position comparison
+    posxPrev = posxHistory[0];
+    
+    /*resetting of values*/
+    //update x acceleration to current value for future integration
+    accxHistory[0] = accxHistory[1];
+    //update x velocity to current value for future integration
+    velxHistory[0] = velxHistory[1];
+    //make required adjustment to make x position available data
+    posxHistory[1] = posxHistory[1] << 18;
+    
+    //update x position to current value for future integration
+    posxHistory[0] = posxHistory[1];
+    /*end resetting of values*/
+}
+
+/*end for acceleration-to-position*/
+
 /*WearWare*/
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
@@ -232,17 +311,30 @@ GLfloat gCubeVertexData[216] =
 {
     if ([keyPath isEqualToString:@"accelerometerData"]) {
         // Do something with [WWCentralDeviceManager sharedDeviceManager].ADCData
+     
         arr = [WWCentralDeviceManager sharedCentralDeviceManager].accelerometerData;
         _xyzData.text=[NSString stringWithFormat:@"%@", [self toString:(NSArray*)arr]]; //new
         NSLog(@"%@", arr);
+       
         NSString* string = [NSString stringWithFormat:@"X=%@", [arr objectAtIndex:0]];
         NSLog(@"%d,%s", [string intValue],"string");
         NSString* string2 = [arr objectAtIndex:0];
         NSString* stringb2 = [arr objectAtIndex:1];
         NSString* stringc2 = [arr objectAtIndex:2];
-        xHistory1 = [string2 intValue];
-        yHistory1 = [stringb2 intValue];
-        zHistory1 = [stringc2 intValue];
+        
+        //load acceleration data
+        accxHistory[1] = [string2 intValue];
+        accyHistory[1] = [stringb2 intValue];
+        acczHistory[1] = [stringc2 intValue];
+        
+        if (countCalibrate < 24){                 //gather initial values to compensate for gravity
+            NSLog(@"Calibrating...");
+            [self calibrate];
+        }
+        //else{                                       //program proper
+            [self position];
+        //}
+        countCalibrate++;
         
     }
 }
@@ -349,7 +441,6 @@ GLfloat gCubeVertexData[216] =
 /*end for timer*/
 
 
-
 #pragma mark - GLKViewControllerDelegate
 
 - (void)update {
@@ -364,77 +455,24 @@ GLfloat gCubeVertexData[216] =
     
     GLKMatrix4 modelMatrix =
     GLKMatrix4MakeTranslation(0.0f,-1.0f,-10.0f);
-    /*modelMatrix =
+    modelMatrix =
     GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-    self.effect.transform.modelviewMatrix = modelMatrix;*/
+    self.effect.transform.modelviewMatrix = modelMatrix;
     
     NSString* string = [arr objectAtIndex:0];
    
-   
-    if (xHistory1 > (xHistory2 + 20))        //going up
-    {
-        values[1] = 0.0;
-        values[2] = 0.0;
-        values[0] = 1.0;
-        rotation += self.timeSinceLastUpdate * (xHistory1-xHistory2);
-        modelMatrix =
-        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-        self.effect.transform.modelviewMatrix = modelMatrix;
+    
+    /*new code*/
+    NSLog(@"%s%d", "position history", posxHistory[0]);
+    NSLog(@"%s%d", "prev position", posxPrev);
+    
+    if (posxHistory[0] > posxPrev){                     //going up
+        rotation += self.timeSinceLastUpdate * 1;
     }
-    else if ((xHistory1 + 20) < xHistory2)   //going down
-    {
-        values[1] = 0.0;
-        values[2] = 0.0;
-        values[0] = 1.0;
-        rotation -= self.timeSinceLastUpdate * (xHistory2 - xHistory1);
-        modelMatrix =
-        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-        self.effect.transform.modelviewMatrix = modelMatrix;
+    else if (posxHistory[0] < posxPrev){                //going down
+        rotation -= self.timeSinceLastUpdate * 1;
     }
-    if (yHistory1 > (yHistory2 + 20))
-    {
-        values[0] = 0.0;
-        values[2] = 0.0;
-        values[1] = 1.0;
-        rotation += self.timeSinceLastUpdate * (yHistory1-yHistory2);
-        modelMatrix =
-        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-        self.effect.transform.modelviewMatrix = modelMatrix;
-    }
-    else if ((yHistory1 + 20) < yHistory2)
-    {
-        values[0] = 0.0;
-        values[2] = 0.0;
-        values[1] = 1.0;
-        rotation -= self.timeSinceLastUpdate * (yHistory2 - yHistory1);
-        modelMatrix =
-        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-        self.effect.transform.modelviewMatrix = modelMatrix;
-    }
-    if (zHistory1 > (zHistory2 + 20))
-    {
-        values[0] = 0.0;
-        values[1] = 0.0;
-        values[2] = 1.0;
-        rotation += self.timeSinceLastUpdate * (zHistory1 - zHistory2);
-        modelMatrix =
-        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-        self.effect.transform.modelviewMatrix = modelMatrix;
-    }
-    else if ((zHistory1 + 20) < zHistory2)
-    {
-        
-        values[0] = 0.0;
-        values[1] = 0.0;
-        values[2] = 1.0;
-        rotation -= self.timeSinceLastUpdate * (zHistory2 - zHistory1);
-        modelMatrix =
-        GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-        self.effect.transform.modelviewMatrix = modelMatrix;
-    }
-    xHistory2 = xHistory1;
-    yHistory2 = yHistory1;
-    zHistory2 = zHistory1;
+    /*end new code*/
 }
 
 

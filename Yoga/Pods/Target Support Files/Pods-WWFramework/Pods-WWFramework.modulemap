@@ -1,0 +1,6 @@
+framework module WWFramework {
+  umbrella header "Pods-WWFramework-umbrella.h"
+
+  export *
+  module * { export * }
+}

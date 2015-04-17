@@ -1,0 +1,10 @@
+PODS:
+  - WWFramework (0.2.5)
+
+DEPENDENCIES:
+  - WWFramework
+
+SPEC CHECKSUMS:
+  WWFramework: df3ffa34b57c2e67f6503872035bc248a7d6cbfa
+
+COCOAPODS: 0.36.0

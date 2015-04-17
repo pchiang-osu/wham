@@ -1,0 +1,1 @@
+../../../WWFramework/Pod/Classes/WWDevice.h

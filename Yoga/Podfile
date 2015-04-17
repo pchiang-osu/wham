@@ -1,0 +1,3 @@
+source 'https://github.com/rutgerfarry/WWCocoapods-Repo.git'
+pod 'WWFramework'
+use_frameworks!
