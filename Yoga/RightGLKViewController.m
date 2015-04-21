@@ -43,6 +43,7 @@
     int posxPrev;
     int posyPrev;
     int poszPrev;
+
     
     //for gravity compensation
     unsigned char sample_X;
@@ -201,8 +202,8 @@ GLfloat gCubeVertexData[216] =
     /*end for timer*/
     
     /*WearWare*/
-    NSLog(@"WWAppDelegate: connected!");
-    WWCentralDeviceManager * manager = [WWCentralDeviceManager sharedCentralDeviceManager];
+    //NSLog(@"WWAppDelegate: connected!");
+    WWCentralDeviceManager *manager = [WWCentralDeviceManager sharedCentralDeviceManager];
     [manager connect];
 
     /*WearWare*/
@@ -219,6 +220,35 @@ GLfloat gCubeVertexData[216] =
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
     [self setUpGL];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    
+    
+    [center addObserverForWWDeviceUpdates:nil usingBlock:^(NSNotification *notification){   //make all objects match observer
+        NSString *notificationName = notification.name;                     //used to discriminate between notifications
+        if ([notificationName isEqualToString:WWDeviceDidConnect]){
+            WWDevice *device = notification.object;
+            
+            //Enable data and change the update rate
+            [device enableData:WWCommandIdADCSample];
+            [device changeUpdatePeriod:3];
+            NSLog(@"hello");
+        }
+        else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
+            //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
+            WWDeviceData *deviceData = notification.object;
+            NSLog(@"%@", deviceData.data);
+            //do something with deviceData.data
+            //figure out how to use deviceData.data to report accelerometer data
+        }
+        else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
+            //Do any necessary cleanup
+            //may have to remove observer//
+        }
+        
+    }];
+
 
 }
 
@@ -298,32 +328,6 @@ GLfloat gCubeVertexData[216] =
 }
 
 /*end for acceleration-to-position*/
-
-/*WearWare*/
--(void)addObserverForWWDeviceUpdates:usingBlock{            //for new devices
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    
-    [center addObserverForWWDeviceUpdates:nil usingBlock:^(NSNotification *notification){
-        NSString *notificationName = notification.name;
-        if ([notificationName isEqualToString:WWDeviceDidConnect]){
-            WWDevice *device = notification.object;
-            
-            //Enable data and change the update rate
-            [device enableData:WWCommandIdADCSample];
-            [device changeUpdatePeriod:3];
-        }
-        else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
-            //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
-            WWDeviceData *deviceData = notification.object;
-            //do something with deviceData.data
-        }
-        else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
-            //Do any necessary cleanup
-        }
-        
-    }];
-}
-/*WearWare*/
 
 - (void)viewDidUnload{
     
@@ -448,8 +452,8 @@ GLfloat gCubeVertexData[216] =
    
     
     /*new code*/
-    NSLog(@"%s%d", "position history", posxHistory[0]);
-    NSLog(@"%s%d", "prev position", posxPrev);
+    //NSLog(@"%s%d", "position history", posxHistory[0]);
+    //NSLog(@"%s%d", "prev position", posxPrev);
     
     if (posxHistory[0] > posxPrev){                     //going up
         rotation += self.timeSinceLastUpdate * 1;
