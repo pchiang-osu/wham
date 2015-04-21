@@ -45,6 +45,7 @@
     int poszPrev;
 
     
+    #pragma DATA_SEG MY_ZEROPAGE
     //for gravity compensation
     unsigned char sample_X;
     unsigned char sample_Y;
@@ -221,6 +222,7 @@ GLfloat gCubeVertexData[216] =
     
     [self setUpGL];
     
+    //WWFrameWork//
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
     
@@ -231,16 +233,28 @@ GLfloat gCubeVertexData[216] =
             WWDevice *device = notification.object;
             
             //Enable data and change the update rate
-            [device enableData:WWCommandIdADCSample];
-            [device changeUpdatePeriod:3];
-            NSLog(@"hello");
+            [device enableData:WWCommandIdAccelerometer];       //get device accelerometer data
+            [device changeUpdatePeriod:1];
         }
         else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
             //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
             WWDeviceData *deviceData = notification.object;
             NSLog(@"%@", deviceData.data);
             //do something with deviceData.data
-            //figure out how to use deviceData.data to report accelerometer data
+            accxHistory[0] = (int)deviceData.data[0];       //accelerometer indices
+            accyHistory[0] = (int)deviceData.data[1];
+            acczHistory[0] = (int)deviceData.data[2];
+            if (count < 1024){                  //must calibrate to account for gravitational pull
+                NSLog(@"Calibrating...");
+                [self calibrate];
+            }
+            else{
+                [self position];
+                //[self data_transfer];
+            }
+            count++;
+            
+            
         }
         else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
             //Do any necessary cleanup
@@ -248,19 +262,10 @@ GLfloat gCubeVertexData[216] =
         }
         
     }];
+    //end WWFrameWork//
 
 
 }
-
-//new
-- (NSString*)toString:(NSArray*)accelerometerData {
-    /*NSString * accelString = [NSString stringWithFormat:@"X=%@, Y=%@, Z=%@",
-                              [accelerometerData objectAtIndex:0],
-                              [accelerometerData objectAtIndex:1],
-                              [accelerometerData objectAtIndex:2]];
-    return accelString;*/
-    return @"Hello";
-}//new
 
 
 /*for acceleration-to-position*/
@@ -274,10 +279,42 @@ GLfloat gCubeVertexData[216] =
     sstatey += sample_Y;
     sstatez += sample_Z;
     
-    if (countCalibrate == 24){
+    if (countCalibrate == 1024){
         sstatex = sstatex >> 10;    //division by 1024
         sstatey = sstatey >> 10;
     }
+}
+
+-(void) data_transfer{                  //obtain magnitude and direction in seperate variables
+    /*signed long positionXbkp;
+    signed long positionYYbkp;
+    unsigned int delay;
+    unsigned char posx_seg[4], posy_seg[4];
+    
+    dposy_seg[0] = 0;
+    posy_seg[1] = 0;
+    posy_seg[2] = 0;
+    posy_seg[3] = 0;
+    positionYYbkp = 0;
+    delay = 0;
+    
+    if (posxHistory[1] >= 0){               //This line compares the sign of the x direction data
+        direction = (direction | 0x10);     //if positive the most significant byte is set to 1, else it is set to 8
+        posx_seg[0] = posxHistory[1] & 0x000000FF;
+        posx_seg[1] = (posxHistory[1]>>8) & 0x000000FF;   //the data are also managed in the subsequent lines in order to be sent.
+        posx_seg[2] = (posxHistory[1]>>16) & 0x000000FF;    //The 32 bit variable must be split into 4 different 8 bit varibles
+        //in order to be sent via the 8 bit SCI frame
+        posx_seg[3] = (posxHistory[1]>>24) & 0x000000FF;
+    }
+    else{
+        direction = (direction | 0x80);
+        positionXbkp = posxHistory[1] - 1;
+        positionXbkp = positionXbkp^0xFFFFFFFF;
+        posx_seg[0] = positionXbkp & 0x000000FF;
+        posx_seg[1] = (positionXbkp>>8) & 0x000000FF;
+        posx_seg[2] = (positionXbkp>>16) & 0x000000FF;
+        posx_seg[3] = (positionXbkp>>24) & 0x000000FF;
+    }*/
 }
 
 -(void)position {
@@ -434,7 +471,55 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update {
     
-    count++;
+    //obtain magnitude and direction in seperate variables
+    signed long positionXbkp;
+    signed long positionYYbkp;
+    unsigned int delay;
+    unsigned char posx_seg[4], posy_seg[4];
+    
+    posy_seg[0] = 0;
+    posy_seg[1] = 0;
+    posy_seg[2] = 0;
+    posy_seg[3] = 0;
+    positionYYbkp = 0;
+    delay = 0;
+    
+    if (posxHistory[1] >= 0){               //This line compares the sign of the x direction data
+        rotation += self.timeSinceLastUpdate * 1;   //erase when finished
+        direction = (direction | 0x10);     //if positive the most significant byte is set to 1, else it is set to 8
+        posx_seg[0] = posxHistory[1] & 0x000000FF;
+        posx_seg[1] = (posxHistory[1]>>8) & 0x000000FF;   //the data are also managed in the subsequent lines in order to be sent.
+        posx_seg[2] = (posxHistory[1]>>16) & 0x000000FF;    //The 32 bit variable must be split into 4 different 8 bit varibles
+        //in order to be sent via the 8 bit SCI frame
+        posx_seg[3] = (posxHistory[1]>>24) & 0x000000FF;
+    }
+    else{
+        rotation -= self.timeSinceLastUpdate * 1;
+        direction = (direction | 0x80);
+        positionXbkp = posxHistory[1] - 1;      //erase when finished
+        positionXbkp = positionXbkp^0xFFFFFFFF;
+        posx_seg[0] = positionXbkp & 0x000000FF;
+        posx_seg[1] = (positionXbkp>>8) & 0x000000FF;
+        posx_seg[2] = (positionXbkp>>16) & 0x000000FF;
+        posx_seg[3] = (positionXbkp>>24) & 0x000000FF;
+    }
+    
+    sensor_Data[0] = 0x03;
+    sensor_Data[1] = direction;
+    sensor_Data[2] = posx_seg[3];
+    sensor_Data[3] = posx_seg[3]; //will be posy_seg[3]
+    sensor_Data[4] = 0x01;
+    sensor_Data[5] = 0x01;
+    sensor_Data[6] = ' ';
+    
+    if (count > 1024){
+        NSLog(@"Direction:""%c", direction);
+        NSLog(@"snesor_Data:""%s", sensor_Data);
+    }
+    
+    //end obtain magnitude and direction in seperate variables
+    
+    //count++;
     
     float aspect = fabsf(self.view.bounds.size.width /
                          self.view.bounds.size.height);
@@ -447,18 +532,16 @@ GLfloat gCubeVertexData[216] =
     modelMatrix =
     GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
     self.effect.transform.modelviewMatrix = modelMatrix;
-    
-    NSString* string = [arr objectAtIndex:0];
    
     
     /*new code*/
     //NSLog(@"%s%d", "position history", posxHistory[0]);
     //NSLog(@"%s%d", "prev position", posxPrev);
     
-    if (posxHistory[0] > posxPrev){                     //going up
+    if (direction == (int) 1){                     //going up
         rotation += self.timeSinceLastUpdate * 1;
     }
-    else if (posxHistory[0] < posxPrev){                //going down
+    else if (direction == (int) 8){                //going down
         rotation -= self.timeSinceLastUpdate * 1;
     }
     /*end new code*/
