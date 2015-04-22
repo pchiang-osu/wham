@@ -162,6 +162,7 @@ GLfloat gCubeVertexData[216] =
     [super viewDidLoad];
     
     count = 0;
+    direction = 0;
     countCalibrate = 0;
     values[0] = 1.0;
     values[1] = 1.0;
@@ -286,17 +287,16 @@ GLfloat gCubeVertexData[216] =
 }
 
 -(void) data_transfer{                  //obtain magnitude and direction in seperate variables
-    /*signed long positionXbkp;
+    signed long positionXbkp;
     signed long positionYYbkp;
     unsigned int delay;
     unsigned char posx_seg[4], posy_seg[4];
     
-    dposy_seg[0] = 0;
+    posy_seg[0] = 0;
     posy_seg[1] = 0;
     posy_seg[2] = 0;
     posy_seg[3] = 0;
     positionYYbkp = 0;
-    delay = 0;
     
     if (posxHistory[1] >= 0){               //This line compares the sign of the x direction data
         direction = (direction | 0x10);     //if positive the most significant byte is set to 1, else it is set to 8
@@ -308,13 +308,28 @@ GLfloat gCubeVertexData[216] =
     }
     else{
         direction = (direction | 0x80);
-        positionXbkp = posxHistory[1] - 1;
+        positionXbkp = posxHistory[1] - 1;      //erase when finished
         positionXbkp = positionXbkp^0xFFFFFFFF;
         posx_seg[0] = positionXbkp & 0x000000FF;
         posx_seg[1] = (positionXbkp>>8) & 0x000000FF;
         posx_seg[2] = (positionXbkp>>16) & 0x000000FF;
         posx_seg[3] = (positionXbkp>>24) & 0x000000FF;
-    }*/
+    }
+    
+    delay = 0x0100;
+    
+    sensor_Data[0] = 0x03;
+    sensor_Data[1] = direction;
+    sensor_Data[2] = posx_seg[3];
+    sensor_Data[3] = posx_seg[3]; //will be posy_seg[3]
+    sensor_Data[4] = 0x01;
+    sensor_Data[5] = 0x01;
+    sensor_Data[6] = '\n';
+    
+    while (--delay);
+    
+    NSLog(@"Direction:""%c", direction);
+    NSLog(@"sensor_Data:""%s", sensor_Data);
 }
 
 -(void)position {
@@ -359,9 +374,15 @@ GLfloat gCubeVertexData[216] =
     //make required adjustment to make x position available data
     posxHistory[1] = posxHistory[1] << 18;
     
+    [self data_transfer];
+    
+    posxHistory[1] = posxHistory[1] >> 18;      //once the variables are set, they must return to their original state
+    
     //update x position to current value for future integration
     posxHistory[0] = posxHistory[1];
     /*end resetting of values*/
+    
+    direction = 0;
 }
 
 /*end for acceleration-to-position*/
@@ -472,7 +493,7 @@ GLfloat gCubeVertexData[216] =
 - (void)update {
     
     //obtain magnitude and direction in seperate variables
-    signed long positionXbkp;
+    /*signed long positionXbkp;
     signed long positionYYbkp;
     unsigned int delay;
     unsigned char posx_seg[4], posy_seg[4];
@@ -510,12 +531,12 @@ GLfloat gCubeVertexData[216] =
     sensor_Data[3] = posx_seg[3]; //will be posy_seg[3]
     sensor_Data[4] = 0x01;
     sensor_Data[5] = 0x01;
-    sensor_Data[6] = ' ';
+    sensor_Data[6] = '\n';
     
     if (count > 1024){
         NSLog(@"Direction:""%c", direction);
-        NSLog(@"snesor_Data:""%s", sensor_Data);
-    }
+        NSLog(@"sensor_Data:""%s", sensor_Data);
+    }*/
     
     //end obtain magnitude and direction in seperate variables
     
