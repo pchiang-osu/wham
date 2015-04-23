@@ -251,6 +251,7 @@ GLfloat gCubeVertexData[216] =
             }
             else{
                 [self position];
+                [self data_reintegration];
                 //[self data_transfer];
             }
             count++;
@@ -280,7 +281,7 @@ GLfloat gCubeVertexData[216] =
     sstatey += sample_Y;
     sstatez += sample_Z;
     
-    if (countCalibrate == 1024){
+    if (count == 1024){
         sstatex = sstatex >> 10;    //division by 1024
         sstatey = sstatey >> 10;
     }
@@ -292,11 +293,6 @@ GLfloat gCubeVertexData[216] =
     unsigned int delay;
     unsigned char posx_seg[4], posy_seg[4];
     
-    posy_seg[0] = 0;
-    posy_seg[1] = 0;
-    posy_seg[2] = 0;
-    posy_seg[3] = 0;
-    positionYYbkp = 0;
     
     if (posxHistory[1] >= 0){               //This line compares the sign of the x direction data
         direction = (direction | 0x10);     //if positive the most significant byte is set to 1, else it is set to 8
@@ -316,12 +312,29 @@ GLfloat gCubeVertexData[216] =
         posx_seg[3] = (positionXbkp>>24) & 0x000000FF;
     }
     
+    if (posyHistory[1] >= 0){                       //do the same for y values
+        direction = (direction | 0x10);
+        posy_seg[0] = posyHistory[1] & 0x000000FF;
+        posy_seg[1] = (posyHistory[1]>>8) & 0x000000FF;
+        posy_seg[2] = (posyHistory[1]>>16) & 0x000000FF;
+        posy_seg[3] = (posyHistory[1]>>24) & 0x000000FF;
+    }
+    else{
+        direction = (direction | 0x80);
+        positionYYbkp = posyHistory[1] - 1;      //erase when finished
+        positionYYbkp = positionYYbkp^0xFFFFFFFF;
+        posy_seg[0] = positionYYbkp & 0x000000FF;
+        posy_seg[1] = (positionYYbkp>>8) & 0x000000FF;
+        posy_seg[2] = (positionYYbkp>>16) & 0x000000FF;
+        posy_seg[3] = (positionYYbkp>>24) & 0x000000FF;
+    }
+    
     delay = 0x0100;
     
     sensor_Data[0] = 0x03;
     sensor_Data[1] = direction;
     sensor_Data[2] = posx_seg[3];
-    sensor_Data[3] = posx_seg[3]; //will be posy_seg[3]
+    sensor_Data[3] = posy_seg[3];
     sensor_Data[4] = 0x01;
     sensor_Data[5] = 0x01;
     sensor_Data[6] = '\n';
@@ -330,6 +343,45 @@ GLfloat gCubeVertexData[216] =
     
     NSLog(@"Direction:""%c", direction);
     NSLog(@"sensor_Data:""%s", sensor_Data);
+}
+
+-(void)data_reintegration{                      //return data format to its original state
+    if (direction >= 10){
+        posxHistory[1] = posxHistory[1]|0xFFFFC000;     //18 "ones" inserted. Sme size as the amount of shifts
+    }
+    
+    direction = direction & 0x01;
+    if (direction == 1){
+        posyHistory[1] = posyHistory[1]|0xFFFFC000;
+    }
+}
+
+
+-(void) movement_end_check{         //Allow movement end detection. This detects when movement has stopped
+    if (accxHistory[1] == 0){       //we count the number of acceleration samples that equal zero
+        countx++;
+    }
+    else{
+        countx = 0;
+    }
+    
+    if (countx >= 25){              //if this number exceeds 25, we can assume that velocity is zero
+        velxHistory[1] = 0;
+        velxHistory[1] = 0;
+    }
+    
+    if (accyHistory[1] == 0){         //we do the same for the Y axis
+        county++;
+    }
+    else{
+        county = 0;
+    }
+    
+    if (county >= 25){
+        velyHistory[1] = 0;
+        velyHistory[0] = 0;
+    }
+    
 }
 
 -(void)position {
@@ -347,11 +399,14 @@ GLfloat gCubeVertexData[216] =
     accxHistory[1] = accxHistory[1] >> 6;       //division by 64
     accyHistory[1] = accyHistory[1] >> 6;
     
-    if ((accxHistory[1] <= 3) && (accxHistory[1] >= -3)){       //discrimination window applied to the x axis acceleration
+    accxHistory[1] = accxHistory[1] - (int)sstatex;     //eliminating zero reference offset of the acceleration data
+    accyHistory[1] = accyHistory[1] - (int)sstatey;     //to obtain positive and negative acceleration
+    
+    if ((accxHistory[1] <= 3) && (accxHistory[1] >= -3)){       //discrimination window applied to the x axis acceleration variable
         accxHistory[1] = 0;
     }
     
-    if ((accyHistory[1] <= 3) && (accyHistory[1] >= -3)){       //discrimination window applied to the y axis acceleration
+    if ((accyHistory[1] <= 3) && (accyHistory[1] >= -3)){       //discrimination window applied to the y axis acceleration variable
         accyHistory[1] = 0;
     }
     
@@ -361,25 +416,38 @@ GLfloat gCubeVertexData[216] =
     
     //second x integration
     posxHistory[1] = posxHistory[0] + velxHistory[0] + ((velxHistory[1] - velxHistory[0]) >> 1);
+    
+    //first Y integration
+    velyHistory[1] = velyHistory[0] + accyHistory[0] + ((accyHistory[1] - accyHistory[0]) >> 1);
+    
+    //second Y integration
+    posyHistory[1] = posyHistory[0] + velyHistory[0] + ((velyHistory[1] - velyHistory[0]) >> 1);
     /*end integration*/
     
     //set previous x position for position comparison
     posxPrev = posxHistory[0];
     
     /*resetting of values*/
-    //update x acceleration to current value for future integration
+    //update x and y acceleration to current value for future integration
     accxHistory[0] = accxHistory[1];
+    accyHistory[0] = accyHistory[1];
     //update x velocity to current value for future integration
     velxHistory[0] = velxHistory[1];
+    velyHistory[0] = velyHistory[1];
     //make required adjustment to make x position available data
     posxHistory[1] = posxHistory[1] << 18;
+    posyHistory[1] = posyHistory[1] << 18;
     
     [self data_transfer];
     
     posxHistory[1] = posxHistory[1] >> 18;      //once the variables are set, they must return to their original state
+    posyHistory[1] = posyHistory[1] >> 18;
+    
+    [self movement_end_check];
     
     //update x position to current value for future integration
     posxHistory[0] = posxHistory[1];
+    posyHistory[0] = posyHistory[1];
     /*end resetting of values*/
     
     direction = 0;
@@ -492,56 +560,7 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update {
     
-    //obtain magnitude and direction in seperate variables
-    /*signed long positionXbkp;
-    signed long positionYYbkp;
-    unsigned int delay;
-    unsigned char posx_seg[4], posy_seg[4];
-    
-    posy_seg[0] = 0;
-    posy_seg[1] = 0;
-    posy_seg[2] = 0;
-    posy_seg[3] = 0;
-    positionYYbkp = 0;
-    delay = 0;
-    
-    if (posxHistory[1] >= 0){               //This line compares the sign of the x direction data
-        rotation += self.timeSinceLastUpdate * 1;   //erase when finished
-        direction = (direction | 0x10);     //if positive the most significant byte is set to 1, else it is set to 8
-        posx_seg[0] = posxHistory[1] & 0x000000FF;
-        posx_seg[1] = (posxHistory[1]>>8) & 0x000000FF;   //the data are also managed in the subsequent lines in order to be sent.
-        posx_seg[2] = (posxHistory[1]>>16) & 0x000000FF;    //The 32 bit variable must be split into 4 different 8 bit varibles
-        //in order to be sent via the 8 bit SCI frame
-        posx_seg[3] = (posxHistory[1]>>24) & 0x000000FF;
-    }
-    else{
-        rotation -= self.timeSinceLastUpdate * 1;
-        direction = (direction | 0x80);
-        positionXbkp = posxHistory[1] - 1;      //erase when finished
-        positionXbkp = positionXbkp^0xFFFFFFFF;
-        posx_seg[0] = positionXbkp & 0x000000FF;
-        posx_seg[1] = (positionXbkp>>8) & 0x000000FF;
-        posx_seg[2] = (positionXbkp>>16) & 0x000000FF;
-        posx_seg[3] = (positionXbkp>>24) & 0x000000FF;
-    }
-    
-    sensor_Data[0] = 0x03;
-    sensor_Data[1] = direction;
-    sensor_Data[2] = posx_seg[3];
-    sensor_Data[3] = posx_seg[3]; //will be posy_seg[3]
-    sensor_Data[4] = 0x01;
-    sensor_Data[5] = 0x01;
-    sensor_Data[6] = '\n';
-    
-    if (count > 1024){
-        NSLog(@"Direction:""%c", direction);
-        NSLog(@"sensor_Data:""%s", sensor_Data);
-    }*/
-    
-    //end obtain magnitude and direction in seperate variables
-    
-    //count++;
-    
+ 
     float aspect = fabsf(self.view.bounds.size.width /
                          self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective
@@ -559,10 +578,10 @@ GLfloat gCubeVertexData[216] =
     //NSLog(@"%s%d", "position history", posxHistory[0]);
     //NSLog(@"%s%d", "prev position", posxPrev);
     
-    if (direction == (int) 1){                     //going up
+    if ((sensor_Data[0] + sensor_Data[1] + sensor_Data[2] + sensor_Data[3] + sensor_Data[4] + sensor_Data[5] + sensor_Data[6] + sensor_Data[7]) <= 127){                     //going up
         rotation += self.timeSinceLastUpdate * 1;
     }
-    else if (direction == (int) 8){                //going down
+    else if ((sensor_Data[0] + sensor_Data[1] + sensor_Data[2] + sensor_Data[3] + sensor_Data[4] + sensor_Data[5] + sensor_Data[6] + sensor_Data[7]) > 127){                //going down
         rotation -= self.timeSinceLastUpdate * 1;
     }
     /*end new code*/
