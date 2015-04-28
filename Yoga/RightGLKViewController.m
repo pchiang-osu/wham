@@ -29,20 +29,27 @@
     
     NSNumber *n;
     NSArray *arr;
-    int accxHistory[2];    //stores acceleration data
-    int accyHistory[2];
-    int acczHistory[2];
+    double accxHistory[2];    //stores acceleration data
+    double accyHistory[2];
+    double acczHistory[2];
     
-    int velxHistory[2];    //stores volocity data
-    int velyHistory[2];
-    int velzHistory[2];
+    double velxHistory[2];    //stores volocity data
+    double velyHistory[2];
+    double velzHistory[2];
     
-    int posxHistory[2];    //stores position data
-    int posyHistory[2];
-    int poszHistory[2];
-    int posxPrev;
-    int posyPrev;
-    int poszPrev;
+    double posxHistory[2];    //stores position data
+    double posyHistory[2];
+    double poszHistory[2];
+    double posxPrev;
+    double posyPrev;
+    double poszPrev;
+    
+    double rotationXY;
+    double rotationXYPrev;
+    double rotationYZ;
+    double rotationYZPrev;
+    double rotationXZ;
+    double rotationXZPrev;
 
     
     #pragma DATA_SEG MY_ZEROPAGE
@@ -164,9 +171,9 @@ GLfloat gCubeVertexData[216] =
     count = 0;
     direction = 0;
     countCalibrate = 0;
-    values[0] = 1.0;
+    values[0] = 0.0;
     values[1] = 1.0;
-    values[2] = 1.0;
+    values[2] = 0.0;
     
     //load acceleration data
     accxHistory[1] = 0;
@@ -240,21 +247,37 @@ GLfloat gCubeVertexData[216] =
         else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
             //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
             WWDeviceData *deviceData = notification.object;
-            NSLog(@"%@", deviceData.data);
+            //NSLog(@"%@", deviceData.data);
             //do something with deviceData.data
-            accxHistory[0] = (int)deviceData.data[0];       //accelerometer indices
-            accyHistory[0] = (int)deviceData.data[1];
-            acczHistory[0] = (int)deviceData.data[2];
-            if (count < 1024){                  //must calibrate to account for gravitational pull
+            accxHistory[1] = (int)deviceData.data[0];       //accelerometer indices
+            accyHistory[1] = (int)deviceData.data[1];
+            acczHistory[1] = (int)deviceData.data[2];
+            
+            //[self convertToUnits];
+            
+            rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
+            NSLog(@"%f", rotationXY);
+            
+           
+            /*if (count < 1024){                  //must calibrate to account for gravitational pull
                 NSLog(@"Calibrating...");
                 [self calibrate];
-            }
-            else{
-                [self position];
-                [self data_reintegration];
+            }*/
+            //else{
+                //[self position];
+                //[self data_reintegration];
                 //[self data_transfer];
-            }
+            //}
             count++;
+            /*if (rotationXY > rotationXYPrev){
+                NSLog(@"%s","Left");
+                
+            }
+            else if (rotationXY < rotationXYPrev){
+                NSLog(@"%s","Right");
+            }*/
+            
+            
             
             
         }
@@ -272,6 +295,24 @@ GLfloat gCubeVertexData[216] =
 
 /*for acceleration-to-position*/
 
+-(void) convertToUnits{
+    if ((accxHistory[1] <= 255 && accxHistory[1] >= 250)){  //1g
+        accxHistory[1] = 1;
+    }
+    else if (accxHistory[1] >= 0 && accxHistory[1] <= 5){    //-1g
+        accxHistory[1] = -1;
+    }
+    else if (accxHistory[1] >= 177 && accxHistory[1] <= 182){   //0g
+        accxHistory[1] = 0;
+    }
+    else if (accxHistory[1] < 177 && accxHistory[1] > 5){   //-x.y...g
+        
+    }
+    else if (accxHistory[1] > 177 && accxHistory[1] < 250){ //+x.y...g
+        accxHistory[1] = accxHistory[1];
+    }
+}
+
 -(void) calibrate{                      //obtain the value of the refrence threshold. Used for no-movement condition
     sample_X = accxHistory[1];
     sample_Y = accyHistory[1];
@@ -287,7 +328,7 @@ GLfloat gCubeVertexData[216] =
     }
 }
 
--(void) data_transfer{                  //obtain magnitude and direction in seperate variables
+/*-(void) data_transfer{                  //obtain magnitude and direction in seperate variables
     signed long positionXbkp;
     signed long positionYYbkp;
     unsigned int delay;
@@ -343,9 +384,9 @@ GLfloat gCubeVertexData[216] =
     
     NSLog(@"Direction:""%c", direction);
     NSLog(@"sensor_Data:""%s", sensor_Data);
-}
+}*/
 
--(void)data_reintegration{                      //return data format to its original state
+/*-(void)data_reintegration{                      //return data format to its original state
     if (direction >= 10){
         posxHistory[1] = posxHistory[1]|0xFFFFC000;     //18 "ones" inserted. Sme size as the amount of shifts
     }
@@ -354,7 +395,7 @@ GLfloat gCubeVertexData[216] =
     if (direction == 1){
         posyHistory[1] = posyHistory[1]|0xFFFFC000;
     }
-}
+}*/
 
 
 -(void) movement_end_check{         //Allow movement end detection. This detects when movement has stopped
@@ -384,7 +425,7 @@ GLfloat gCubeVertexData[216] =
     
 }
 
--(void)position {
+/*-(void)position {
     
     unsigned char count2;
     count2 = 0;
@@ -410,7 +451,7 @@ GLfloat gCubeVertexData[216] =
         accyHistory[1] = 0;
     }
     
-    /*integration*/
+    //integration
     //first x integration
     velxHistory[1] = velxHistory[0] + accxHistory[0] + ((accxHistory[1] - accxHistory[0]) >> 1);
     
@@ -422,12 +463,12 @@ GLfloat gCubeVertexData[216] =
     
     //second Y integration
     posyHistory[1] = posyHistory[0] + velyHistory[0] + ((velyHistory[1] - velyHistory[0]) >> 1);
-    /*end integration*/
+    //end integration
     
     //set previous x position for position comparison
     posxPrev = posxHistory[0];
     
-    /*resetting of values*/
+    //resetting of values
     //update x and y acceleration to current value for future integration
     accxHistory[0] = accxHistory[1];
     accyHistory[0] = accyHistory[1];
@@ -438,7 +479,7 @@ GLfloat gCubeVertexData[216] =
     posxHistory[1] = posxHistory[1] << 18;
     posyHistory[1] = posyHistory[1] << 18;
     
-    [self data_transfer];
+    //[self data_transfer];
     
     posxHistory[1] = posxHistory[1] >> 18;      //once the variables are set, they must return to their original state
     posyHistory[1] = posyHistory[1] >> 18;
@@ -448,10 +489,13 @@ GLfloat gCubeVertexData[216] =
     //update x position to current value for future integration
     posxHistory[0] = posxHistory[1];
     posyHistory[0] = posyHistory[1];
-    /*end resetting of values*/
+    //end resetting of values
+    
+    NSLog(@"Position Y:""%i", (int)posyHistory[0]);
+    //NSLog(@"Position X:""%i", (int)posxHistory[0]);
     
     direction = 0;
-}
+}*/
 
 /*end for acceleration-to-position*/
 
@@ -575,15 +619,15 @@ GLfloat gCubeVertexData[216] =
    
     
     /*new code*/
-    //NSLog(@"%s%d", "position history", posxHistory[0]);
-    //NSLog(@"%s%d", "prev position", posxPrev);
     
-    if ((sensor_Data[0] + sensor_Data[1] + sensor_Data[2] + sensor_Data[3] + sensor_Data[4] + sensor_Data[5] + sensor_Data[6] + sensor_Data[7]) <= 127){                     //going up
-        rotation += self.timeSinceLastUpdate * 1;
+    if (rotationXY > rotationXYPrev){                     //rotating left
+        rotation -= self.timeSinceLastUpdate * 2;
     }
-    else if ((sensor_Data[0] + sensor_Data[1] + sensor_Data[2] + sensor_Data[3] + sensor_Data[4] + sensor_Data[5] + sensor_Data[6] + sensor_Data[7]) > 127){                //going down
-        rotation -= self.timeSinceLastUpdate * 1;
+    else if (rotationXY < rotationXYPrev){                //rotating right
+        rotation += self.timeSinceLastUpdate * 2;
     }
+    
+    rotationXYPrev = rotationXY;
     /*end new code*/
 }
 
