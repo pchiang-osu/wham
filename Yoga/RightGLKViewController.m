@@ -44,12 +44,12 @@
     double posyPrev;
     double poszPrev;
     
-    double rotationXY;
-    double rotationXYPrev;
-    double rotationYZ;
-    double rotationYZPrev;
-    double rotationXZ;
-    double rotationXZPrev;
+    int rotationXY;
+    int rotationXYPrev;
+    int rotationYZ;
+    int rotationYZPrev;
+    int rotationXZ;
+    int rotationXZPrev;
 
     
     #pragma DATA_SEG MY_ZEROPAGE
@@ -252,11 +252,14 @@ GLfloat gCubeVertexData[216] =
             accxHistory[1] = (int)deviceData.data[0];       //accelerometer indices
             accyHistory[1] = (int)deviceData.data[1];
             acczHistory[1] = (int)deviceData.data[2];
+            NSLog(@"%i", (int)deviceData.data[0]);
             
-            //[self convertToUnits];
+            [self convertToUnits];
             
             rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
-            NSLog(@"%f", rotationXY);
+            rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
+            rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
+            //NSLog(@"%i", rotationXZ);
             
            
             /*if (count < 1024){                  //must calibrate to account for gravitational pull
@@ -269,17 +272,6 @@ GLfloat gCubeVertexData[216] =
                 //[self data_transfer];
             //}
             count++;
-            /*if (rotationXY > rotationXYPrev){
-                NSLog(@"%s","Left");
-                
-            }
-            else if (rotationXY < rotationXYPrev){
-                NSLog(@"%s","Right");
-            }*/
-            
-            
-            
-            
         }
         else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
             //Do any necessary cleanup
@@ -296,20 +288,67 @@ GLfloat gCubeVertexData[216] =
 /*for acceleration-to-position*/
 
 -(void) convertToUnits{
-    if ((accxHistory[1] <= 255 && accxHistory[1] >= 250)){  //1g
-        accxHistory[1] = 1;
+    
+    //NSLog(@"%s", "Convert to units");
+    
+    //for x
+    //if accx is between 0 and 177, it goes from -1 to 0
+    //if accx is between 177 and 255, it goes from 0 to 1
+    if (accxHistory[1] >= 0 && accxHistory[1] <= 177){
+        if (accxHistory[1] == 0){
+            accxHistory[1] = -1;
+        }
+        else{
+            accxHistory[1] = -((177 - accxHistory[1]) / accxHistory[1]);
+        }
     }
-    else if (accxHistory[1] >= 0 && accxHistory[1] <= 5){    //-1g
-        accxHistory[1] = -1;
+    else if (accxHistory[1] > 177 && accxHistory[1] <= 255){
+        if (accxHistory[1] == 178){
+            accxHistory[1] = 0;
+        }
+        else{
+            accxHistory[1] = accxHistory[1] / 255;
+        }
     }
-    else if (accxHistory[1] >= 177 && accxHistory[1] <= 182){   //0g
-        accxHistory[1] = 0;
+    
+    //for y
+    //if accy is between 0 and 177, it goes from -1 to 0
+    //if accy is between 177 and 255, it goes from 0 to 1
+    if (accyHistory[1] >= 0 && accyHistory[1] <= 177){
+        if (accyHistory[1] == 0){
+            accyHistory[1] = -1;
+        }
+        else{
+            accyHistory[1] = -((177 - accyHistory[1]) / accyHistory[1]);
+        }
     }
-    else if (accxHistory[1] < 177 && accxHistory[1] > 5){   //-x.y...g
-        
+    else if (accyHistory[1] > 177 && accyHistory[1] <= 255){
+        if (accyHistory[1] == 178){
+            accyHistory[1] = 0;
+        }
+        else{
+            accyHistory[1] = accyHistory[1] / 255;
+        }
     }
-    else if (accxHistory[1] > 177 && accxHistory[1] < 250){ //+x.y...g
-        accxHistory[1] = accxHistory[1];
+    
+    //for z
+    //if accz is between 0 and 177, it goes from -1 to 0
+    //if accz is between 177 and 255, it goes from 0 to 1
+    if (acczHistory[1] >= 0 && acczHistory[1] <= 177){
+        if (acczHistory[1] == 0){
+            acczHistory[1] = -1;
+        }
+        else{
+            acczHistory[1] = -((177 - acczHistory[1]) / acczHistory[1]);
+        }
+    }
+    else if (acczHistory[1] > 177 && acczHistory[1] <= 255){
+        if (acczHistory[1] == 178){
+            acczHistory[1] = 0;
+        }
+        else{
+            acczHistory[1] = acczHistory[1] / 255;
+        }
     }
 }
 
@@ -618,17 +657,31 @@ GLfloat gCubeVertexData[216] =
     self.effect.transform.modelviewMatrix = modelMatrix;
    
     
-    /*new code*/
-    
-    if (rotationXY > rotationXYPrev){                     //rotating left
-        rotation -= self.timeSinceLastUpdate * 2;
+    /*for XZ rotation*/
+    if (rotationXZ == 0 || rotationXZ == -1){
+        if (rotationXZPrev == -6 || rotationXZPrev == -5){
+            rotation -= self.timeSinceLastUpdate * 5;
+        }
     }
-    else if (rotationXY < rotationXYPrev){                //rotating right
-        rotation += self.timeSinceLastUpdate * 2;
+    else if (rotationXZPrev == 0 || rotationXZPrev == -1){
+        if (rotationXZ == -6 || rotationXZ == -5){
+            rotation += self.timeSinceLastUpdate * 5;
+        }
     }
+    else{
+        if (rotationXZ > rotationXZPrev){
+            rotation += self.timeSinceLastUpdate * 5;
+        }
+        else if (rotationXZ < rotationXZPrev){
+            rotation -= self.timeSinceLastUpdate * 5;
+        }
+    }
+    /*end for XZ rotation*/
     
     rotationXYPrev = rotationXY;
-    /*end new code*/
+    rotationYZPrev = rotationYZ;
+    rotationXZPrev = rotationXZ;
+    
 }
 
 
