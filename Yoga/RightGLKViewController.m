@@ -32,6 +32,10 @@
     double accxHistory[2];    //stores acceleration data
     double accyHistory[2];
     double acczHistory[2];
+    int accx[2];
+    int accy[2];
+    int accz[2];
+    
     
     double velxHistory[2];    //stores volocity data
     double velyHistory[2];
@@ -182,6 +186,12 @@ GLfloat gCubeVertexData[216] =
     accxHistory[0] = 0;
     accyHistory[0] = 0;
     acczHistory[0] = 0;
+    accx[0] = 0;
+    accy[0] = 0;
+    accz[0] = 0;
+    accx[1] = 0;
+    accy[1] = 0;
+    accz[1] = 0;
     
     //load velocity data
     velxHistory[0] = 0;
@@ -249,17 +259,17 @@ GLfloat gCubeVertexData[216] =
             WWDeviceData *deviceData = notification.object;
             //NSLog(@"%@", deviceData.data);
             //do something with deviceData.data
-            accxHistory[1] = (int)deviceData.data[0];       //accelerometer indices
-            accyHistory[1] = (int)deviceData.data[1];
-            acczHistory[1] = (int)deviceData.data[2];
-            NSLog(@"%i", (int)deviceData.data[0]);
+            accx[1] = [deviceData.data[0] integerValue];       //accelerometer indices
+            accy[1] = [deviceData.data[1] integerValue];
+            accz[1] = [deviceData.data[2] integerValue];
             
+            NSLog(@"%i", accx[1]);
             [self convertToUnits];
             
             rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
             rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
             rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
-            //NSLog(@"%i", rotationXZ);
+            NSLog(@"%f", accxHistory[1]);
             
            
             /*if (count < 1024){                  //must calibrate to account for gravitational pull
@@ -294,60 +304,60 @@ GLfloat gCubeVertexData[216] =
     //for x
     //if accx is between 0 and 177, it goes from -1 to 0
     //if accx is between 177 and 255, it goes from 0 to 1
-    if (accxHistory[1] >= 0 && accxHistory[1] <= 177){
-        if (accxHistory[1] == 0){
+    if (accx[1] >= 0 && accx[1] <= 177){
+        if (accx[1] <= 10){
             accxHistory[1] = -1;
         }
         else{
-            accxHistory[1] = -((177 - accxHistory[1]) / accxHistory[1]);
+            accxHistory[1] = -((177 - (float)accx[1]) / (float)accx[1]);
         }
     }
-    else if (accxHistory[1] > 177 && accxHistory[1] <= 255){
-        if (accxHistory[1] == 178){
+    else if (accx[1] > 177 && accx[1] <= 255){
+        if (accx[1] > 168 && accx[1] <= 178){
             accxHistory[1] = 0;
         }
         else{
-            accxHistory[1] = accxHistory[1] / 255;
+            accxHistory[1] = (float)accx[1] / 255;
         }
     }
     
     //for y
     //if accy is between 0 and 177, it goes from -1 to 0
     //if accy is between 177 and 255, it goes from 0 to 1
-    if (accyHistory[1] >= 0 && accyHistory[1] <= 177){
-        if (accyHistory[1] == 0){
+    if (accy[1] >= 0 && accy[1] <= 177){
+        if (accy[1] == 0){
             accyHistory[1] = -1;
         }
         else{
-            accyHistory[1] = -((177 - accyHistory[1]) / accyHistory[1]);
+            accyHistory[1] = -((177 - accy[1]) / accy[1]);
         }
     }
-    else if (accyHistory[1] > 177 && accyHistory[1] <= 255){
-        if (accyHistory[1] == 178){
+    else if (accy[1] > 177 && accy[1] <= 255){
+        if (accy[1] == 178){
             accyHistory[1] = 0;
         }
         else{
-            accyHistory[1] = accyHistory[1] / 255;
+            accyHistory[1] = accy[1] / 255;
         }
     }
     
     //for z
     //if accz is between 0 and 177, it goes from -1 to 0
     //if accz is between 177 and 255, it goes from 0 to 1
-    if (acczHistory[1] >= 0 && acczHistory[1] <= 177){
-        if (acczHistory[1] == 0){
+    if (accz[1] >= 0 && accz[1] <= 177){
+        if (accz[1] == 0){
             acczHistory[1] = -1;
         }
         else{
-            acczHistory[1] = -((177 - acczHistory[1]) / acczHistory[1]);
+            acczHistory[1] = -((177 - accz[1]) / accz[1]);
         }
     }
-    else if (acczHistory[1] > 177 && acczHistory[1] <= 255){
-        if (acczHistory[1] == 178){
+    else if (accz[1] > 177 && accz[1] <= 255){
+        if (accz[1] == 178){
             acczHistory[1] = 0;
         }
         else{
-            acczHistory[1] = acczHistory[1] / 255;
+            acczHistory[1] = accz[1] / 255;
         }
     }
 }
