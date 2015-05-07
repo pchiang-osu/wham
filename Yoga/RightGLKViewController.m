@@ -257,18 +257,20 @@ GLfloat gCubeVertexData[216] =
         else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
             //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
             WWDeviceData *deviceData = notification.object;
-            //NSLog(@"%@", deviceData.data);
+            NSLog(@"%@", deviceData.data);
             //do something with deviceData.data
             accx[1] = [deviceData.data[0] integerValue];       //accelerometer indices
             accy[1] = [deviceData.data[1] integerValue];
             accz[1] = [deviceData.data[2] integerValue];
             
-            NSLog(@"%i", accx[1]);
+            //NSLog(@"%i", accx[1]);
             [self convertToUnits];
             
-            rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
+            /*rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
             rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
-            rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
+            rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;*/
+            rotationXY = atan2(accx[1], accy[1]) - M_PI;
+            //NSLog(@"%d", rotationXY);
             NSLog(@"%f", accxHistory[1]);
             
            
@@ -302,24 +304,44 @@ GLfloat gCubeVertexData[216] =
     //NSLog(@"%s", "Convert to units");
     
     //for x
-    //if accx is between 0 and 177, it goes from -1 to 0
-    //if accx is between 177 and 255, it goes from 0 to 1
-    if (accx[1] >= 0 && accx[1] <= 177){
-        if (accx[1] <= 10){
-            accxHistory[1] = -1;
-        }
-        else{
-            accxHistory[1] = -((177 - (float)accx[1]) / (float)accx[1]);
-        }
+    //if x = 255 and y = 65, x = -1. If x = 255 and y = 190, x = 1. If x = 190 or x = 61, then x = 0.//
+    //If x is between 0 and 61 (going up) and y is between 65 and 0 (going down), then x goes from -1 to 0 (right)//
+    //If x is between 61 and 0 (going down) and y is between 0 and 65 (going up), then x goes from 0 to -1 (left)//
+    //If x is between 61 and 0 (going down) and y is between 255 and 190 (going down), then x goes from 0 to 1  (right)//
+    //If x is between 0 and 61 (going up) and y is between 190 and 255 (going up), then x goes from 1 to 0  (left)//
+    //If x is between 255 and 190 (going down) and y is between 190 and 255 (going up), then x goes from 1 to 0 (right)//
+    //If x is between 190 and 255 (going up) and y is between 255 and 190 (going down), then x goes from 0 to 1 (left)//
+    //If x is between 190 and 255 (going up) and y is between 0 and 65 (going up), then x goes from 0 to -1 (right)//
+    //If x is between 255 and 190 (going down) and y is between 65 and 0 (going down), then x goes from -1 to 0 (left)//
+    
+    //if x = 255 and y = 65, x = -1. If x = 255 and y = 190, x = 1. If x = 190 or x = 61, then x = 0
+    if (accx[1] >= 251 && accx[1] <= 255 && accy[1] >= 61 && accy[1] <= 65){
+        accxHistory[1] = -1;
     }
-    else if (accx[1] > 177 && accx[1] <= 255){
-        if (accx[1] > 168 && accx[1] <= 178){
-            accxHistory[1] = 0;
-        }
-        else{
-            accxHistory[1] = (float)accx[1] / 255;
-        }
+    else if (accx[1] >= 251 && accx[1] <= 255 && accy[1] >= 188 && accy[1] <= 192){
+        accxHistory[1] = 1;
     }
+    else if (accx[1] == 190 || accx[1] == 61){
+        accxHistory[1] = 0;
+    }
+    //if x is between 0 and 61 and y is between 65 and 0, then x goes from -1 to 0
+    else if (accx[1] >= 0 && accx[1] <= 61 && accy[1] <= 65 && accy[1] >= 0){
+        accxHistory[1] = -((61.0-(float)accx[1]) / 61);
+    }
+    //if x is between 61 and 0 and y is between 255 and 190, then x goes from 0 to 1
+    else if (accx[1] >= 0 && accx[1] <= 61 && accy[1] <= 255 && accy[1] >= 190){
+        accxHistory[1] = (61.0 - (float)accx[1]) / 61;
+    }
+    //if x is between 255 and 190 and y is between 190 and 255, then x goes from 1 to 0
+    else if (accx[1] <= 255 && accx[1] >= 190 && accy[1] >= 190 && accy[1] <= 255){
+        accxHistory[1] = ((float)accx[1] - 190) / 65;
+    }
+    //if x is between 190 and 255 and y is between 0 and 65, then x goes from 0 to -1
+    else if (accx[1] >= 190 && accx[1] <= 255 && accy[1] >= 0 && accy[1] <= 255){
+        accxHistory[1] = -((float)accx[1] - 190) / 65;
+    }
+    
+
     
     //for y
     //if accy is between 0 and 177, it goes from -1 to 0
