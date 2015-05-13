@@ -176,8 +176,8 @@ GLfloat gCubeVertexData[216] =
     direction = 0;
     countCalibrate = 0;
     values[0] = 0.0;
-    values[1] = 1.0;
-    values[2] = 0.0;
+    values[1] = 0.0;
+    values[2] = 1.0;
     
     //load acceleration data
     accxHistory[1] = 0;
@@ -379,23 +379,11 @@ GLfloat gCubeVertexData[216] =
     
     
     //for z
-    //if accz is between 0 and 177, it goes from -1 to 0
-    //if accz is between 177 and 255, it goes from 0 to 1
-    if (accz[1] >= 0 && accz[1] <= 177){
-        if (accz[1] == 0){
-            acczHistory[1] = -1;
-        }
-        else{
-            acczHistory[1] = -((177 - accz[1]) / accz[1]);
-        }
-    }
-    else if (accz[1] > 177 && accz[1] <= 255){
-        if (accz[1] == 178){
-            acczHistory[1] = 0;
-        }
-        else{
-            acczHistory[1] = accz[1] / 255;
-        }
+    //if z = 190 or if z = 267, z = 0//
+    
+    //if z = 190 or if z = 267, z = 0
+    if (accz[1] == 190 || accz[1] == 267){
+        acczHistory[1] = 0;
     }
 }
 
@@ -705,32 +693,21 @@ GLfloat gCubeVertexData[216] =
    
    
     /*for XY rotation*/
-    if (rotationXY >= -6 && rotationXY <= 0){
+    if (rotationXY <= -4 && rotationXY >= -6 && rotationXYPrev >= -2 && rotationXYPrev <= 0){       //moves right
+        rotationXY += self.timeSinceLastUpdate * (abs(rotationXY) - abs(rotationXYPrev)) * 2;
+    }
+    else if (rotationXY >= -2 && rotationXY <= 0 && rotationXYPrev >= -6 && rotationXYPrev <= -4){  //moves left
+        rotationXY -= self.timeSinceLastUpdate * (abs(rotationXYPrev) - abs(rotationXY)) * 2;
+    }
+    else{                                                                                           //right or left
         if (rotationXY > rotationXYPrev){
-            rotation -= self.timeSinceLastUpdate * 5;
+            rotation -= self.timeSinceLastUpdate * (abs(rotationXY) - abs(rotationXYPrev)) * 2;
         }
         else if (rotationXY < rotationXYPrev){
-            rotation += self.timeSinceLastUpdate * 5;
+            rotation += self.timeSinceLastUpdate * (abs(rotationXYPrev) - abs(rotationXY)) * 2;
         }
     }
-    /*if (rotationXY == 0 || rotationXY == -1){
-        if (rotationXYPrev == -6 || rotationXYPrev == -5){
-            rotation -= self.timeSinceLastUpdate * 5;
-        }
-    }
-    else if (rotationXYPrev == 0 || rotationXYPrev == -1){
-        if (rotationXY == -6 || rotationXY == -5){
-            rotation += self.timeSinceLastUpdate * 5;
-        }
-    }
-    else{
-        if (rotationXY > rotationXYPrev){
-            rotation += self.timeSinceLastUpdate * 5;
-        }
-        else if (rotationXY < rotationXYPrev){
-            rotation -= self.timeSinceLastUpdate * 5;
-        }
-    }*/
+    
     /*end for XY rotation*/
     
     rotationXYPrev = rotationXY;
