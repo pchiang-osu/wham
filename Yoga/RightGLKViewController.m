@@ -269,9 +269,9 @@ GLfloat gCubeVertexData[216] =
             /*rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
             rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
             rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;*/
-            rotationXY = atan2(accx[1], accy[1]) - M_PI;
-            //NSLog(@"%d", rotationXY);
-            NSLog(@"%f", accxHistory[1]);
+            rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
+            NSLog(@"%d", rotationXY);
+           // NSLog(@"%f", accyHistory[1]);
             
            
             /*if (count < 1024){                  //must calibrate to account for gravitational pull
@@ -344,24 +344,39 @@ GLfloat gCubeVertexData[216] =
 
     
     //for y
-    //if accy is between 0 and 177, it goes from -1 to 0
-    //if accy is between 177 and 255, it goes from 0 to 1
-    if (accy[1] >= 0 && accy[1] <= 177){
-        if (accy[1] == 0){
-            accyHistory[1] = -1;
-        }
-        else{
-            accyHistory[1] = -((177 - accy[1]) / accy[1]);
-        }
+    //if y = 255 and x = 190, y = 1. If y = 65 and x = 255, y = 0. If y = 255 and x = 61, y = -1. If y = 190 and x = 255, y = 0//
+    //if y is between 0 and 65, and x is between 190 and 255, y goes from 1 to 0//
+    //if y is between 0 and 65 and x is between 0 and 61, y goes from 0 to -1//
+    //if y is between 255 and 190, and x is between 61 and 0, y goes from -1 to 0//
+    //if y is between 190 and 255 and x is between 255 and 190, y goes from 0 to 1//
+    
+    //if y = 255 and x = 190, y = 1. If y = 65 and x = 255, y = 0. If y = 255 and x = 61, y = -1. If y = 190 and x = 255, y = 0
+    if (accy[1] >= 251 && accy[1] <= 255 && accx[1] >= 188 && accx[1] <= 191){
+        accyHistory[1] = 1;
     }
-    else if (accy[1] > 177 && accy[1] <= 255){
-        if (accy[1] == 178){
-            accyHistory[1] = 0;
-        }
-        else{
-            accyHistory[1] = accy[1] / 255;
-        }
+    else if (accy[1] >= 251 && accy[1] <= 255 && accx[1] >= 59 && accx[1] <= 63){
+        accyHistory[1] = -1;
     }
+    else if (accy[1] == 65 || accy[1] == 190){
+        accyHistory[1] = 0;
+    }
+    //if y is between 0 and 65, and x is between 190 and 255, y goes from 1 to 0
+    else if (accy[1] >= 0 && accy[1] <= 65 && accx[1] >= 190 && accx[1] <= 255){
+        accyHistory[1] = (65.0-(float)accy[1]) / 65;
+    }
+    //if y is between 0 and 65 and x is between 0 and 61, y goes from 0 to -1
+    else if (accy[1] >= 0 && accy[1] <= 65 && accx[1] >= 0 && accx[1] <= 61){
+        accyHistory[1] = -(65.0-(float)accy[1]) / 65;
+    }
+    //if y is between 255 and 190, and x is between 61 and 0, y goes from -1 to 0
+    else if (accy[1] <= 255 && accy[1] >= 190 && accx[1] <= 61 && accx[1] >= 0){
+        accyHistory[1] = -((float)accy[1] - 190) / 65;
+    }
+    //if y is between 190 and 255 and x is between 255 and 190, y goes from 0 to 1
+    else if (accy[1] >= 190 && accy[1] <= 255 && accx[1] <= 255 && accx[1] >= 190){
+        accyHistory[1] = ((float)accy[1] - 190) / 65;
+    }
+    
     
     //for z
     //if accz is between 0 and 177, it goes from -1 to 0
@@ -688,27 +703,35 @@ GLfloat gCubeVertexData[216] =
     GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
     self.effect.transform.modelviewMatrix = modelMatrix;
    
-    
-    /*for XZ rotation*/
-    if (rotationXZ == 0 || rotationXZ == -1){
-        if (rotationXZPrev == -6 || rotationXZPrev == -5){
+   
+    /*for XY rotation*/
+    if (rotationXY >= -6 && rotationXY <= 0){
+        if (rotationXY > rotationXYPrev){
+            rotation -= self.timeSinceLastUpdate * 5;
+        }
+        else if (rotationXY < rotationXYPrev){
+            rotation += self.timeSinceLastUpdate * 5;
+        }
+    }
+    /*if (rotationXY == 0 || rotationXY == -1){
+        if (rotationXYPrev == -6 || rotationXYPrev == -5){
             rotation -= self.timeSinceLastUpdate * 5;
         }
     }
-    else if (rotationXZPrev == 0 || rotationXZPrev == -1){
-        if (rotationXZ == -6 || rotationXZ == -5){
+    else if (rotationXYPrev == 0 || rotationXYPrev == -1){
+        if (rotationXY == -6 || rotationXY == -5){
             rotation += self.timeSinceLastUpdate * 5;
         }
     }
     else{
-        if (rotationXZ > rotationXZPrev){
+        if (rotationXY > rotationXYPrev){
             rotation += self.timeSinceLastUpdate * 5;
         }
-        else if (rotationXZ < rotationXZPrev){
+        else if (rotationXY < rotationXYPrev){
             rotation -= self.timeSinceLastUpdate * 5;
         }
-    }
-    /*end for XZ rotation*/
+    }*/
+    /*end for XY rotation*/
     
     rotationXYPrev = rotationXY;
     rotationYZPrev = rotationYZ;
