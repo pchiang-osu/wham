@@ -7,12 +7,16 @@
 //
 
 #import "RightGLKViewController.h"
+#define RADIANS_PER_PIXEL (M_PI / 320.f)
 
 @interface RightGLKViewController (){
     /*float _curRed;
     BOOL _increasing;8=*/
     GLuint vertexBuffer;
     float rotation;
+    float rotationx;
+    float rotationy;
+    float rotationz;
     
     /*for timer*/
     bool timerOn;
@@ -54,6 +58,9 @@
     int rotationYZPrev;
     int rotationXZ;
     int rotationXZPrev;
+    
+    CGPoint iniLocation;
+    GLKQuaternion quarternion;
 
     
     #pragma DATA_SEG MY_ZEROPAGE
@@ -143,7 +150,7 @@ GLfloat gCubeVertexData[216] =
     self.effect = [[GLKBaseEffect alloc] init];
     self.effect.light0.enabled = GL_TRUE;
     self.effect.light0.diffuseColor
-    = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
+    = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);       //color
     
     glEnable(GL_DEPTH_TEST);
     glGenBuffers(1, &vertexBuffer);
@@ -172,12 +179,16 @@ GLfloat gCubeVertexData[216] =
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    rotationx = 0.0;
+    rotationy = 0.0;
+    rotationz = 0.0;
+    
     count = 0;
     direction = 0;
     countCalibrate = 0;
     values[0] = 0.0;
     values[1] = 0.0;
-    values[2] = 1.0;
+    values[2] = 0.0;
     
     //load acceleration data
     accxHistory[1] = 0;
@@ -219,6 +230,7 @@ GLfloat gCubeVertexData[216] =
     secRem = 0;
     minRem = 2;
     /*end for timer*/
+    
     
     /*WearWare*/
     //NSLog(@"WWAppDelegate: connected!");
@@ -266,12 +278,15 @@ GLfloat gCubeVertexData[216] =
             //NSLog(@"%i", accx[1]);
             [self convertToUnits];
             
-            /*rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
             rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
-            rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;*/
+            rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
             rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
-            NSLog(@"%d", rotationXY);
-           // NSLog(@"%f", accyHistory[1]);
+            //NSLog(@"%d", rotationXY);
+            //NSLog(@"%d", rotationXYPrev);
+            NSLog(@"%d", rotationYZ);
+            
+            [self update];
+            NSLog(@"%f", acczHistory[1]);
             
            
             /*if (count < 1024){                  //must calibrate to account for gravitational pull
@@ -284,6 +299,7 @@ GLfloat gCubeVertexData[216] =
                 //[self data_transfer];
             //}
             count++;
+            //[self setNeedsDisplay];
         }
         else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
             //Do any necessary cleanup
@@ -380,10 +396,25 @@ GLfloat gCubeVertexData[216] =
     
     //for z
     //if z = 190 or if z = 267, z = 0//
+    //if z = 255, z = 1//
+    //if z is between 190 and 255, z goes from 1 to 0//
+    //if z is between 0 and 67, z goes from 1 to 0
     
     //if z = 190 or if z = 267, z = 0
     if (accz[1] == 190 || accz[1] == 267){
+        acczHistory[1] = 1;
+    }
+    //if z = 255, z = 1
+    else if (accz[1] == 255){
         acczHistory[1] = 0;
+    }
+    //if z is between 190 and 255, z goes from 1 to 0
+    else if (accz[1] >= 190 && accz[1] <= 255){
+        acczHistory[1] = (65.0 - ((float)accz[1] - 190)) / 65;
+    }
+    //if z is between 0 and 67, z goes from 1 to 0
+    else if (accz[1] >= 0 && accz[1] <= 67){
+        acczHistory[1] = (67.0 - (float)accz[1]) / 67;
     }
 }
 
@@ -610,9 +641,9 @@ GLfloat gCubeVertexData[216] =
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+/*- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     self.paused = !self.paused;
-}
+}*/
 /*end may go to delegate*/
 
 
@@ -678,6 +709,7 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update {
     
+    //rotationx -= 0.3;
  
     float aspect = fabsf(self.view.bounds.size.width /
                          self.view.bounds.size.height);
@@ -685,36 +717,123 @@ GLfloat gCubeVertexData[216] =
     (GLKMathDegreesToRadians(100.0f), aspect, 0.1f, 100.0f);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
+    GLKMatrix4 xMatrix = GLKMatrix4MakeXRotation(rotationx);
+    GLKMatrix4 yMatrix = GLKMatrix4MakeYRotation(rotationy);
+    GLKMatrix4 zMatrix = GLKMatrix4MakeZRotation(rotationz);
+    
+    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(0.0f, -1.0f, -10.f);
+    
     GLKMatrix4 modelMatrix =
-    GLKMatrix4MakeTranslation(0.0f,-1.0f,-10.0f);
-    modelMatrix =
-    GLKMatrix4Rotate(modelMatrix,rotation,values[0],values[1],values[2]); //use to change the axis of rotation
-    self.effect.transform.modelviewMatrix = modelMatrix;
-   
+    GLKMatrix4Multiply(translateMatrix,
+    GLKMatrix4Multiply(zMatrix,
+    GLKMatrix4Multiply(yMatrix, xMatrix)));
+    //GLKMatrix4MakeTranslation(0.0f,-1.0f,-10.0f);       //controls translation (lateral motion) of cube
+    
+    
    
     /*for XY rotation*/
-    if (rotationXY <= -4 && rotationXY >= -6 && rotationXYPrev >= -2 && rotationXYPrev <= 0){       //moves right
-        rotationXY += self.timeSinceLastUpdate * (abs(rotationXY) - abs(rotationXYPrev)) * 2;
+   
+    if ((rotationXY == -6 || rotationXY == -5) && rotationXYPrev == 0){
+        rotationz += 0.5;
     }
-    else if (rotationXY >= -2 && rotationXY <= 0 && rotationXYPrev >= -6 && rotationXYPrev <= -4){  //moves left
-        rotationXY -= self.timeSinceLastUpdate * (abs(rotationXYPrev) - abs(rotationXY)) * 2;
+    else if ((rotationXYPrev == -6 || rotationXYPrev == -5) && rotationXY == 0){
+        rotationz -= 0.5;
     }
-    else{                                                                                           //right or left
-        if (rotationXY > rotationXYPrev){
-            rotation -= self.timeSinceLastUpdate * (abs(rotationXY) - abs(rotationXYPrev)) * 2;
-        }
-        else if (rotationXY < rotationXYPrev){
-            rotation += self.timeSinceLastUpdate * (abs(rotationXYPrev) - abs(rotationXY)) * 2;
-        }
+    else if (rotationXY < rotationXYPrev){
+        rotationz -= 0.5;
+    }
+    else if (rotationXY > rotationXYPrev){
+        rotationz += 0.5;
+    }
+        
+    /*end for XY rotation*/
+    
+     /*for YZ rotation*/
+    //if y = 0
+    //up-side-down is always -1
+    //right-side-up is always -2
+    //perpendicular is -2 or -3
+
+    if (rotationYZ == -2 && acczHistory[1] >= 0.95 && acczHistory[1] <= 1.0){
+        rotationx = 0.0;
+    }
+    else if (rotationYZ == -1 && acczHistory[1] >= -0.1 && acczHistory[1] <= 0.1){
+        rotationx = 0.0;
+    }
+    else if (rotationYZ == -4 && acczHistory[1] >= 0.01 && acczHistory[1] <= 0.03){
+        rotationx = -0.8;
     }
     
-    /*end for XY rotation*/
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.15 && acczHistory[1] <= 0.2){
+        rotationx = -0.84375;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] >= 0.2 && acczHistory[1] < 0.25){
+        rotationx = -0.8875;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.25 && acczHistory[1] <= 0.3){
+        rotationx = -0.93125;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.3 && acczHistory[1] <= 0.35){
+        rotationx = -0.975;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.35 && acczHistory[1] <= 0.4){
+        rotationx = -1.01875;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.4 && acczHistory[1] <= 0.45){
+        rotationx = -1.0625;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.45 && acczHistory[1] <= 0.5){
+        rotationx = -1.10625;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.5 && acczHistory[1] <= 0.55){
+        rotationx = -1.15;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.55 && acczHistory[1] <= 0.6){
+        rotationx = -1.19375;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.6 && acczHistory[1] <= 0.65){
+        rotationx = -1.12375;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.65 && acczHistory[1] <= 7){
+        rotationx = -1.28125;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.7 && acczHistory[1] <= 0.75){
+        rotationx = -1.325;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.75 && acczHistory[1] <= 0.8){
+        rotationx = -1.36875;
+    }
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.8 && acczHistory[1] <= 0.85){
+        rotationx = -1.4125;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.85 && acczHistory[1] <= 0.9){
+        rotationx = -1.45625;
+    }
+    
+    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.9 && acczHistory[1] <= 0.95){
+        rotationx = -1.5;
+    }
+
+    //end if y = 0
+    /*end for YZ rotation*/
+    
+    //NSLog(@"%f", rotation);
+    
+    acczHistory[0] = acczHistory[1];
+    
+    self.effect.transform.modelviewMatrix = modelMatrix;
     
     rotationXYPrev = rotationXY;
     rotationYZPrev = rotationYZ;
-    rotationXZPrev = rotationXZ;
-    
 }
 
-
 @end
+
+
