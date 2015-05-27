@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightGLKViewController.m"
-            timestampString = "453941389.881856"
+            timestampString = "454452254.444569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "646"
-            endingLineNumber = "646"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
             landmarkName = "@implementation RightGLKViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightGLKViewController.m"
-            timestampString = "454009815.766785"
+            timestampString = "454452254.444569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "889"
-            endingLineNumber = "889">
+            startingLineNumber = "801"
+            endingLineNumber = "801">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

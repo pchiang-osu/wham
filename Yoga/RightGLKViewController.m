@@ -216,9 +216,10 @@ GLfloat gCubeVertexData[216] =
     posxHistory[0] = 0;
     posyHistory[0] = 0;
     poszHistory[0] = 0;
-    posxHistory[1] = 0;
-    posyHistory[1] = 0;
-    poszHistory[1] = 0;
+    posxHistory[1] = 0.0f;
+    posyHistory[1] = -1.0f;
+    poszHistory[1] = -10.0f;
+    
     
     /*for timer*/
     timerOn = false;
@@ -258,15 +259,15 @@ GLfloat gCubeVertexData[216] =
     
     
     [center addObserverForWWDeviceUpdates:nil usingBlock:^(NSNotification *notification){   //make all objects match observer
-        NSString *notificationName = notification.name;                     //used to discriminate between notifications
-        if ([notificationName isEqualToString:WWDeviceDidConnect]){
+        NSString *notificationName[2] = {notification.name};                     //used to discriminate between notifications
+        if ([notificationName[0] isEqualToString:WWDeviceDidConnect]){
             WWDevice *device = notification.object;
             
             //Enable data and change the update rate
             [device enableData:WWCommandIdAccelerometer];       //get device accelerometer data
             [device changeUpdatePeriod:1];
         }
-        else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
+        else if ([notificationName[0] isEqualToString:WWDeviceDidUpdate]){
             //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
             WWDeviceData *deviceData = notification.object;
             NSLog(@"%@", deviceData.data);
@@ -275,33 +276,25 @@ GLfloat gCubeVertexData[216] =
             accy[1] = [deviceData.data[1] integerValue];
             accz[1] = [deviceData.data[2] integerValue];
             
-            //NSLog(@"%i", accx[1]);
             [self convertToUnits];
             
             rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
             rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
             rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
+            
+            [self integration];
+            
             //NSLog(@"%d", rotationXY);
             //NSLog(@"%d", rotationXYPrev);
-            NSLog(@"%d", rotationYZ);
+            //NSLog(@"%d", rotationYZ);
             
             [self update];
-            NSLog(@"%f", acczHistory[1]);
+            //NSLog(@"%f", accxHistory[1]);
             
-           
-            /*if (count < 1024){                  //must calibrate to account for gravitational pull
-                NSLog(@"Calibrating...");
-                [self calibrate];
-            }*/
-            //else{
-                //[self position];
-                //[self data_reintegration];
-                //[self data_transfer];
-            //}
             count++;
             //[self setNeedsDisplay];
         }
-        else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
+        else if ([notificationName[0] isEqualToString:WWDeviceDidDisconnect]){
             //Do any necessary cleanup
             //may have to remove observer//
         }
@@ -317,8 +310,6 @@ GLfloat gCubeVertexData[216] =
 
 -(void) convertToUnits{
     
-    //NSLog(@"%s", "Convert to units");
-    
     //for x
     //if x = 255 and y = 65, x = -1. If x = 255 and y = 190, x = 1. If x = 190 or x = 61, then x = 0.//
     //If x is between 0 and 61 (going up) and y is between 65 and 0 (going down), then x goes from -1 to 0 (right)//
@@ -331,6 +322,9 @@ GLfloat gCubeVertexData[216] =
     //If x is between 255 and 190 (going down) and y is between 65 and 0 (going down), then x goes from -1 to 0 (left)//
     
     //if x = 255 and y = 65, x = -1. If x = 255 and y = 190, x = 1. If x = 190 or x = 61, then x = 0
+    /*if (accz[1] >= 190 && accz[1] <= 192 && ((accx[1] >= 0 && accx[1] <= 2) || (accx[1] >= 253 && accx[1] <= 255))){
+        accxHistory[1] = 0;
+    }*/
     if (accx[1] >= 251 && accx[1] <= 255 && accy[1] >= 61 && accy[1] <= 65){
         accxHistory[1] = -1;
     }
@@ -418,189 +412,98 @@ GLfloat gCubeVertexData[216] =
     }
 }
 
--(void) calibrate{                      //obtain the value of the refrence threshold. Used for no-movement condition
-    sample_X = accxHistory[1];
-    sample_Y = accyHistory[1];
-    sample_Z = acczHistory[1];
+-(void)integration{
     
-    sstatex += sample_X;
-    sstatey += sample_Y;
-    sstatez += sample_Z;
-    
-    if (count == 1024){
-        sstatex = sstatex >> 10;    //division by 1024
-        sstatey = sstatey >> 10;
-    }
-}
-
-/*-(void) data_transfer{                  //obtain magnitude and direction in seperate variables
-    signed long positionXbkp;
-    signed long positionYYbkp;
-    unsigned int delay;
-    unsigned char posx_seg[4], posy_seg[4];
-    
-    
-    if (posxHistory[1] >= 0){               //This line compares the sign of the x direction data
-        direction = (direction | 0x10);     //if positive the most significant byte is set to 1, else it is set to 8
-        posx_seg[0] = posxHistory[1] & 0x000000FF;
-        posx_seg[1] = (posxHistory[1]>>8) & 0x000000FF;   //the data are also managed in the subsequent lines in order to be sent.
-        posx_seg[2] = (posxHistory[1]>>16) & 0x000000FF;    //The 32 bit variable must be split into 4 different 8 bit varibles
-        //in order to be sent via the 8 bit SCI frame
-        posx_seg[3] = (posxHistory[1]>>24) & 0x000000FF;
+    /*measure velocity*/
+    if ((abs(accxHistory[1]) - accxHistory[0]) > 1000000){        //movement end check. Ridiculous, I know
+        velxHistory[1] = velxHistory[0];
     }
     else{
-        direction = (direction | 0x80);
-        positionXbkp = posxHistory[1] - 1;      //erase when finished
-        positionXbkp = positionXbkp^0xFFFFFFFF;
-        posx_seg[0] = positionXbkp & 0x000000FF;
-        posx_seg[1] = (positionXbkp>>8) & 0x000000FF;
-        posx_seg[2] = (positionXbkp>>16) & 0x000000FF;
-        posx_seg[3] = (positionXbkp>>24) & 0x000000FF;
+        double velAreax = (accxHistory[1] - accxHistory[0]) * 0.01;
+        velxHistory[1] += velAreax;
     }
     
-    if (posyHistory[1] >= 0){                       //do the same for y values
-        direction = (direction | 0x10);
-        posy_seg[0] = posyHistory[1] & 0x000000FF;
-        posy_seg[1] = (posyHistory[1]>>8) & 0x000000FF;
-        posy_seg[2] = (posyHistory[1]>>16) & 0x000000FF;
-        posy_seg[3] = (posyHistory[1]>>24) & 0x000000FF;
+    if (accyHistory[1] - accyHistory[0] < 10){        //movement end check
+        velyHistory[1] = velyHistory[0];
     }
     else{
-        direction = (direction | 0x80);
-        positionYYbkp = posyHistory[1] - 1;      //erase when finished
-        positionYYbkp = positionYYbkp^0xFFFFFFFF;
-        posy_seg[0] = positionYYbkp & 0x000000FF;
-        posy_seg[1] = (positionYYbkp>>8) & 0x000000FF;
-        posy_seg[2] = (positionYYbkp>>16) & 0x000000FF;
-        posy_seg[3] = (positionYYbkp>>24) & 0x000000FF;
+        double velAreay1 = (accyHistory[1] - accyHistory[0]) * 0.01 / 2;
+        double velAreay2 = accyHistory[0] * 0.1;
+        velyHistory[1] = velAreay1 + velAreay2;
     }
     
-    delay = 0x0100;
     
-    sensor_Data[0] = 0x03;
-    sensor_Data[1] = direction;
-    sensor_Data[2] = posx_seg[3];
-    sensor_Data[3] = posy_seg[3];
-    sensor_Data[4] = 0x01;
-    sensor_Data[5] = 0x01;
-    sensor_Data[6] = '\n';
-    
-    while (--delay);
-    
-    NSLog(@"Direction:""%c", direction);
-    NSLog(@"sensor_Data:""%s", sensor_Data);
-}*/
-
-/*-(void)data_reintegration{                      //return data format to its original state
-    if (direction >= 10){
-        posxHistory[1] = posxHistory[1]|0xFFFFC000;     //18 "ones" inserted. Sme size as the amount of shifts
-    }
-    
-    direction = direction & 0x01;
-    if (direction == 1){
-        posyHistory[1] = posyHistory[1]|0xFFFFC000;
-    }
-}*/
-
-
--(void) movement_end_check{         //Allow movement end detection. This detects when movement has stopped
-    if (accxHistory[1] == 0){       //we count the number of acceleration samples that equal zero
-        countx++;
+    if (acczHistory[1] - acczHistory[0] < 10){        //movement end check
+        velzHistory[1] = velzHistory[0];
     }
     else{
-        countx = 0;
+        double velAreaz1 = (acczHistory[1] - acczHistory[0]) * 0.01 / 2;
+        double velAreaz2 = acczHistory[0] * 0.1;
+        velzHistory[1] = velAreaz1 + velAreaz2;
     }
     
-    if (countx >= 25){              //if this number exceeds 25, we can assume that velocity is zero
-        velxHistory[1] = 0;
-        velxHistory[1] = 0;
-    }
+    /*measure position*/
+    double posAreax = (velxHistory[1] - velxHistory[0]) * 0.01;
+    posxHistory[1] += posAreax;
     
-    if (accyHistory[1] == 0){         //we do the same for the Y axis
-        county++;
-    }
-    else{
-        county = 0;
-    }
+    /*double posAreay1 = (velyHistory[1] - velyHistory[0]) * 0.01 / 2;
+    double posAreay2 = velyHistory[0] * 0.01;
+    posyHistory[1] = posAreay1 + posAreay2;
     
-    if (county >= 25){
-        velyHistory[1] = 0;
-        velyHistory[0] = 0;
-    }
+    double posAreaz1 = (velzHistory[1] - velzHistory[0]) * 0.01 / 2;
+    double posAreaz2 = velzHistory[0] * 0.01;
+    poszHistory[1] = posAreaz1 + posAreaz2;*/
     
-}
-
-/*-(void)position {
+    //posxHistory[1] += 1;
+    /*posyHistory[1] *= 100000;
+    poszHistory[1] *= 100000;*/
     
-    unsigned char count2;
-    count2 = 0;
-    
-    do{
-        accxHistory[1] = accxHistory[1] + sample_X;     //filter routine for noise attenuation
-        accyHistory[1] = accyHistory[1] + sample_Y;     //64 samples are averaged. The resulting average represents the acceleration of an instant
-        
-        count2++;
-    }while (count2 != 0x40);    //64 sums of the acceleration sample
-    
-    accxHistory[1] = accxHistory[1] >> 6;       //division by 64
-    accyHistory[1] = accyHistory[1] >> 6;
-    
-    accxHistory[1] = accxHistory[1] - (int)sstatex;     //eliminating zero reference offset of the acceleration data
-    accyHistory[1] = accyHistory[1] - (int)sstatey;     //to obtain positive and negative acceleration
-    
-    if ((accxHistory[1] <= 3) && (accxHistory[1] >= -3)){       //discrimination window applied to the x axis acceleration variable
-        accxHistory[1] = 0;
-    }
-    
-    if ((accyHistory[1] <= 3) && (accyHistory[1] >= -3)){       //discrimination window applied to the y axis acceleration variable
-        accyHistory[1] = 0;
-    }
-    
-    //integration
-    //first x integration
-    velxHistory[1] = velxHistory[0] + accxHistory[0] + ((accxHistory[1] - accxHistory[0]) >> 1);
-    
-    //second x integration
-    posxHistory[1] = posxHistory[0] + velxHistory[0] + ((velxHistory[1] - velxHistory[0]) >> 1);
-    
-    //first Y integration
-    velyHistory[1] = velyHistory[0] + accyHistory[0] + ((accyHistory[1] - accyHistory[0]) >> 1);
-    
-    //second Y integration
-    posyHistory[1] = posyHistory[0] + velyHistory[0] + ((velyHistory[1] - velyHistory[0]) >> 1);
-    //end integration
-    
-    //set previous x position for position comparison
-    posxPrev = posxHistory[0];
-    
-    //resetting of values
-    //update x and y acceleration to current value for future integration
+    /*update values*/
     accxHistory[0] = accxHistory[1];
     accyHistory[0] = accyHistory[1];
-    //update x velocity to current value for future integration
+    acczHistory[0] = acczHistory[1];
+    
     velxHistory[0] = velxHistory[1];
     velyHistory[0] = velyHistory[1];
-    //make required adjustment to make x position available data
-    posxHistory[1] = posxHistory[1] << 18;
-    posyHistory[1] = posyHistory[1] << 18;
+    velzHistory[0] = velzHistory[1];
     
-    //[self data_transfer];
+    //for x
+    /*if (posxHistory[1] > posxHistory[0]){
+        NSLog(@"%s", "XPosRight");
+    }
+    else if (posxHistory[1] < posxHistory[0]){
+        NSLog(@"%s", "XPosLeft");
+    }*/
     
-    posxHistory[1] = posxHistory[1] >> 18;      //once the variables are set, they must return to their original state
-    posyHistory[1] = posyHistory[1] >> 18;
+    //for y
+    /*if (posy[1] > posy[0]){
+     NSLog(@"%s", "yPosAway");
+     }
+     else if (posy[1] < posy[0]){
+     NSLog(@"%s", "yPosToward");
+     }*/
     
-    [self movement_end_check];
+    //for z
+    /*if (posz[1] > posz[0]){
+     NSLog(@"%s", "zPosDown");
+     }
+     else if (posz[1] < posz[0]){
+     NSLog(@"%s", "zPosUp");
+     }*/
     
-    //update x position to current value for future integration
+    
     posxHistory[0] = posxHistory[1];
     posyHistory[0] = posyHistory[1];
-    //end resetting of values
+    poszHistory[0] = poszHistory[1];
     
-    NSLog(@"Position Y:""%i", (int)posyHistory[0]);
-    //NSLog(@"Position X:""%i", (int)posxHistory[0]);
+     //NSLog(@"X: ""%f", (posxHistory[0] * 10000));
+     /*NSLog(@"Y: ""%f", posyHistory[0]);
+     NSLog(@"Z: ""%f", poszHistory[0]);*/
     
-    direction = 0;
-}*/
+    /*NSLog(@"X: ""%f", accx[1]);
+     NSLog(@"Y: ""%f", accy[1]);
+     NSLog(@"Z: ""%f", accz[1]);*/
+}
 
 /*end for acceleration-to-position*/
 
@@ -708,8 +611,6 @@ GLfloat gCubeVertexData[216] =
 #pragma mark - GLKViewControllerDelegate
 
 - (void)update {
-    
-    //rotationx -= 0.3;
  
     float aspect = fabsf(self.view.bounds.size.width /
                          self.view.bounds.size.height);
@@ -721,7 +622,7 @@ GLfloat gCubeVertexData[216] =
     GLKMatrix4 yMatrix = GLKMatrix4MakeYRotation(rotationy);
     GLKMatrix4 zMatrix = GLKMatrix4MakeZRotation(rotationz);
     
-    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(0.0f, -1.0f, -10.f);
+    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation((posxHistory[1] * 10000), posyHistory[1], poszHistory[1]);
     
     GLKMatrix4 modelMatrix =
     GLKMatrix4Multiply(translateMatrix,
@@ -733,19 +634,24 @@ GLfloat gCubeVertexData[216] =
    
     /*for XY rotation*/
    
-    if ((rotationXY == -6 || rotationXY == -5) && rotationXYPrev == 0){
-        rotationz += 0.5;
+    if (acczHistory[1] > 1.0 || acczHistory[1] < 0.9){                                                  //if not parallel to surface
+        if ((rotationXY == -6 || rotationXY == -5) && rotationXYPrev == 0){
+            rotationz += 0.5;
+        }
+        else if ((rotationXYPrev == -6 || rotationXYPrev == -5) && rotationXY == 0){
+            rotationz -= 0.5;
+        }
+        else if (rotationXY < rotationXYPrev){
+            rotationz -= 0.5;
+        }
+        else if (rotationXY > rotationXYPrev){
+            rotationz += 0.5;
+        }
     }
-    else if ((rotationXYPrev == -6 || rotationXYPrev == -5) && rotationXY == 0){
-        rotationz -= 0.5;
-    }
-    else if (rotationXY < rotationXYPrev){
-        rotationz -= 0.5;
-    }
-    else if (rotationXY > rotationXYPrev){
-        rotationz += 0.5;
-    }
-        
+    /*else{                                   //special condition
+        rotationz += 0.2;
+    }*/
+    
     /*end for XY rotation*/
     
      /*for YZ rotation*/
@@ -753,14 +659,17 @@ GLfloat gCubeVertexData[216] =
     //up-side-down is always -1
     //right-side-up is always -2
     //perpendicular is -2 or -3
-
-    if (rotationYZ == -2 && acczHistory[1] >= 0.95 && acczHistory[1] <= 1.0){
+    
+    if (acczHistory[1] == 0){
+        rotationx = -0.8;
+    }
+    else if (rotationYZ == -2 && acczHistory[1] >= 0.95 && acczHistory[1] <= 1.0){
         rotationx = 0.0;
     }
-    else if (rotationYZ == -1 && acczHistory[1] >= -0.1 && acczHistory[1] <= 0.1){
+    /*else if (rotationYZ == -1 && acczHistory[1] >= -0.1 && acczHistory[1] <= 0.1){
         rotationx = 0.0;
-    }
-    else if (rotationYZ == -4 && acczHistory[1] >= 0.01 && acczHistory[1] <= 0.03){
+    }*/
+    else if (/*rotationYZ == -4 && */acczHistory[1] >= 0.01 && acczHistory[1] <= 0.1){
         rotationx = -0.8;
     }
     
@@ -813,11 +722,11 @@ GLfloat gCubeVertexData[216] =
         rotationx = -1.4125;
     }
     
-    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.85 && acczHistory[1] <= 0.9){
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.85 && acczHistory[1] <= 0.9){
         rotationx = -1.45625;
     }
     
-    else if ((rotationXY == -3 || rotationYZ == -2) && acczHistory[1] > 0.9 && acczHistory[1] <= 0.95){
+    else if ((rotationYZ == -3 || rotationYZ == -2) && acczHistory[1] > 0.9 && acczHistory[1] <= 0.95){
         rotationx = -1.5;
     }
 
