@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightGLKViewController.m"
-            timestampString = "454452254.444569"
+            timestampString = "454547487.675516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
-            landmarkName = "@implementation RightGLKViewController"
-            landmarkType = "3">
+            startingLineNumber = "636"
+            endingLineNumber = "636"
+            landmarkName = "-glkRstartStop:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RightGLKViewController.m"
-            timestampString = "454452254.444569"
+            timestampString = "454547487.675516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "801"
-            endingLineNumber = "801">
+            startingLineNumber = "885"
+            endingLineNumber = "885">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

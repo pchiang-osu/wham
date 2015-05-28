@@ -60,7 +60,6 @@
     int rotationXZPrev;
     
     CGPoint iniLocation;
-    GLKQuaternion quarternion;
 
     
     #pragma DATA_SEG MY_ZEROPAGE
@@ -69,7 +68,7 @@
     unsigned char sample_Y;
     unsigned char sample_Z;
     unsigned char sensor_Data[8];
-    unsigned char countx,county ;
+    unsigned char countx,county;
     unsigned char direction;
     unsigned long sstatex,sstatey,sstatez;
     unsigned int countCalibrate;
@@ -77,8 +76,10 @@
     float values[3];
     int count;
     
-    WWDeviceManager *deviceManager; //new
-    WWDevice * connectedDevice; //new
+    WWDeviceManager *deviceManager;
+    WWDevice* connectedDevice;
+    WWDevice* connectedDevice1;
+    WWDevice* connectedDevice2;
     
 }
 
@@ -257,26 +258,64 @@ GLfloat gCubeVertexData[216] =
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
     
-    
     [center addObserverForWWDeviceUpdates:nil usingBlock:^(NSNotification *notification){   //make all objects match observer
-        NSString *notificationName[2] = {notification.name};                     //used to discriminate between notifications
-        if ([notificationName[0] isEqualToString:WWDeviceDidConnect]){
+        NSString *notificationName = notification.name;                     //used to discriminate between notifications
+        if ([notificationName isEqualToString:WWDeviceDidConnect]){
             WWDevice *device = notification.object;
             
             //Enable data and change the update rate
             [device enableData:WWCommandIdAccelerometer];       //get device accelerometer data
             [device changeUpdatePeriod:1];
+            
+            if (connectedDevice == nil){
+                connectedDevice = device;
+            }
+            else if (connectedDevice1 == nil){
+                connectedDevice1 = device;
+            }
+            else if (connectedDevice2 == nil){
+                //connectedDevice2 = device;
+            }
+            else{
+                NSLog(@"%s", "All device slots filled");
+            }
         }
-        else if ([notificationName[0] isEqualToString:WWDeviceDidUpdate]){
+        else if ([notificationName isEqualToString:WWDeviceDidUpdate]){
             //If notification.name is WWDeviceDidUpdate, notification.object is WWDeviceData
             WWDeviceData *deviceData = notification.object;
-            NSLog(@"%@", deviceData.data);
+            //NSLog(@"%@", deviceData.data);
             //do something with deviceData.data
             accx[1] = [deviceData.data[0] integerValue];       //accelerometer indices
             accy[1] = [deviceData.data[1] integerValue];
             accz[1] = [deviceData.data[2] integerValue];
             
-            [self convertToUnits];
+            if (connectedDevice.peripheralIdentifier){
+                NSLog(@"%d", accx[1]);
+                NSLog(@"%s", "Device1 connected");
+                [self convertToUnits];
+                rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
+                rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
+                rotationXY = atan2(accxHistory[1], accyHistory[1]) - M_PI;
+                
+                [self integration];
+                
+                //NSLog(@"%d", rotationXY);
+                //NSLog(@"%d", rotationXYPrev);
+                //NSLog(@"%d", rotationYZ);
+                
+                [self update];
+                //NSLog(@"%f", accxHistory[1]);
+                
+                count++;
+                //[self setNeedsDisplay];
+            }
+            else if (connectedDevice1.peripheralIdentifier){
+                NSLog(@"%d", accx[1]);
+                NSLog(@"%s", "Device2 connected");
+                //NSLog(@"%@", deviceData.data);
+            }
+            
+            /*[self convertToUnits];
             
             rotationYZ = atan2(accyHistory[1], acczHistory[1]) - M_PI;
             rotationXZ = atan2(accxHistory[1], acczHistory[1]) - M_PI;
@@ -292,11 +331,11 @@ GLfloat gCubeVertexData[216] =
             //NSLog(@"%f", accxHistory[1]);
             
             count++;
-            //[self setNeedsDisplay];
-        }
-        else if ([notificationName[0] isEqualToString:WWDeviceDidDisconnect]){
-            //Do any necessary cleanup
-            //may have to remove observer//
+            //[self setNeedsDisplay];*/
+            else if ([notificationName isEqualToString:WWDeviceDidDisconnect]){
+                //Do any necessary cleanup
+                //may have to remove observer//
+            }
         }
         
     }];
