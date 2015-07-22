@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		169E81521B5F092200CF2631 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E81511B5F092200CF2631 /* main.m */; };
+		169E81551B5F092200CF2631 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E81541B5F092200CF2631 /* AppDelegate.m */; };
+		169E815A1B5F092200CF2631 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E81591B5F092200CF2631 /* GameViewController.m */; };
+		169E815D1B5F092200CF2631 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169E815B1B5F092200CF2631 /* Main.storyboard */; };
+		169E815F1B5F092200CF2631 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169E815E1B5F092200CF2631 /* Images.xcassets */; };
+		169E81621B5F092200CF2631 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169E81601B5F092200CF2631 /* LaunchScreen.xib */; };
+		169E816E1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E816D1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m */; };
+		169E81791B5F10EC00CF2631 /* LLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E81781B5F10EC00CF2631 /* LLAnimation.m */; };
+		169E817C1B5F11C700CF2631 /* AnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E817B1B5F11C700CF2631 /* AnimationController.m */; };
+		169E817F1B5F124D00CF2631 /* MovementQuards.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E817E1B5F124D00CF2631 /* MovementQuards.m */; };
+		169E81831B5F15D200CF2631 /* Bullock-2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 169E81821B5F15D200CF2631 /* Bullock-2.dae */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		169E81681B5F092300CF2631 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E81441B5F092200CF2631 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 169E814B1B5F092200CF2631;
+			remoteInfo = "Skeletal Animation Framework";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		169E814C1B5F092200CF2631 /* Skeletal Animation Framework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skeletal Animation Framework.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		169E81501B5F092200CF2631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		169E81511B5F092200CF2631 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		169E81531B5F092200CF2631 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		169E81541B5F092200CF2631 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		169E81581B5F092200CF2631 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		169E81591B5F092200CF2631 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		169E815C1B5F092200CF2631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		169E815E1B5F092200CF2631 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		169E81611B5F092200CF2631 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		169E81671B5F092300CF2631 /* Skeletal Animation FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skeletal Animation FrameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		169E816C1B5F092300CF2631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		169E816D1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Skeletal_Animation_FrameworkTests.m; sourceTree = "<group>"; };
+		169E81771B5F10EC00CF2631 /* LLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAnimation.h; sourceTree = "<group>"; };
+		169E81781B5F10EC00CF2631 /* LLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAnimation.m; sourceTree = "<group>"; };
+		169E817A1B5F11C700CF2631 /* AnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationController.h; sourceTree = "<group>"; };
+		169E817B1B5F11C700CF2631 /* AnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationController.m; sourceTree = "<group>"; };
+		169E817D1B5F124D00CF2631 /* MovementQuards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementQuards.h; sourceTree = "<group>"; };
+		169E817E1B5F124D00CF2631 /* MovementQuards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovementQuards.m; sourceTree = "<group>"; };
+		169E81821B5F15D200CF2631 /* Bullock-2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "Bullock-2.dae"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		169E81491B5F092200CF2631 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		169E81641B5F092300CF2631 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		169E81431B5F092200CF2631 = {
+			isa = PBXGroup;
+			children = (
+				169E81821B5F15D200CF2631 /* Bullock-2.dae */,
+				169E81771B5F10EC00CF2631 /* LLAnimation.h */,
+				169E81781B5F10EC00CF2631 /* LLAnimation.m */,
+				169E817A1B5F11C700CF2631 /* AnimationController.h */,
+				169E817B1B5F11C700CF2631 /* AnimationController.m */,
+				169E817D1B5F124D00CF2631 /* MovementQuards.h */,
+				169E817E1B5F124D00CF2631 /* MovementQuards.m */,
+				169E814E1B5F092200CF2631 /* Skeletal Animation Framework */,
+				169E816A1B5F092300CF2631 /* Skeletal Animation FrameworkTests */,
+				169E814D1B5F092200CF2631 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		169E814D1B5F092200CF2631 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				169E814C1B5F092200CF2631 /* Skeletal Animation Framework.app */,
+				169E81671B5F092300CF2631 /* Skeletal Animation FrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		169E814E1B5F092200CF2631 /* Skeletal Animation Framework */ = {
+			isa = PBXGroup;
+			children = (
+				169E81531B5F092200CF2631 /* AppDelegate.h */,
+				169E81541B5F092200CF2631 /* AppDelegate.m */,
+				169E81581B5F092200CF2631 /* GameViewController.h */,
+				169E81591B5F092200CF2631 /* GameViewController.m */,
+				169E815B1B5F092200CF2631 /* Main.storyboard */,
+				169E815E1B5F092200CF2631 /* Images.xcassets */,
+				169E81601B5F092200CF2631 /* LaunchScreen.xib */,
+				169E814F1B5F092200CF2631 /* Supporting Files */,
+			);
+			path = "Skeletal Animation Framework";
+			sourceTree = "<group>";
+		};
+		169E814F1B5F092200CF2631 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				169E81501B5F092200CF2631 /* Info.plist */,
+				169E81511B5F092200CF2631 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		169E816A1B5F092300CF2631 /* Skeletal Animation FrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				169E816D1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m */,
+				169E816B1B5F092300CF2631 /* Supporting Files */,
+			);
+			path = "Skeletal Animation FrameworkTests";
+			sourceTree = "<group>";
+		};
+		169E816B1B5F092300CF2631 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				169E816C1B5F092300CF2631 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		169E814B1B5F092200CF2631 /* Skeletal Animation Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 169E81711B5F092300CF2631 /* Build configuration list for PBXNativeTarget "Skeletal Animation Framework" */;
+			buildPhases = (
+				169E81481B5F092200CF2631 /* Sources */,
+				169E81491B5F092200CF2631 /* Frameworks */,
+				169E814A1B5F092200CF2631 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Skeletal Animation Framework";
+			productName = "Skeletal Animation Framework";
+			productReference = 169E814C1B5F092200CF2631 /* Skeletal Animation Framework.app */;
+			productType = "com.apple.product-type.application";
+		};
+		169E81661B5F092300CF2631 /* Skeletal Animation FrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 169E81741B5F092300CF2631 /* Build configuration list for PBXNativeTarget "Skeletal Animation FrameworkTests" */;
+			buildPhases = (
+				169E81631B5F092300CF2631 /* Sources */,
+				169E81641B5F092300CF2631 /* Frameworks */,
+				169E81651B5F092300CF2631 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				169E81691B5F092300CF2631 /* PBXTargetDependency */,
+			);
+			name = "Skeletal Animation FrameworkTests";
+			productName = "Skeletal Animation FrameworkTests";
+			productReference = 169E81671B5F092300CF2631 /* Skeletal Animation FrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		169E81441B5F092200CF2631 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "CS Team";
+				TargetAttributes = {
+					169E814B1B5F092200CF2631 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					169E81661B5F092300CF2631 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 169E814B1B5F092200CF2631;
+					};
+				};
+			};
+			buildConfigurationList = 169E81471B5F092200CF2631 /* Build configuration list for PBXProject "Skeletal Animation Framework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 169E81431B5F092200CF2631;
+			productRefGroup = 169E814D1B5F092200CF2631 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				169E814B1B5F092200CF2631 /* Skeletal Animation Framework */,
+				169E81661B5F092300CF2631 /* Skeletal Animation FrameworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		169E814A1B5F092200CF2631 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				169E81621B5F092200CF2631 /* LaunchScreen.xib in Resources */,
+				169E81831B5F15D200CF2631 /* Bullock-2.dae in Resources */,
+				169E815F1B5F092200CF2631 /* Images.xcassets in Resources */,
+				169E815D1B5F092200CF2631 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		169E81651B5F092300CF2631 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		169E81481B5F092200CF2631 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				169E81791B5F10EC00CF2631 /* LLAnimation.m in Sources */,
+				169E817C1B5F11C700CF2631 /* AnimationController.m in Sources */,
+				169E81551B5F092200CF2631 /* AppDelegate.m in Sources */,
+				169E815A1B5F092200CF2631 /* GameViewController.m in Sources */,
+				169E817F1B5F124D00CF2631 /* MovementQuards.m in Sources */,
+				169E81521B5F092200CF2631 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		169E81631B5F092300CF2631 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				169E816E1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		169E81691B5F092300CF2631 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 169E814B1B5F092200CF2631 /* Skeletal Animation Framework */;
+			targetProxy = 169E81681B5F092300CF2631 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		169E815B1B5F092200CF2631 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				169E815C1B5F092200CF2631 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		169E81601B5F092200CF2631 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				169E81611B5F092200CF2631 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		169E816F1B5F092300CF2631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		169E81701B5F092300CF2631 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		169E81721B5F092300CF2631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Skeletal Animation Framework/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		169E81731B5F092300CF2631 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Skeletal Animation Framework/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		169E81751B5F092300CF2631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Skeletal Animation FrameworkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skeletal Animation Framework.app/Skeletal Animation Framework";
+			};
+			name = Debug;
+		};
+		169E81761B5F092300CF2631 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Skeletal Animation FrameworkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skeletal Animation Framework.app/Skeletal Animation Framework";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		169E81471B5F092200CF2631 /* Build configuration list for PBXProject "Skeletal Animation Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				169E816F1B5F092300CF2631 /* Debug */,
+				169E81701B5F092300CF2631 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		169E81711B5F092300CF2631 /* Build configuration list for PBXNativeTarget "Skeletal Animation Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				169E81721B5F092300CF2631 /* Debug */,
+				169E81731B5F092300CF2631 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		169E81741B5F092300CF2631 /* Build configuration list for PBXNativeTarget "Skeletal Animation FrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				169E81751B5F092300CF2631 /* Debug */,
+				169E81761B5F092300CF2631 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 169E81441B5F092200CF2631 /* Project object */;
+}

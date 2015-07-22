@@ -1,0 +1,92 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red63\green110\blue116;\red46\green13\blue110;\red92\green38\blue153;
+}
+\margl1440\margr1440\vieww28600\viewh15300\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 SceneKit Skeletal Animation\
+\
+Welcome to this tutorial on how to work with and assign values to the SceneKit Skeletal Animation framework. In this tutorial, you will learn:\
+\
+1) The functionality of the framework\
+2) The basic structure of the framework\
+3) How to use the framework with XYZ data\
+4) References on Objective C, SceneKit and CAAnimation\
+\
+1) The functionality of the framework\
+	The SceneKit Skeletal Animation framework is a program written in Objective C using the SceneKit and CAAnimation libraries to perform animations on a simple rendered Colada mesh. It allows a developer to move each body part of the figure that appears on the screen when the program is run based upon XYZ coordinate information provided to that body part. Both the XYZ information and the desired body part are specified by the developer. The developer can provide hundreds of XYZ/body part pairs at any given time, making it easy to create complex animations for the figure to perform. This data can come from any source (devices, servers, user input, etc). All that matters is that the framework receives data indices in the form of (X, Y, Z, body part). The rest is left to the framework.\
+	Please continue reading to learn about the basic structure of this program. If this information is not relevant to you and you just want to know how to make the figure move, feel free to skip the following section.\
+\
+2) The basic structure of the framework\
+	The SceneKit Skeletal Animation framework uses a series of classes and objects to create and interact with several data structures. \
+\
+3) How to use the framework with XYZ data (how to make the skeleton move)\
+	In order to interact with the SceneKit Skeletal Animation framework, you must first install the package (talk about this)\
+	Once you have your Workspace set up, you can work freely with the interface. Begin by creating a new object of MovementQuards: \'93MovementQuards* objectName = 
+\f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
+\f0\fs24 \CocoaLigature1 \'94. You may now use this object to add any XYZ/body part you want to the animation. In order to add such information to the animation, you must add values to the object. Keep reading to find out how.\
+	In order to add animation values to this object, you must use the MovemntQuards method addPosition. This is done with the following syntax: \'93[objectName addPosition: (double) X_value: (double) Y_value: (double) Z_value:(double) body_part]\'94. You will notice that the body part field is of the primitive type double. This number is used as an index of an array of body part objects. They are mapped as follows:\
+	0.0 = Armature\
+	1.0 = Pelvis\
+	2..0 = PelvisRight\
+	3.0 = PelvisLeft\
+	4.0 = HipRight\
+	5.0 = HipLeft\
+	6.0 = KneeRight (upper leg)\
+	7.0 = KneeLeft (upper leg)\
+	8.0 = AnkleRight (lower leg)\
+	9.0 = AnkleLeft (lower leg)\
+	10.0 = FootRight\
+	11.0 = FootLeft\
+	12.0 = Spine1 (lower third of spine)\
+	13.0 = Spine2 (middle third of spine)\
+	14.0 = Spine3 (upper third of spine)\
+	15.0 = Neck\
+	16.0 = Head\
+	17.0 = ClavicleLefts\
+	18.0 = ClavicleRight\
+	19.0 = UpperArmRight\
+	20.0 = UpperArmLeft\
+	21.0 = LowerArmRight\
+	22.0 = LowerArmLeft\
+	23.0 = WristRight\
+	24.0 = WristLeft\
+	25.0 = HandRight\
+	26.0 = HandLeft\
+	27.0 = ThumbRight\
+	28.0 = ThumbLeft\
+	29.0 = IndexFingerRight\
+	30.0 = IndexFingerLeft\
+	31.0 = MiddleFingerRight\
+	32.0 = MiddleFingerLeft\
+	33.0 = RingFingerRight\
+	34.0 = RingFingerLeft\
+	35.0 = PinkyFingerRight\
+	36.0 = PinkyFingerLeft\
+This syntax will cause that animated figure to move the specified body part to the desired (X, Y, Z) position on the screen. (In later versions, I may make make it so a user can enter string literals to the body part field, instead of an index). You can can such commands together as many times as you want to the effect of creating elaborate animations:\
+	
+\f1\fs22 \cf4 \CocoaLigature0 \
+	
+\f0\fs24 \cf0 \CocoaLigature1 MovementQuards* objectName = 
+\f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
+\f0\fs24 \CocoaLigature1 \
+	[objectName addPosition: X_value: Y_value: Z_value: 4.0];\
+	[objectName addPosition: X_value + 10: Y_value: Z_value: 4.0];\
+	[objectName addPosition: X_value: Y_value: Z_value: 12.0];\
+	[objectName addPosition: X_value + 20: Y_value: Z_value: 12.0];\
+\
+	The above example creates a MovementQuards object and then uses it to first move the right hip of the figure twice, and then move the lower third of its spine twice. Commands strung together in this manner will result in a sequence of movements based on each assignment. You can also move up to 37 distinct body parts simultaneously by simply creating multiple objects:\
+\
+	MovementQuards* objectName1 = 
+\f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
+\f0\fs24 \CocoaLigature1 \
+	[objectName1 addPosition: X_value1: Y_value1: Z_value1: 4.0];\
+	MovementQuards objectName2 = 
+\f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
+\f0\fs24 \CocoaLigature1 \
+	[objectName1 addPosition: X_value2: Y_value2: Z_value2: 6.0];\
+\
+	This example allows both the right hip and the right knee to move concurrently based on their own values. Just remember that elements of objects run sequentially, while objects themselves run concurrently. (In order to work with the whole body via sensors, I would suggest creating an object for all 19 body parts and then adding an element to it each time the value of the sensor associated with that body part changes).\
+	\
+4) References on Objective C, SceneKit and CAAnimation}
