@@ -64,8 +64,52 @@
     SCNNode *Neck = [Spine3 childNodeWithName:@"NECK" recursively:NO];
     SCNNode *Head = [Neck childNodeWithName:@"Head" recursively:NO];
     
-    SCNNode *ClavicleLeft = [Spine3 childNodeWithName:@"LEFTCLAVICLE" recursively:NO];
     SCNNode *ClavicleRight = [Spine3 childNodeWithName:@"RIGHTCLAVICLE" recursively:NO];
+    SCNNode *ClavicleLeft = [Spine3 childNodeWithName:@"LEFTCLAVICLE" recursively:NO];
+    SCNNode *ArmUpperRight = [ClavicleRight childNodeWithName:@"ArmUpperRight" recursively:NO];
+    SCNNode *ArmUpperLeft = [ClavicleLeft childNodeWithName:@"ArmUpperLeft" recursively:NO];
+    SCNNode *ArmLowerRight = [ArmUpperRight childNodeWithName:@"ArmLowerRight" recursively:NO];
+    SCNNode *ArmLowerLeft = [ArmUpperLeft childNodeWithName:@"ArmLowerLeft" recursively:NO];
+    
+    SCNNode *WristRight = [ArmLowerRight childNodeWithName:@"RIGHTWRIST" recursively:NO];
+    SCNNode *WristLeft = [ArmLowerLeft childNodeWithName:@"LEFTWRIST" recursively:NO];
+    SCNNode *IndexFinger1Right = [WristRight childNodeWithName:@"RIGHTHANDINDEX1" recursively:NO];
+    SCNNode *IndexFinger1Left = [WristLeft childNodeWithName:@"LEFTHANDINDEX1" recursively:NO];
+    SCNNode *IndexFinger2Right = [IndexFinger1Right childNodeWithName:@"RIGHTHANDINDEX2" recursively:NO];
+    SCNNode *IndexFinger2Left = [IndexFinger1Left childNodeWithName:@"LEFTHANDINDEX2" recursively:NO];
+    SCNNode *IndexFinger3Right = [IndexFinger2Right childNodeWithName:@"RIGHTHANDINDEX3" recursively:NO];
+    SCNNode *IndexFinger3Left = [IndexFinger2Left childNodeWithName:@"LEFTHANDINDEX3" recursively:NO];
+    
+    SCNNode *MiddleFinger1Right = [WristRight childNodeWithName:@"RIGHTHANDMIDDLE1" recursively:NO];
+    SCNNode *MiddleFinger1Left = [WristLeft childNodeWithName:@"LEFTHANDMIDDLE1" recursively:NO];
+    SCNNode *MiddleFinger2Right = [MiddleFinger1Right childNodeWithName:@"RIGHTHANDMIDDLE2" recursively:NO];
+    SCNNode *MiddleFinger2Left = [MiddleFinger1Left childNodeWithName:@"LEFTHANDMIDDLE2" recursively:NO];
+    SCNNode *MiddleFinger3Right = [MiddleFinger2Right childNodeWithName:@"RIGHTHANDMIDDLE3" recursively:NO];
+    SCNNode *MiddleFinger3Left = [MiddleFinger2Left childNodeWithName:@"LEFTHANDMIDDLE3" recursively:NO];
+    
+    SCNNode *RingFinger1Right = [WristRight childNodeWithName:@"RIGHTHANDRING1" recursively:NO];
+    SCNNode *RingFinger1Left = [WristLeft childNodeWithName:@"LEFTHANDRING1" recursively:NO];
+    SCNNode *RingFinger2Right = [RingFinger1Right childNodeWithName:@"RIGHTHANDRING2" recursively:NO];
+    SCNNode *RingFinger2Left = [RingFinger1Left childNodeWithName:@"LEFTHANDRING2" recursively:NO];
+    SCNNode *RingFinger3Right = [RingFinger2Right childNodeWithName:@"RIGHTHANDRING3" recursively:NO];
+    SCNNode *RingFinger3Left = [RingFinger2Left childNodeWithName:@"LEFTHANDRING3" recursively:NO];
+    
+    SCNNode *PinkyFinger1Right = [WristRight childNodeWithName:@"RIGHTHANDPINKY1" recursively:NO];
+    SCNNode *PinkyFinger1Left = [WristLeft childNodeWithName:@"LEFTHANDPINKY1" recursively:NO];
+    SCNNode *PinkyFinger2Right = [PinkyFinger1Right childNodeWithName:@"RIGHTHANDPINKY2" recursively:NO];
+    SCNNode *PinkyFinger2Left = [PinkyFinger1Left childNodeWithName:@"LEFTHANDPINKY2" recursively:NO];
+    SCNNode *PinkyFinger3Right = [PinkyFinger2Right childNodeWithName:@"RIGHTHANDPINKY3" recursively:NO];
+    SCNNode *PinkyFinger3Left = [PinkyFinger2Left childNodeWithName:@"LEFTHANDPINKY3" recursively:NO];
+    
+    SCNNode *Thumb1Right = [WristRight childNodeWithName:@"RIGHTHANDTHUMB1" recursively:NO];
+    SCNNode *Thumb1Left = [WristLeft childNodeWithName:@"LEFTHANDTHUMB1" recursively:NO];
+    SCNNode *Thumb2Right = [Thumb1Right childNodeWithName:@"RIGHTHANDTHUMB2" recursively:NO];
+    SCNNode *Thumb2Left = [Thumb1Right childNodeWithName:@"LEFTHANDTHUMB2" recursively:NO];
+    SCNNode *Thumb3Right = [Thumb2Right childNodeWithName:@"RIGHTHANDTHUMB3" recursively:NO];
+    SCNNode *Thumb3Left = [Thumb2Right childNodeWithName:@"LEFTHANDTHUMB3" recursively:NO];
+
+
+    
     
     nodes[0] = Armature;
     nodes[1] = Pelvis;
@@ -86,6 +130,42 @@
     nodes[16] = Head;
     nodes[17] = ClavicleLeft;
     nodes[18] = ClavicleRight;
+    nodes[19] = ArmUpperRight;
+    nodes[20] = ArmUpperLeft;
+    nodes[21] = ArmLowerRight;
+    nodes[22] = ArmLowerLeft;
+    nodes[23] = WristRight;
+    nodes[24] = WristLeft;
+    nodes[25] = IndexFinger1Right;
+    nodes[26] = IndexFinger1Left;
+    nodes[27] = IndexFinger2Right;
+    nodes[28] = IndexFinger2Left;
+    nodes[29] = IndexFinger3Right;
+    nodes[30] = IndexFinger3Left;
+    nodes[31] = MiddleFinger1Right;
+    nodes[32] = MiddleFinger1Left;
+    nodes[33] = MiddleFinger2Right;
+    nodes[34] = MiddleFinger2Left;
+    nodes[35] = MiddleFinger3Right;
+    nodes[36] = MiddleFinger3Left;
+    nodes[37] = RingFinger1Right;
+    nodes[38] = RingFinger1Left;
+    nodes[39] = RingFinger2Right;
+    nodes[40] = RingFinger2Left;
+    nodes[41] = RingFinger3Right;
+    nodes[42] = RingFinger3Left;
+    nodes[43] = PinkyFinger1Right;
+    nodes[44] = PinkyFinger1Left;
+    nodes[45] = PinkyFinger2Right;
+    nodes[46] = PinkyFinger2Left;
+    nodes[47] = PinkyFinger3Right;
+    nodes[48] = PinkyFinger3Left;
+    nodes[49] = Thumb1Right;
+    nodes[50] = Thumb1Left;
+    nodes[51] = Thumb2Right;
+    nodes[52] = Thumb2Left;
+    nodes[53] = Thumb3Right;
+    nodes[54] = Thumb3Left;
     
     if (Armature){
         NSLog(@"%s", "found");

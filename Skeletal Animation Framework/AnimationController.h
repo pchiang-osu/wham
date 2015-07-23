@@ -14,7 +14,7 @@
 @interface AnimationController : AppDelegate{
     LLAnimation* start;
     SCNScene* scene;
-    SCNNode* nodes[19];
+    SCNNode* nodes[55];
     MovementQuards* queue;
 }
 
