@@ -34,7 +34,7 @@
     MovementQueue = [[MovementQuards alloc]init];
     [MovementQueue addPosition:90.0: 45.0: 20.0: 7.0];
     [MovementQueue addPosition:90.0: 90.0: 90.0: 4.0];
-    [MovementQueue addPosition:85.0: 45.0: 20.0: 0.0];
+    [MovementQueue addPosition:85.0: 45.0: 20.0: 19.0];
     [MovementQueue addPosition:90.0: 90.0: 90.0: 8.0];
     
     [anim setQueue: (MovementQueue)];

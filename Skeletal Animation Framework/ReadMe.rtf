@@ -52,18 +52,36 @@ Welcome to this tutorial on how to work with and assign values to the SceneKit S
 	22.0 = LowerArmLeft\
 	23.0 = WristRight\
 	24.0 = WristLeft\
-	25.0 = HandRight\
-	26.0 = HandLeft\
-	27.0 = ThumbRight\
-	28.0 = ThumbLeft\
-	29.0 = IndexFingerRight\
-	30.0 = IndexFingerLeft\
-	31.0 = MiddleFingerRight\
-	32.0 = MiddleFingerLeft\
-	33.0 = RingFingerRight\
-	34.0 = RingFingerLeft\
-	35.0 = PinkyFingerRight\
-	36.0 = PinkyFingerLeft\
+	25.0 = IndexFinger1Right (closest index finger bone to wrist)\
+	26.0 = IndexFinger1Left\
+	27.0 = IndexFinger2Right (next closest finger bone to wrist)\
+	28.0 = IndexFinger2Left\
+	29.0 = IndexFinger3Right (furthest index finger bone to wrist. \'93Finger tip\'94, as it were)\
+	30.0 = IndexFinger3Left\
+	31.0 = MiddleFinger1Right\
+	32.0 = MiddleFinger1Left\
+	33.0 = MiddleFinger2Right\
+	34.0 = MiddleFinger2Left\
+	35.0 = MiddleFinger3Right\
+	36.0 = MiddleFinger3Left\
+	37.0 = RingFinger1Right\
+	38.0 = RingFinger1Left\
+	39.0 = RingFinger2Right\
+	40.0 = RingFinger2Left\
+	41.0 = RingFinger3Right\
+	42.0 = RingFinger3Left\
+	43.0 = PinkyFinger1Right\
+	44.0 = PinkyFinger1Left\
+	45.0 = PinkyFinger2Right\
+	46.0 = PinkyFinger2Left\
+	47.0 = PinkyFinger3Right\
+	48.0 = PinkyFinger3Left\
+	49.0 = Thumb1Right\
+	50.0 = Thumb1Left\
+	51.0 = Thumb2Right\
+	52.0 = Thumb2Left\
+	53.0 = Thumb3Right\
+	54.0 = Thumb3Left\
 This syntax will cause that animated figure to move the specified body part to the desired (X, Y, Z) position on the screen. (In later versions, I may make make it so a user can enter string literals to the body part field, instead of an index). You can can such commands together as many times as you want to the effect of creating elaborate animations:\
 	
 \f1\fs22 \cf4 \CocoaLigature0 \
@@ -76,7 +94,7 @@ This syntax will cause that animated figure to move the specified body part to t
 	[objectName addPosition: X_value: Y_value: Z_value: 12.0];\
 	[objectName addPosition: X_value + 20: Y_value: Z_value: 12.0];\
 \
-	The above example creates a MovementQuards object and then uses it to first move the right hip of the figure twice, and then move the lower third of its spine twice. Commands strung together in this manner will result in a sequence of movements based on each assignment. You can also move up to 37 distinct body parts simultaneously by simply creating multiple objects:\
+	The above example creates a MovementQuards object and then uses it to first move the right hip of the figure twice, and then move the lower third of its spine twice. Commands strung together in this manner will result in a sequence of movements based on each assignment. You can also move up to 55 distinct body parts simultaneously by simply creating multiple objects:\
 \
 	MovementQuards* objectName1 = 
 \f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
