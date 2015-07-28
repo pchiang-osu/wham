@@ -583,34 +583,1206 @@
         }
         temp = [temp getNext];
     }
-    //CAAnimationGroup *group = [temp getGroup];
-    //[nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
- 
-    /*will all go into a while loop*/
-    /*CAAnimationGroup *group = [start getGroup];
-     //[nodes[(int)[start getPart]] addAnimation:group forKey:@"allMyAnimations"];
-     
-     CAAnimationGroup *group2 = [start.getNext getGroup];
-     //[nodes[(int)[start.getNext getPart]] addAnimation:group2 forKey:@"allMyAnimations"];
-     
-     CAAnimationGroup *group3 = [start.getNext.getNext getGroup];
-     //[nodes[(int)[start.getNext.getNext getPart]] addAnimation:group3 forKey:@"allMyAnimations"];
-     
-     
-     
-     if (nodes[(int)[start getPart]] == nodes[(int)[start.getNext getPart]]){
-     CAAnimationGroup *group4 = [CAAnimationGroup animation];
-     group4.animations = @[group,group2,group3];
-     //group.beginTime = startTime;
-     group4.duration = totalDuration;
-     group4.removedOnCompletion = NO;
-     [nodes[(int)[start getPart]] addAnimation:group4 forKey:@"allMyAnimations"];
-     }
-     else{
-     [nodes[(int)[start getPart]] addAnimation:group forKey:@"allMyAnimations"];
-     [nodes[(int)[start.getNext getPart]] addAnimation:group2 forKey:@"allMyAnimations"];
-     [nodes[(int)[start.getNext.getNext getPart]] addAnimation:group3 forKey:@"allMyAnimations"];
-     }*/
+    
+    totalDuration = 0;
+    while (queue6.morePositions){
+        lastPosition = [queue6 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue7.morePositions){
+        lastPosition = [queue7 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue8.morePositions){
+        lastPosition = [queue8 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue9.morePositions){
+        lastPosition = [queue9 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue10.morePositions){
+        lastPosition = [queue10 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue11.morePositions){
+        lastPosition = [queue11 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue12.morePositions){
+        lastPosition = [queue12 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue13.morePositions){
+        lastPosition = [queue13 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue14.morePositions){
+        lastPosition = [queue14 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue15.morePositions){
+        lastPosition = [queue15 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue16.morePositions){
+        lastPosition = [queue16 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue17.morePositions){
+        lastPosition = [queue17 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue18.morePositions){
+        lastPosition = [queue18 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue19.morePositions){
+        lastPosition = [queue19 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
+    
+    totalDuration = 0;
+    while (queue20.morePositions){
+        lastPosition = [queue20 getLastPosition];
+        
+        CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animx.fillMode = kCAFillModeForwards;
+        animx.removedOnCompletion = NO;
+        animx.beginTime = totalDuration;
+        animx.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+        animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animy.fillMode = kCAFillModeForwards;
+        animy.removedOnCompletion = NO;
+        animy.beginTime = totalDuration;
+        animy.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animy.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 1.0, 0.0, degreesToRadians(lastPosition[1]))];
+        animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        
+        CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+        animz.fillMode = kCAFillModeForwards;
+        animz.removedOnCompletion = NO;
+        animz.beginTime = totalDuration;
+        animz.duration = 5;
+        //startAnim.repeatCount = MAXFLOAT;
+        animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
+        animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        
+        totalDuration += 5;
+        
+        LLAnimation* newAnimation = [[LLAnimation alloc]init];
+        [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+        if (start == nil){
+            start = newAnimation;
+        }
+        else{
+            LLAnimation* search = start;
+            
+            while ([search getNext] != nil){
+                search = [search getNext];
+                NSLog(@"%s", "not null");
+            }
+            
+            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            [search setNext:(newAnimation)];
+        }
+        
+    }
+    
+    /*set animation in motion*/
+    
+    
+    //CAAnimationGroup *group = [CAAnimationGroup animation];
+    temp = start;
+    groupFlag = 0;
+    groupOfGroups = [CAAnimationGroup animation];
+    
+    //figure out how to add animations from linked list into group
+    while (temp != nil){
+        if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
+            groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
+            //groupOfGroups.
+            //group.beginTime = startTime;
+            groupOfGroups.duration = [temp.getGroup duration];
+            groupOfGroups.removedOnCompletion = NO;
+            [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+            groupFlag = 1;
+        }
+        else{
+            CAAnimationGroup *group = [temp getGroup];
+            [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
+            groupFlag = 0;
+        }
+        temp = [temp getNext];
+    }
 }
 
 -(void)setQueue:(MovementQuards*) q1:(MovementQuards*) q2:(MovementQuards*) q3:(MovementQuards*) q4:(MovementQuards*) q5:(MovementQuards*) q6:(MovementQuards*) q7:(MovementQuards*) q8:(MovementQuards*) q9:(MovementQuards*) q10:(MovementQuards*) q11:(MovementQuards*) q12:(MovementQuards*) q13:(MovementQuards*) q14:(MovementQuards*) q15:(MovementQuards*) q16:(MovementQuards*) q17:(MovementQuards*) q18:(MovementQuards*) q19:(MovementQuards*) q20{
