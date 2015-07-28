@@ -32,12 +32,56 @@
     
     //set up queue
     MovementQueue = [[MovementQuards alloc]init];
-    [MovementQueue addPosition:90.0: 45.0: 20.0: 7.0];
-    [MovementQueue addPosition:90.0: 90.0: 90.0: 4.0];
-    [MovementQueue addPosition:85.0: 45.0: 20.0: 19.0];
-    [MovementQueue addPosition:90.0: 90.0: 90.0: 8.0];
+    MovementQuards *movementQueue2 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue3 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue4 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue5 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue6 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue7 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue8 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue9 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue10 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue11 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue12 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue13 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue14 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue15 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue16 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue17 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue18 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue19 = [[MovementQuards alloc]init];
+    MovementQuards *movementQueue20 = [[MovementQuards alloc]init];
     
-    [anim setQueue: (MovementQueue)];
+    [MovementQueue addPosition:90.0: 90.0: 90.0: 2.0];
+    /*[MovementQueue addPosition:90.0: 90.0: 90.0: 3.0];
+    [MovementQueue addPosition:85.0: 45.0: 20.0: 4.0];
+    [MovementQueue addPosition:90.0: 90.0: 90.0: 5.0];
+    [MovementQueue addPosition:90.0: 90.0: 90.0: 6.0];
+    [MovementQueue addPosition:90.0: 45.0: 20.0: 7.0];
+    [MovementQueue addPosition:90.0: 90.0: 90.0: 8.0];
+    [MovementQueue addPosition:85.0: 45.0: 20.0: 9.0];
+    [MovementQueue addPosition:90.0: 90.0: 90.0: 10.0];
+    [MovementQueue addPosition:90.0: 90.0: 90.0: 11.0];*/
+ 
+    
+    [movementQueue2 addPosition:90.0: 45.0: 20.0: 12.0];
+    /*[movementQueue2 addPosition:90.0: 90.0: 90.0: 13.0];
+    [movementQueue2 addPosition:85.0: 45.0: 20.0: 14.0];
+    [movementQueue2 addPosition:90.0: 90.0: 90.0: 15.0];
+    [movementQueue2 addPosition:90.0: 90.0: 90.0: 16.0];*/
+    
+    [movementQueue3 addPosition:90.0: 45.0: 20.0: 19.0];
+    /*[movementQueue3 addPosition:90.0: 90.0: 90.0: 19.0];
+    [movementQueue3 addPosition:90.0: 90.0: 90.0: 19.0];*/
+    
+    [movementQueue4 addPosition:90.0: 45.0: 20.0: 20.0];
+    
+    [movementQueue5 addPosition:90.0: 45.0: 20.0: 21.0];
+    
+    
+    
+    
+    [anim setQueue: (MovementQueue): (movementQueue2): (movementQueue3): (movementQueue4): (movementQueue5): (movementQueue6): (movementQueue7): (movementQueue8): (movementQueue9): (movementQueue10): (movementQueue11): (movementQueue12): (movementQueue13): (movementQueue14): (movementQueue15): (movementQueue16): (movementQueue17): (movementQueue18): (movementQueue19): (movementQueue20)];
     
     // retrieve the nodes
     [anim createNodes];
