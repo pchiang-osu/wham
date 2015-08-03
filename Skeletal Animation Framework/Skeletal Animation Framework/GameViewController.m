@@ -89,7 +89,6 @@
     
     
     //this is where you add the movemetns of the various limbs
-    /*[MovementQueue addPosition:90.0: 90.0: 90.0: 2.0];
     [MovementQueue addPosition:90.0: 90.0: 90.0: 3.0];
     [MovementQueue addPosition:85.0: 45.0: 20.0: 4.0];
     
@@ -99,7 +98,7 @@
     
     [movementQueue3 addPosition:90.0: 45.0: 20.0: 17.0];
     [movementQueue3 addPosition:90.0: 90.0: 90.0: 18.0];
-    [movementQueue3 addPosition:90.0: 90.0: 90.0: 19.0];*/
+    [movementQueue3 addPosition:90.0: 90.0: 90.0: 19.0];
     
     [movementQueue54 addPosition:90.0: 45.0: 20.0: 2.0];
     
