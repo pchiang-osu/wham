@@ -268,62 +268,10 @@
     }
 }
 
--(void)setQueue:q1:(MovementQuards*) q2:(MovementQuards*) q3:(MovementQuards*) q4:(MovementQuards*) q5:(MovementQuards*) q6:(MovementQuards*) q7:(MovementQuards*) q8:(MovementQuards*) q9:(MovementQuards*) q10:(MovementQuards*) q11:(MovementQuards*) q12:(MovementQuards*) q13:(MovementQuards*) q14:(MovementQuards*) q15:(MovementQuards*) q16:(MovementQuards*) q17:(MovementQuards*) q18:(MovementQuards*) q19:(MovementQuards*) q20:(MovementQuards*) q21:(MovementQuards*) q22:(MovementQuards*) q23:(MovementQuards*) q24:(MovementQuards*) q25:(MovementQuards*) q26:(MovementQuards*) q27:(MovementQuards*) q28:(MovementQuards*) q29:(MovementQuards*) q30:(MovementQuards*) q31:(MovementQuards*) q32:(MovementQuards*) q33:(MovementQuards*) q34:(MovementQuards*) q35:(MovementQuards*) q36:(MovementQuards*) q37:(MovementQuards*) q38:(MovementQuards*) q39:(MovementQuards*) q40:(MovementQuards*) q41:(MovementQuards*) q42:(MovementQuards*) q43:(MovementQuards*) q44:(MovementQuards*) q45:(MovementQuards*) q46:(MovementQuards*) q47:(MovementQuards*) q48:(MovementQuards*) q49:(MovementQuards*) q50:(MovementQuards*) q51:(MovementQuards*) q52:(MovementQuards*) q53:(MovementQuards*) q54{
-
-    queues[0] = q1;
-    queues[1] = q2;
-    queues[2] = q3;
-    queues[3] = q4;
-    queues[4] = q5;
-    queues[5] = q6;
-    queues[6] = q7;
-    queues[7] = q8;
-    queues[8] = q9;
-    queues[9] = q10;
-    queues[10] = q11;
-    queues[11] = q12;
-    queues[12] = q13;
-    queues[13] = q14;
-    queues[14] = q15;
-    queues[15] = q16;
-    queues[16] = q17;
-    queues[17] = q18;
-    queues[18] = q19;
-    queues[19] = q20;
-    queues[20] = q21;
-    queues[21] = q22;
-    queues[22] = q23;
-    queues[23] = q24;
-    queues[24] = q25;
-    queues[25] = q26;
-    queues[26] = q27;
-    queues[27] = q28;
-    queues[28] = q29;
-    queues[29] = q30;
-    queues[30] = q31;
-    queues[31] = q32;
-    queues[32] = q33;
-    queues[33] = q34;
-    queues[34] = q35;
-    queues[35] = q36;
-    queues[36] = q37;
-    queues[37] = q38;
-    queues[38] = q39;
-    queues[49] = q40;
-    queues[40] = q41;
-    queues[41] = q42;
-    queues[42] = q43;
-    queues[43] = q44;
-    queues[44] = q45;
-    queues[45] = q46;
-    queues[46] = q47;
-    queues[47] = q48;
-    queues[48] = q49;
-    queues[49] = q50;
-    queues[50] = q51;
-    queues[51] = q52;
-    queues[52] = q53;
-    queues[53] = q54;
+-(void)setQueue:(MovementQuards**)q{
+    for (int i = 0; i < 54; i++){
+        queues[i] = q[i];
+    }
 }
 
 /*-(MovementQuards*)getQueue{

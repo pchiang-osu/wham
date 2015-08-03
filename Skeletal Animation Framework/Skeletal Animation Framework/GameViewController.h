@@ -12,7 +12,7 @@
 #import "AnimationController.h"
 
 @interface GameViewController : UIViewController{
-    MovementQuards* MovementQueue;
+    MovementQuards* movementQueues[52];
     bool animate;
 }
 
