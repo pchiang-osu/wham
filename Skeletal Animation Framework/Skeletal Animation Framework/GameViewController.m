@@ -38,7 +38,7 @@
     //this is where you add the movemetns of the various limb
     [movementQueues[0] addPosition:90.0: 45.0: 20.0: 2.0];
     [movementQueues[0] addPosition:90.0: 45.0: 20.0: 3.0];
-    [movementQueues[1] addPosition:90.0: 45.0: 20.0: 12.0];
+    
     
     
     [anim setQueue: &(movementQueues)];

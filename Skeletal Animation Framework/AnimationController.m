@@ -244,21 +244,21 @@
         //CAAnimationGroup *group = [CAAnimationGroup animation];
         LLAnimation* temp = start;
         int groupFlag = 0;
-        CAAnimationGroup *groupOfGroups = [CAAnimationGroup animation];
+        CAAnimationGroup *group = [CAAnimationGroup animation];
         
         //figure out how to add animations from linked list into group
         while (temp != nil){
             if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
-                groupOfGroups.animations = @[[temp getGroup], [temp.getNext getGroup]];
-                //groupOfGroups.
-                //group.beginTime = startTime;
-                groupOfGroups.duration = [temp.getGroup duration];
-                groupOfGroups.removedOnCompletion = NO;
-                [nodes[(int)[temp getPart]] addAnimation:groupOfGroups forKey:@"allMyAnimations"];
+                group.animations = @[[temp getGroup], [temp.getNext getGroup]];
+                group.duration = [temp.getGroup duration];
+                group.removedOnCompletion = NO;
+                [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
                 groupFlag = 1;
             }
             else{
                 CAAnimationGroup *group = [temp getGroup];
+                group.duration = [temp.getGroup duration] * 2;
+                group.removedOnCompletion = NO;
                 [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
                 groupFlag = 0;
             }
