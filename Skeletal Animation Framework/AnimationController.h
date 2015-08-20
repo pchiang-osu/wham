@@ -8,11 +8,9 @@
 
 #import <SceneKit/SceneKit.h>
 #import "AppDelegate.h"
-#import "LLAnimation.h"
 #import "MovementQuards.h"
 
 @interface AnimationController : AppDelegate{
-    LLAnimation* start;
     SCNScene* scene;
     SCNNode* nodes[55];
     MovementQuards* queues[54];

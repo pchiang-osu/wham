@@ -14,7 +14,6 @@
 		169E815F1B5F092200CF2631 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169E815E1B5F092200CF2631 /* Images.xcassets */; };
 		169E81621B5F092200CF2631 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 169E81601B5F092200CF2631 /* LaunchScreen.xib */; };
 		169E816E1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E816D1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m */; };
-		169E81791B5F10EC00CF2631 /* LLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E81781B5F10EC00CF2631 /* LLAnimation.m */; };
 		169E817C1B5F11C700CF2631 /* AnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E817B1B5F11C700CF2631 /* AnimationController.m */; };
 		169E817F1B5F124D00CF2631 /* MovementQuards.m in Sources */ = {isa = PBXBuildFile; fileRef = 169E817E1B5F124D00CF2631 /* MovementQuards.m */; };
 		169E81831B5F15D200CF2631 /* Bullock-2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 169E81821B5F15D200CF2631 /* Bullock-2.dae */; };
@@ -44,8 +43,6 @@
 		169E81671B5F092300CF2631 /* Skeletal Animation FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skeletal Animation FrameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		169E816C1B5F092300CF2631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		169E816D1B5F092300CF2631 /* Skeletal_Animation_FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Skeletal_Animation_FrameworkTests.m; sourceTree = "<group>"; };
-		169E81771B5F10EC00CF2631 /* LLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAnimation.h; sourceTree = "<group>"; };
-		169E81781B5F10EC00CF2631 /* LLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAnimation.m; sourceTree = "<group>"; };
 		169E817A1B5F11C700CF2631 /* AnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationController.h; sourceTree = "<group>"; };
 		169E817B1B5F11C700CF2631 /* AnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationController.m; sourceTree = "<group>"; };
 		169E817D1B5F124D00CF2631 /* MovementQuards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementQuards.h; sourceTree = "<group>"; };
@@ -75,8 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				169E81821B5F15D200CF2631 /* Bullock-2.dae */,
-				169E81771B5F10EC00CF2631 /* LLAnimation.h */,
-				169E81781B5F10EC00CF2631 /* LLAnimation.m */,
 				169E817A1B5F11C700CF2631 /* AnimationController.h */,
 				169E817B1B5F11C700CF2631 /* AnimationController.m */,
 				169E817D1B5F124D00CF2631 /* MovementQuards.h */,
@@ -238,7 +233,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				169E81791B5F10EC00CF2631 /* LLAnimation.m in Sources */,
 				169E817C1B5F11C700CF2631 /* AnimationController.m in Sources */,
 				169E81551B5F092200CF2631 /* AppDelegate.m in Sources */,
 				169E815A1B5F092200CF2631 /* GameViewController.m in Sources */,

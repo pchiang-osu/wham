@@ -7,6 +7,8 @@
 //
 
 #import "AnimationController.h"
+@import QuartzCore;
+
 
 @implementation AnimationController
 #define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
@@ -188,19 +190,31 @@
     
     while (index < 54){
         totalDuration = 0;
+        int arrayIndex = 0;
+        CABasicAnimation* animations[20];
+        float layers[20];
+        for (int i = 0; i < 20; i++){
+            animations[i] = [CABasicAnimation animationWithKeyPath:@"position"];
+        }
         while (queues[index].morePositions){
             lastPosition = [queues[index] getLastPosition];
             
-            CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"rotation"];
+            CABasicAnimation* animx = [CABasicAnimation animationWithKeyPath:@"position"];
             animx.fillMode = kCAFillModeForwards;
             animx.removedOnCompletion = NO;
             animx.beginTime = totalDuration;
-            animx.duration = 5;
+            animx.duration = 1;
             //startAnim.repeatCount = MAXFLOAT;
-            animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
+            [animx setToValue:[NSValue valueWithSCNVector3:SCNVector3Make(lastPosition[0], lastPosition[1], lastPosition[2])]];
+            //animx.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(lastPosition[0]))];
             animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            layers[arrayIndex] = lastPosition[3];
+            animations[arrayIndex] = animx;
+            arrayIndex++;
             
-            CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"rotation"];
+            totalDuration += 1;
+            
+           /* CABasicAnimation* animy = [CABasicAnimation animationWithKeyPath:@"position"];
             animy.fillMode = kCAFillModeForwards;
             animy.removedOnCompletion = NO;
             animy.beginTime = totalDuration;
@@ -210,20 +224,20 @@
             animy.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             
             
-            CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"rotation"];
+            CABasicAnimation* animz = [CABasicAnimation animationWithKeyPath:@"position"];
             animz.fillMode = kCAFillModeForwards;
             animz.removedOnCompletion = NO;
             animz.beginTime = totalDuration;
             animz.duration = 5;
             //startAnim.repeatCount = MAXFLOAT;
             animz.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians(lastPosition[2]))];
-            animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            animz.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];*/
             
-            totalDuration += 5;
             
-            LLAnimation* newAnimation = [[LLAnimation alloc]init];
-            [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
-            if (start == nil){
+            /*LLAnimation* newAnimation = [[LLAnimation alloc]init];
+            [newAnimation setAnimation:(animx):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];*/
+            //[newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
+            /*if (start == nil){
                 start = newAnimation;
             }
             else{
@@ -232,38 +246,136 @@
                 while ([search getNext] != nil){
                     search = [search getNext];
                     NSLog(@"%s", "not null");
-                }
+                }*/
                 
-                [newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]]):(totalDuration)];
-                [search setNext:(newAnimation)];
-            }
+                /*[newAnimation setAnimation:(animx):(animy):(animz):lastPosition[3]:(nodes[(int)lastPosition[3]])://dont't keep (totalDuration)];*/
+                /*[search setNext:(newAnimation)];
+            }*/
             
         }
         
         /*set animation in motion*/
-        //CAAnimationGroup *group = [CAAnimationGroup animation];
-        LLAnimation* temp = start;
-        int groupFlag = 0;
-        CAAnimationGroup *group = [CAAnimationGroup animation];
+
+        CABasicAnimation* layerAnimations[52][arrayIndex];
+        int animationSize[52];
         
-        //figure out how to add animations from linked list into group
-        while (temp != nil){
-            if (nodes[(int)[temp getPart]] == nodes[(int)[temp.getNext getPart]]){
-                group.animations = @[[temp getGroup], [temp.getNext getGroup]];
-                group.duration = [temp.getGroup duration];
-                group.removedOnCompletion = NO;
-                [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
-                groupFlag = 1;
-            }
-            else{
-                CAAnimationGroup *group = [temp getGroup];
-                group.duration = [temp.getGroup duration] * 2;
-                group.removedOnCompletion = NO;
-                [nodes[(int)[temp getPart]] addAnimation:group forKey:@"allMyAnimations"];
-                groupFlag = 0;
-            }
-            temp = [temp getNext];
+        for (int i = 0; i < 52; i++){
+            animationSize[i] = 0;
         }
+        
+        for (int i = 0; i < 52; i++){
+            for (int j = 0; j < arrayIndex; j++){
+                layerAnimations[i][j] = [CABasicAnimation animationWithKeyPath:@"position"];
+            }
+        }
+        
+        totalDuration = 0;
+        
+        CAAnimationGroup *group[52][arrayIndex];
+        for (int i = 0; i < 52; i++){
+            for (int j = 0; j < arrayIndex; j++){
+                group[i][j] = [CAAnimationGroup animation];
+            }
+        }
+        
+        for (int i = 0; i < arrayIndex; i++){       //number of animations i per layer
+            switch ((int)layers[i]){
+                case 0:
+                    layerAnimations[0][i] = animations[i];
+                    animationSize[0]++;;
+                    break;
+                case 1:
+                    layerAnimations[1][i] = animations[i];
+                    animationSize[1]++;
+                    break;
+                case 2:
+                    layerAnimations[2][i] = animations[i];
+                    animationSize[2]++;
+                    break;
+                case 3:
+                    layerAnimations[3][i] = animations[i];
+                    animationSize[3]++;
+                    break;
+                case 4:
+                    layerAnimations[4][i] = animations[i];
+                    animationSize[4]++;
+                    break;
+                case 5:
+                    layerAnimations[5][i] = animations[i];
+                    animationSize[5]++;
+                    break;
+                case 6:
+                    layerAnimations[6][i] = animations[i];
+                    animationSize[6]++;
+                    break;
+                case 7:
+                    layerAnimations[7][i] = animations[i];
+                    animationSize[7]++;
+                    break;
+            }
+            
+            if (i == (arrayIndex - 1)){
+                for (int ind = 0; ind < 10; ind++){             //number of animations per layer ind
+                    if (animationSize[ind] == 1){
+                        group[ind][0] = [CAAnimationGroup animation];
+                        group[ind][0].animations = @[layerAnimations[ind][0]];
+                        group[ind][0].beginTime = totalDuration;
+                        group[ind][0].duration = [layerAnimations[ind][0] duration];
+                        group[ind][0].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][0] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 1");
+                        
+                        totalDuration += 1;
+                    }
+                    else if (animationSize[ind] == 2){
+                        group[ind][1] = [CAAnimationGroup animation];
+                        group[ind][1].animations = @[layerAnimations[ind][0], layerAnimations[ind][1]];
+                        group[ind][1].beginTime = totalDuration;
+                        group[ind][1].duration = [layerAnimations[ind][0] duration]*4;
+                        group[ind][1].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][1] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 2");
+                        
+                        totalDuration += 2;
+                    }
+                    else if (animationSize[ind] == 3){
+                        group[ind][2] = [CAAnimationGroup animation];
+                        group[ind][2].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2]];
+                        group[ind][2].beginTime = totalDuration;
+                        group[ind][2].duration = [layerAnimations[ind][0] duration]*8;
+                        group[ind][2].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][2] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 3");
+                        
+                        totalDuration += 3;
+                    }
+                    
+                    else if (animationSize[ind] == 4){
+                        group[ind][3] = [CAAnimationGroup animation];
+                        group[ind][3].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3]];
+                        group[ind][3].beginTime = totalDuration;
+                        group[ind][3].duration = [layerAnimations[ind][0] duration]*12;
+                        group[ind][3].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][3] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 4");
+                        
+                        totalDuration += 4;
+                    }
+                    else if (animationSize[ind] == 5){
+                        group[ind][4] = [CAAnimationGroup animation];
+                        group[ind][4].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4]];
+                        group[ind][4].beginTime = totalDuration;
+                        group[ind][4].duration = [layerAnimations[ind][0] duration]*16;
+                        group[ind][4].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][4] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 5");
+                        
+                        totalDuration += 5;
+                    }
+                }
+            }
+        }
+    
         index++;
     }
 }
@@ -300,13 +412,8 @@
  //startAnim.repeatCount = MAXFLOAT;
  startAnim2.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0.0, 0.0, 1.0, degreesToRadians([queue getLastPosition]))];
  startAnim2.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
- //[PelvisRight addAnimation:startAnim2 forKey:@"rotate"];
+ //[PelvisRight addAnimation:startAnim2 forKey:@"rotate"];*/
  
- CAAnimationGroup *group = [CAAnimationGroup animation];
- group.animations = @[startAnim, startAnim2];
- group.duration = 20;
- //group.repeatCount = 3;
- group.autoreverses = YES;
- [HipRight addAnimation:group forKey:@"allMyAnimations"];*/
+
 
 @end

@@ -36,8 +36,17 @@
     }
     
     //this is where you add the movemetns of the various limb
-    [movementQueues[0] addPosition:90.0: 45.0: 20.0: 2.0];
-    [movementQueues[0] addPosition:90.0: 45.0: 20.0: 3.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 0.15: 0.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 3.0];
+    [movementQueues[0] addPosition:1.05: 0.15: 0.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[1] addPosition:1.05: 1.05: 1.05: 4.0];
+    [movementQueues[1] addPosition:1.05: 0.15: 0.05: 4.0];
+    [movementQueues[1] addPosition:1.05: 1.05: 1.05: 4.0];
+    [movementQueues[1] addPosition:1.05: 0.15: 0.05: 4.0];
+    [movementQueues[1] addPosition:1.05: 1.05: 1.05: 4.0];
+    
     
     
     

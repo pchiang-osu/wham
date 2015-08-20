@@ -46,6 +46,10 @@
         return 0;
 }
 
+-(double)getPart{
+    return posQueue[top][3];
+}
+
 -(void)clear{
     free(posQueue);
 }
