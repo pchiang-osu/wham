@@ -244,15 +244,15 @@
                     animationSize[0]++;
                     break;
                 case 1:
-                    layerAnimations[1][i] = animations[i];
+                    layerAnimations[1][animationSize[1]] = animations[i];
                     animationSize[1]++;
                     break;
                 case 2:
-                    layerAnimations[2][i] = animations[i];
+                    layerAnimations[2][animationSize[2]] = animations[i];
                     animationSize[2]++;
                     break;
                 case 3:
-                    layerAnimations[3][i] = animations[i];
+                    layerAnimations[3][animationSize[3]] = animations[i];
                     animationSize[3]++;
                     break;
                 case 4:
@@ -260,15 +260,15 @@
                     animationSize[4]++;
                     break;
                 case 5:
-                    layerAnimations[5][i] = animations[i];
+                    layerAnimations[5][animationSize[5]] = animations[i];
                     animationSize[5]++;
                     break;
                 case 6:
-                    layerAnimations[6][i] = animations[i];
+                    layerAnimations[6][animationSize[6]] = animations[i];
                     animationSize[6]++;
                     break;
                 case 7:
-                    layerAnimations[7][i] = animations[i];
+                    layerAnimations[7][animationSize[7]] = animations[i];
                     animationSize[7]++;
                     break;
             }
