@@ -279,7 +279,7 @@
                         //group[ind][0] = [CAAnimationGroup animation];
                         group[ind][0].animations = @[layerAnimations[ind][0]];
                         group[ind][0].beginTime = 0;
-                        group[ind][0].duration = 5;
+                        group[ind][0].duration = arrayIndex;
                         group[ind][0].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][0] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 1");
@@ -291,7 +291,7 @@
                         group[ind][1] = [CAAnimationGroup animation];
                         group[ind][1].animations = @[layerAnimations[ind][0], layerAnimations[ind][1]];
                         group[ind][1].beginTime = 0;
-                        group[ind][1].duration = 4;
+                        group[ind][1].duration = arrayIndex;
                         group[ind][1].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][1] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 2");
@@ -302,7 +302,7 @@
                         group[ind][2] = [CAAnimationGroup animation];
                         group[ind][2].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2]];
                         group[ind][2].beginTime = 0;
-                        group[ind][2].duration = 6;
+                        group[ind][2].duration = arrayIndex;
                         group[ind][2].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][2] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 3");
@@ -314,7 +314,7 @@
                         group[ind][3] = [CAAnimationGroup animation];
                         group[ind][3].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3]];
                         group[ind][3].beginTime = 0;
-                        group[ind][3].duration = 8;
+                        group[ind][3].duration = arrayIndex;
                         group[ind][3].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][3] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 4");
@@ -325,7 +325,7 @@
                         group[ind][4] = [CAAnimationGroup animation];
                         group[ind][4].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4]];
                         group[ind][4].beginTime = 0;
-                        group[ind][4].duration = 10;
+                        group[ind][4].duration = arrayIndex;
                         group[ind][4].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][4] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 5");
