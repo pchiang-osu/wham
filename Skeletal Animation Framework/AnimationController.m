@@ -315,10 +315,179 @@
                         group[ind][5].duration = arrayIndex;
                         group[ind][5].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][5] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 5");
+                        NSLog(@"%s", "animationSize = 6");
                         
                         totalDuration += 5;
                     }
+                    
+                    if (animationSize[ind] == 7){
+                        group[ind][6] = [CAAnimationGroup animation];
+                        group[ind][6].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6]];
+                        group[ind][6].beginTime = 0;
+                        group[ind][6].duration = arrayIndex;
+                        group[ind][6].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][6] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 7");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 8){
+                        group[ind][7] = [CAAnimationGroup animation];
+                        group[ind][7].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7]];
+                        group[ind][7].beginTime = 0;
+                        group[ind][7].duration = arrayIndex;
+                        group[ind][7].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][7] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 8");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 9){
+                        group[ind][8] = [CAAnimationGroup animation];
+                        group[ind][8].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8]];
+                        group[ind][8].beginTime = 0;
+                        group[ind][8].duration = arrayIndex;
+                        group[ind][8].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][8] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 9");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 10){
+                        group[ind][9] = [CAAnimationGroup animation];
+                        group[ind][9].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9]];
+                        group[ind][9].beginTime = 0;
+                        group[ind][9].duration = arrayIndex;
+                        group[ind][9].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][9] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 10");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 11){
+                        group[ind][10] = [CAAnimationGroup animation];
+                        group[ind][10].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10]];
+                        group[ind][10].beginTime = 0;
+                        group[ind][10].duration = arrayIndex;
+                        group[ind][10].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][10] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 11");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 12){
+                        group[ind][11] = [CAAnimationGroup animation];
+                        group[ind][11].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11]];
+                        group[ind][11].beginTime = 0;
+                        group[ind][11].duration = arrayIndex;
+                        group[ind][11].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][11] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 12");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 13){
+                        group[ind][12] = [CAAnimationGroup animation];
+                        group[ind][12].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12]];
+                        group[ind][12].beginTime = 0;
+                        group[ind][12].duration = arrayIndex;
+                        group[ind][12].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][12] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 13");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 14){
+                        group[ind][13] = [CAAnimationGroup animation];
+                        group[ind][13].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13]];
+                        group[ind][13].beginTime = 0;
+                        group[ind][13].duration = arrayIndex;
+                        group[ind][13].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][13] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 14");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 15){
+                        group[ind][14] = [CAAnimationGroup animation];
+                        group[ind][14].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13], layerAnimations[ind][14]];
+                        group[ind][14].beginTime = 0;
+                        group[ind][14].duration = arrayIndex;
+                        group[ind][14].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][14] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 15");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 16){
+                        group[ind][15] = [CAAnimationGroup animation];
+                        group[ind][15].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13], layerAnimations[ind][14], layerAnimations[ind][15]];
+                        group[ind][15].beginTime = 0;
+                        group[ind][15].duration = arrayIndex;
+                        group[ind][15].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][15] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 16");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 17){
+                        group[ind][16] = [CAAnimationGroup animation];
+                        group[ind][16].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13], layerAnimations[ind][14], layerAnimations[ind][15], layerAnimations[ind][16]];
+                        group[ind][16].beginTime = 0;
+                        group[ind][16].duration = arrayIndex;
+                        group[ind][16].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][16] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 17");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 18){
+                        group[ind][17] = [CAAnimationGroup animation];
+                        group[ind][17].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13], layerAnimations[ind][14], layerAnimations[ind][15], layerAnimations[ind][16], layerAnimations[ind][17]];
+                        group[ind][17].beginTime = 0;
+                        group[ind][17].duration = arrayIndex;
+                        group[ind][17].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][17] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 18");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 19){
+                        group[ind][18] = [CAAnimationGroup animation];
+                        group[ind][18].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13], layerAnimations[ind][14], layerAnimations[ind][15], layerAnimations[ind][16], layerAnimations[ind][17], layerAnimations[ind][18]];
+                        group[ind][18].beginTime = 0;
+                        group[ind][18].duration = arrayIndex;
+                        group[ind][18].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][18] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 19");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 20){
+                        group[ind][19] = [CAAnimationGroup animation];
+                        group[ind][19].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5], layerAnimations[ind][6], layerAnimations[ind][7], layerAnimations[ind][8], layerAnimations[ind][9], layerAnimations[ind][10], layerAnimations[ind][11], layerAnimations[ind][12], layerAnimations[ind][13], layerAnimations[ind][14], layerAnimations[ind][15], layerAnimations[ind][16], layerAnimations[ind][17], layerAnimations[ind][18], layerAnimations[ind][19]];
+                        group[ind][19].beginTime = 0;
+                        group[ind][19].duration = arrayIndex;
+                        group[ind][19].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][19] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 20");
+                        
+                        totalDuration += 5;
+                    }
+
                 }
                 
                 
