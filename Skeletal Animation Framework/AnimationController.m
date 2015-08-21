@@ -196,6 +196,8 @@
         for (int i = 0; i < 20; i++){
             animations[i] = [CABasicAnimation animationWithKeyPath:@"position"];
         }
+        
+        
         while (queues[index].morePositions){
             lastPosition = [queues[index] getLastPosition];
             
@@ -238,43 +240,16 @@
         }
         
         for (int i = 0; i < arrayIndex; i++){       //number of animations i per layer. Should go all the way to 52
-            switch ((int)layers[i]){
-                case 0:
-                    layerAnimations[0][animationSize[0]] = animations[i];
-                    animationSize[0]++;
-                    break;
-                case 1:
-                    layerAnimations[1][animationSize[1]] = animations[i];
-                    animationSize[1]++;
-                    break;
-                case 2:
-                    layerAnimations[2][animationSize[2]] = animations[i];
-                    animationSize[2]++;
-                    break;
-                case 3:
-                    layerAnimations[3][animationSize[3]] = animations[i];
-                    animationSize[3]++;
-                    break;
-                case 4:
-                    layerAnimations[4][animationSize[4]] = animations[i];
-                    animationSize[4]++;
-                    break;
-                case 5:
-                    layerAnimations[5][animationSize[5]] = animations[i];
-                    animationSize[5]++;
-                    break;
-                case 6:
-                    layerAnimations[6][animationSize[6]] = animations[i];
-                    animationSize[6]++;
-                    break;
-                case 7:
-                    layerAnimations[7][animationSize[7]] = animations[i];
-                    animationSize[7]++;
-                    break;
+            for (int j = 0; j < 52; j++){
+                if ((int)layers[i] == j){
+                    layerAnimations[j][animationSize[j]] = animations[i];
+                    animationSize[j]++;
+                }
             }
             
+            
             if (i == (arrayIndex - 1)){
-                for (int ind = 0; ind < 10; ind++){             //number of animations per layer ind. All the way to 52
+                for (int ind = 0; ind < 52; ind++){             //number of animations per layer ind. All the way to 52
                     if (animationSize[ind] == 1){
                         //group[ind][0] = [CAAnimationGroup animation];
                         group[ind][0].animations = @[layerAnimations[ind][0]];
@@ -328,6 +303,18 @@
                         group[ind][4].duration = arrayIndex;
                         group[ind][4].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][4] forKey:@"allMyAnimations"];
+                        NSLog(@"%s", "animationSize = 5");
+                        
+                        totalDuration += 5;
+                    }
+                    
+                    if (animationSize[ind] == 6){
+                        group[ind][5] = [CAAnimationGroup animation];
+                        group[ind][5].animations = @[layerAnimations[ind][0], layerAnimations[ind][1], layerAnimations[ind][2], layerAnimations[ind][3], layerAnimations[ind][4], layerAnimations[ind][5]];
+                        group[ind][5].beginTime = 0;
+                        group[ind][5].duration = arrayIndex;
+                        group[ind][5].removedOnCompletion = NO;
+                        [nodes[ind] addAnimation:group[ind][5] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 5");
                         
                         totalDuration += 5;
