@@ -1,11 +1,15 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
-{\colortbl;\red255\green255\blue255;\red63\green110\blue116;\red46\green13\blue110;\red92\green38\blue153;
-}
+{\colortbl;\red255\green255\blue255;\red63\green110\blue116;\red46\green13\blue110;}
 \margl1440\margr1440\vieww28600\viewh15300\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\f0\fs24 \cf0 SceneKit Skeletal Animation\
+\f0\fs24 \cf0 Gabe Aron\
+5/24/2015\
+\
+ReadMe\
+\
+SceneKit Skeletal Animation\
 \
 Welcome to this tutorial on how to work with and assign values to the SceneKit Skeletal Animation framework. In this tutorial, you will learn:\
 \
@@ -19,14 +23,23 @@ Welcome to this tutorial on how to work with and assign values to the SceneKit S
 	Please continue reading to learn about the basic structure of this program. If this information is not relevant to you and you just want to know how to make the figure move, feel free to skip the following section.\
 \
 2) The basic structure of the framework\
-	The SceneKit Skeletal Animation framework uses a series of classes and objects to create and interact with several data structures. \
+	The SceneKit Skeletal Animation Framework uses a series of classes and objects to create and interact with several data structures. It contains the following three classes:\
+	GameViewController\
+		The GameViewController class is the heart of the Skeletal Animation Framework. It is used to instantiate both the ScnView object, which is responsible for rendering the Collada mesh, as well as the MovementQuards objects, which are the FIFO structures responsible for moving the rendered mesh. This is the class in which the X, Y, Z and body-part index information is added to each structure.\
+	AnimationController\
+		The AnimationController class is responsible for setting up the animation scene. It contains all 54 body-part index nodes, and applies these nodes to the scene. It is responsible for taking the data inserted into the FIFO structures and animating the mesh.\
+	MovementQuards\
+		The MovementQuards class contains the FIFO data structure. This structure takes the form of a two-dimensional array stack of twenty elements. Each element contains four double floating-point fields: X, Y, Z and body-part index. \
+Values are inserted into each object of this class using the 
+\f1\fs22 \CocoaLigature0 addPosition(double, double, double, double) method, and removed using the double* getLastPosition method. When this object receives data in the GameViewController class, it is read by the AnimationController class, which proceeds to pop each X, Y, Z, body-part index set off and render the animated figure. Each object of MovementQuards has the ability to \'93wrap around\'94 after all twenty elements have been used. This enables an indefinite number of positions for each object. This object can be instantiated a total of 54 times (the number of body parts).
+\f0\fs24 \CocoaLigature1 	\
 \
 3) How to use the framework with XYZ data (how to make the skeleton move)\
-	In order to interact with the SceneKit Skeletal Animation framework, you must first install the package (talk about this)\
+	In order to interact with the SceneKit Skeletal Animation framework, you must first install the package. You can do this by cloning the  GitHub repository https://github.com/pchiang-osu/wham. When finished, you will find the Skeletal Animation Framework in the directory wham/Skeletal Animation Framework. Once there, open the project file Skeletal Animation Framework.xcodeproj using Xcode.\
 	Once you have your Workspace set up, you can work freely with the interface. Begin by creating a new object of MovementQuards: \'93MovementQuards* objectName = 
 \f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
-\f0\fs24 \CocoaLigature1 \'94. You may now use this object to add any XYZ/body part you want to the animation. In order to add such information to the animation, you must add values to the object. Keep reading to find out how.\
-	In order to add animation values to this object, you must use the MovemntQuards method addPosition. This is done with the following syntax: \'93[objectName addPosition: (double) X_value: (double) Y_value: (double) Z_value:(double) body_part]\'94. You will notice that the body part field is of the primitive type double. This number is used as an index of an array of body part objects. They are mapped as follows:\
+\f0\fs24 \CocoaLigature1 \'94. In later versions of the framework, all 54 of the objects are set up for you. You may now use this object to add any XYZ/body-part index you want to the animation. In order to add such information to the animation, you must add values to the object. Keep reading to find out how.\
+	In order to add animation values to this object, you must use the MovementQuards method addPosition(double, double, double, double). This is done with the following syntax: \'93[objectName addPosition: (double) X_value: (double) Y_value: (double) Z_value:(double) body_part]\'94. You will notice that the body part field is of the primitive type double. This number is used as an index of an array of body part objects. They are mapped as follows:\
 	0.0 = Armature\
 	1.0 = Pelvis\
 	2..0 = PelvisRight\
@@ -82,13 +95,8 @@ Welcome to this tutorial on how to work with and assign values to the SceneKit S
 	52.0 = Thumb2Left\
 	53.0 = Thumb3Right\
 	54.0 = Thumb3Left\
-This syntax will cause that animated figure to move the specified body part to the desired (X, Y, Z) position on the screen. (In later versions, I may make make it so a user can enter string literals to the body part field, instead of an index). You can can such commands together as many times as you want to the effect of creating elaborate animations:\
-	
-\f1\fs22 \cf4 \CocoaLigature0 \
-	
-\f0\fs24 \cf0 \CocoaLigature1 MovementQuards* objectName = 
-\f1\fs22 \CocoaLigature0 [[\cf2 MovementQuards\cf0  \cf3 alloc\cf0 ]\cf3 init\cf0 ];
-\f0\fs24 \CocoaLigature1 \
+This syntax will cause that animated figure to move the specified body part to the desired (X, Y, Z) position on the screen. (In later versions, I may make it so a user can enter string literals to the body part field, instead of an index). You can use such commands together as many times as you want to the effect of creating elaborate animations:\
+	\
 	[objectName addPosition: X_value: Y_value: Z_value: 4.0];\
 	[objectName addPosition: X_value + 10: Y_value: Z_value: 4.0];\
 	[objectName addPosition: X_value: Y_value: Z_value: 12.0];\
@@ -107,4 +115,8 @@ This syntax will cause that animated figure to move the specified body part to t
 \
 	This example allows both the right hip and the right knee to move concurrently based on their own values. Just remember that elements of objects run sequentially, while objects themselves run concurrently. (In order to work with the whole body via sensors, I would suggest creating an object for all 19 body parts and then adding an element to it each time the value of the sensor associated with that body part changes).\
 	\
-4) References on Objective C, SceneKit and CAAnimation}
+4) References on Objective C, SceneKit and CAAnimation\
+	Download xCode: https://developer.apple.com/xcode/download/\
+	Download Blender: https://www.blender.org/download/\
+	Learn about SceneKit: http://code.tutsplus.com/tutorials/an-introduction-to-scenekit-user-interaction-animations-physics--cms-23877\
+	Learn about Core Animation: http://www1.in.tum.de/lehrstuhl_1/home/98-teaching/tutorials/509-sgd-ws13-tutorial-core-animation}

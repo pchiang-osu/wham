@@ -39,9 +39,23 @@
     [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
     [movementQueues[0] addPosition:1.05: 0.15: 0.05: 5.0];
     [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
-    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 20.0];
-    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 4.0];
-    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 0.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 20.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0]; //14
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 0.15: 5.0];
+    [movementQueues[0] addPosition:1.05: 1.05: 1.05: 5.0];
     [movementQueues[1] addPosition:1.05: 1.05: 1.05: 0.0];
     [movementQueues[1] addPosition:1.05: 0.15: 0.05: 0.0];
     [movementQueues[1] addPosition:1.05: 1.05: 1.05: 4.0];

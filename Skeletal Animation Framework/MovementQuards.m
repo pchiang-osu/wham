@@ -16,10 +16,6 @@
 
 - (id)init {
     if (self=[super init]){
-        /*posQueue[0] = malloc(sizeof(double) * 500);
-        posQueue[1] = malloc(sizeof(double) * 500);
-        posQueue[2] = malloc(sizeof(double) * 500);
-        posQueue[3] = malloc(sizeof(double) * 500);*/
         top = 0;
         bottom = 0;
     }
@@ -36,6 +32,10 @@
 }
 
 -(double*)getLastPosition{
+    if ((bottom == 19) && (top == 19)){
+        bottom = 0;
+        top = 0;
+    }
     return posQueue[bottom++];
 }
 
