@@ -31,7 +31,7 @@ Welcome to this tutorial on how to work with and assign values to the SceneKit S
 	MovementQuards\
 		The MovementQuards class contains the FIFO data structure. This structure takes the form of a two-dimensional array stack of twenty elements. Each element contains four double floating-point fields: X, Y, Z and body-part index. \
 Values are inserted into each object of this class using the 
-\f1\fs22 \CocoaLigature0 addPosition(double, double, double, double) method, and removed using the double* getLastPosition method. When this object receives data in the GameViewController class, it is read by the AnimationController class, which proceeds to pop each X, Y, Z, body-part index set off and render the animated figure. Each object of MovementQuards has the ability to \'93wrap around\'94 after all twenty elements have been used. This enables an indefinite number of positions for each object. This object can be instantiated a total of 54 times (the number of body parts).
+\f1\fs22 \CocoaLigature0 addPosition(double, double, double, double) method, and removed using the double* getLastPosition method. When this object receives data in the GameViewController class, it is read by the AnimationController class, which proceeds to pop each X, Y, Z, body-part index set off and render the animated figure. Each object of MovementQuards has the ability to \'93wrap around\'94 after all twenty elements have been used. This enables an indefinite number of positions for each object. This object can be instantiated a total of 55 times (the number of body parts).
 \f0\fs24 \CocoaLigature1 	\
 \
 3) How to use the framework with XYZ data (how to make the skeleton move)\

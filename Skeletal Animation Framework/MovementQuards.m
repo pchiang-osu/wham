@@ -24,34 +24,39 @@
 
 
 -(void)addPosition:(double)posx:(double)posy:(double)posz:(double)part{
-    posQueue[top][0] = posx;
-    posQueue[top][1] = posy;
-    posQueue[top][2] = posz;
-    posQueue[top][3] = part;
+    posStack[top][0] = posx;
+    posStack[top][1] = posy;
+    posStack[top][2] = posz;
+    posStack[top][3] = part;
     top++;
 }
 
 -(double*)getLastPosition{
-    if ((bottom == 19) && (top == 19)){
-        bottom = 0;
-        top = 0;
-    }
-    return posQueue[bottom++];
+    return posStack[bottom++];
 }
 
 -(bool)morePositions{
     if (bottom < top)
         return 1;
-    else
+    else{
+        for (int i = 0; i < 20; i++){
+            posStack[0][0] = 0.0;
+            posStack[0][1] = 0.0;
+            posStack[0][2] = 0.0;
+            posStack[0][3] = 0.0;
+        }
+        top = 0;
+        bottom = 0;
         return 0;
+    }
 }
 
 -(double)getPart{
-    return posQueue[top][3];
+    return posStack[top][3];
 }
 
 -(void)clear{
-    free(posQueue);
+    free(posStack);
 }
 
 

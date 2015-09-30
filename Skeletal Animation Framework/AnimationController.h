@@ -13,12 +13,14 @@
 @interface AnimationController : AppDelegate{
     SCNScene* scene;
     SCNNode* nodes[55];
-    MovementQuards* queues[54];
+    MovementQuards* queues[55];
+    int tempTotalDur;
+    int tempArrayInd;
 }
 
 -(SCNScene*)createScene:(NSString*)sceneName;
 -(void)createNodes;
--(void)animate;
+-(void)animate:(int) iteration;
 -(void)setQueue:(MovementQuards**) q;
 
 @end

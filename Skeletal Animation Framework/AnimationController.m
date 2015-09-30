@@ -169,30 +169,32 @@
     nodes[53] = Thumb3Right;
     nodes[54] = Thumb3Left;
     
-    if (Armature){
+    /*if (Armature){
         NSLog(@"%s", "found");
-    }
-    else{
+    }*/
+    if (!Armature){
         NSLog(@"%s", "not found");
     }
     
-    bool animate = 1;
+    /*bool animate = 1;
     if (animate){
         [self animate];
-    }
+    }*/
     
 }
 
--(void)animate{
-    CGFloat totalDuration = 0;
+-(void)animate:(int) iteration{
+    CGFloat totalDuration;
     double* lastPosition;
     int index = 0;
+    int arrayIndex;
     
-    while (index < 54){
+    while (index < 55){
         totalDuration = 0;
-        int arrayIndex = 0;
+        arrayIndex = 0;
+        
         CABasicAnimation* animations[20];
-        float layers[20];
+        float layers[arrayIndex];
         for (int i = 0; i < 20; i++){
             animations[i] = [CABasicAnimation animationWithKeyPath:@"position"];
         }
@@ -205,26 +207,29 @@
             animx.fillMode = kCAFillModeForwards;
             animx.removedOnCompletion = NO;
             animx.beginTime = totalDuration;
-            animx.duration = 1;
+            animx.duration = 0.1;
             [animx setToValue:[NSValue valueWithSCNVector3:SCNVector3Make(lastPosition[0], lastPosition[1], lastPosition[2])]];
             animx.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             layers[arrayIndex] = lastPosition[3];
             animations[arrayIndex] = animx;
             arrayIndex++;
+
+            totalDuration += 0.1;
             
-            totalDuration += 1;
+            tempArrayInd = arrayIndex;
+            tempTotalDur = totalDuration;
         }
         
         /*set animation in motion*/
 
-        CABasicAnimation* layerAnimations[52][arrayIndex];
-        int animationSize[52];
+        CABasicAnimation* layerAnimations[55][arrayIndex];
+        int animationSize[55];
         
-        for (int i = 0; i < 52; i++){
+        for (int i = 0; i < 55; i++){
             animationSize[i] = 0;
         }
         
-        for (int i = 0; i < 52; i++){
+        for (int i = 0; i < 55; i++){
             for (int j = 0; j < arrayIndex; j++){
                 layerAnimations[i][j] = [CABasicAnimation animationWithKeyPath:@"position"];
             }
@@ -232,15 +237,15 @@
         
         totalDuration = 0;
         
-        CAAnimationGroup *group[52][arrayIndex];        //create the animation group array
-        for (int i = 0; i < 52; i++){
+        CAAnimationGroup *group[55][arrayIndex];        //create the animation group array
+        for (int i = 0; i < 55; i++){
             for (int j = 0; j < arrayIndex; j++){
                 group[i][j] = [CAAnimationGroup animation];
             }
         }
         
         for (int i = 0; i < arrayIndex; i++){       //number of animations i per layer. Should go all the way to 52
-            for (int j = 0; j < 52; j++){
+            for (int j = 0; j < 55; j++){
                 if ((int)layers[i] == j){
                     layerAnimations[j][animationSize[j]] = animations[i];
                     animationSize[j]++;
@@ -249,7 +254,7 @@
             
             
             if (i == (arrayIndex - 1)){
-                for (int ind = 0; ind < 52; ind++){             //number of animations per layer ind. All the way to 52
+                for (int ind = 0; ind < 55; ind++){             //number of animations per layer ind. All the way to 52
                     if (animationSize[ind] == 1){
                         //group[ind][0] = [CAAnimationGroup animation];
                         group[ind][0].animations = @[layerAnimations[ind][0]];
@@ -258,9 +263,9 @@
                         group[ind][0].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][0] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 1");
-                        NSLog(@"%s""%i", "ind:",ind);
+                        //NSLog(@"%s""%i", "ind:",ind);
                         
-                        totalDuration += 1;
+                        //totalDuration += 1;
                     }
                     if (animationSize[ind] == 2){
                         group[ind][1] = [CAAnimationGroup animation];
@@ -268,10 +273,10 @@
                         group[ind][1].beginTime = 0;
                         group[ind][1].duration = arrayIndex;
                         group[ind][1].removedOnCompletion = NO;
-                        [nodes[ind] addAnimation:group[ind][1] forKey:@"allMyAnimations"];
+                        ([nodes[ind] addAnimation:group[ind][1] forKey:@"allMyAnimations"]);
                         NSLog(@"%s", "animationSize = 2");
                         
-                        totalDuration += 2;
+                        //totalDuration += 2;
                     }
                     if (animationSize[ind] == 3){
                         group[ind][2] = [CAAnimationGroup animation];
@@ -280,9 +285,9 @@
                         group[ind][2].duration = arrayIndex;
                         group[ind][2].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][2] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 3");
+                        //NSLog(@"%s", "animationSize = 3");
                         
-                        totalDuration += 3;
+                        //totalDuration += 3;
                     }
                     
                     if (animationSize[ind] == 4){
@@ -294,7 +299,7 @@
                         [nodes[ind] addAnimation:group[ind][3] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 4");
                         
-                        totalDuration += 4;
+                        //totalDuration += 4;
                     }
                     if (animationSize[ind] == 5){
                         group[ind][4] = [CAAnimationGroup animation];
@@ -305,7 +310,7 @@
                         [nodes[ind] addAnimation:group[ind][4] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 5");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 6){
@@ -315,9 +320,9 @@
                         group[ind][5].duration = arrayIndex;
                         group[ind][5].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][5] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 6");
+                        //NSLog(@"%s", "animationSize = 6");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 7){
@@ -327,9 +332,9 @@
                         group[ind][6].duration = arrayIndex;
                         group[ind][6].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][6] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 7");
+                        //NSLog(@"%s", "animationSize = 7");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 8){
@@ -339,9 +344,9 @@
                         group[ind][7].duration = arrayIndex;
                         group[ind][7].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][7] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 8");
+                        //NSLog(@"%s", "animationSize = 8");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 9){
@@ -351,9 +356,9 @@
                         group[ind][8].duration = arrayIndex;
                         group[ind][8].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][8] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 9");
+                        //NSLog(@"%s", "animationSize = 9");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 10){
@@ -363,9 +368,9 @@
                         group[ind][9].duration = arrayIndex;
                         group[ind][9].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][9] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 10");
+                        //NSLog(@"%s", "animationSize = 10");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 11){
@@ -375,9 +380,9 @@
                         group[ind][10].duration = arrayIndex;
                         group[ind][10].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][10] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 11");
+                        //NSLog(@"%s", "animationSize = 11");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 12){
@@ -387,9 +392,9 @@
                         group[ind][11].duration = arrayIndex;
                         group[ind][11].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][11] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 12");
+                        //NSLog(@"%s", "animationSize = 12");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 13){
@@ -399,9 +404,9 @@
                         group[ind][12].duration = arrayIndex;
                         group[ind][12].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][12] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 13");
+                        //NSLog(@"%s", "animationSize = 13");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 14){
@@ -411,9 +416,9 @@
                         group[ind][13].duration = arrayIndex;
                         group[ind][13].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][13] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 14");
+                        //NSLog(@"%s", "animationSize = 14");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 15){
@@ -423,9 +428,9 @@
                         group[ind][14].duration = arrayIndex;
                         group[ind][14].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][14] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 15");
+                        //NSLog(@"%s", "animationSize = 15");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 16){
@@ -435,9 +440,9 @@
                         group[ind][15].duration = arrayIndex;
                         group[ind][15].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][15] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 16");
+                        //NSLog(@"%s", "animationSize = 16");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 17){
@@ -447,9 +452,9 @@
                         group[ind][16].duration = arrayIndex;
                         group[ind][16].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][16] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 17");
+                        //NSLog(@"%s", "animationSize = 17");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 18){
@@ -461,7 +466,7 @@
                         [nodes[ind] addAnimation:group[ind][17] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 18");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 19){
@@ -473,7 +478,7 @@
                         [nodes[ind] addAnimation:group[ind][18] forKey:@"allMyAnimations"];
                         NSLog(@"%s", "animationSize = 19");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
                     
                     if (animationSize[ind] == 20){
@@ -483,19 +488,12 @@
                         group[ind][19].duration = arrayIndex;
                         group[ind][19].removedOnCompletion = NO;
                         [nodes[ind] addAnimation:group[ind][19] forKey:@"allMyAnimations"];
-                        NSLog(@"%s", "animationSize = 20");
+                        //NSLog(@"%s", "animationSize = 20");
                         
-                        totalDuration += 5;
+                        //totalDuration += 5;
                     }
 
                 }
-                
-                
-               
-                /*[nodes[0] addAnimation:group[0][0] forKey:@"allMyAnimations"];
-                [nodes[4] addAnimation:group[4][0] forKey:@"allMyAnimations"];
-                NSLog(@"%@", group[0][0]);
-                NSLog(@"%@", group[4][0]);*/
             }
 
         }
@@ -505,14 +503,12 @@
 }
 
 -(void)setQueue:(MovementQuards**)q{
-    for (int i = 0; i < 54; i++){
+    for (int i = 0; i < 55; i++){
         queues[i] = q[i];
     }
 }
 
-/*-(MovementQuards*)getQueue{
-    return queue1;
-}*/
+
 
 //PelvisRight.rotation = SCNVector4Make(1.0, 0.0, 0.0, degreesToRadians(180.0));
 /*CGFloat totalDuration = 0;

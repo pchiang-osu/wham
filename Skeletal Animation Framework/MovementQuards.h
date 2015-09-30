@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MovementQuards : NSObject {
-    double posQueue[20][4];
+    double posStack[20][4];
 }
 
 -(void)addPosition:(double)posx:(double)posy:(double)posz:(double)part;
